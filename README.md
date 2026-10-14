@@ -1,5 +1,7 @@
 # Fair on Paper: reproduction package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23374897.svg)](https://doi.org/10.5281/zenodo.23374897)
+
 Code, data, analysis plans and results for the working paper
 
 > Ojebiyi, T. O. (2026). *Fair on Paper: What a Prop-Firm Challenge Is Worth, and Who Pays for It.*
@@ -71,6 +73,12 @@ later work will be registered with a third-party service before they are run.
 ## Licence and citation
 
 Code: MIT (see `LICENSE`). Text, tables and figures of the paper: CC BY 4.0. If you use this package, please cite
-the paper.
+the paper and the package:
+
+> Ojebiyi, T. O. (2026). *Fair on Paper: reproduction package* (version 1.0.0). Zenodo.
+> https://doi.org/10.5281/zenodo.23374897
+
+That DOI always resolves to the latest version; version 1.0.0 itself is https://doi.org/10.5281/zenodo.23374898.
+`CITATION.cff` holds the same details, and GitHub's "Cite this repository" button reads it.
 
 Contact: Timothy Oluwatobi Ojebiyi, tobiojebiyi@gmail.com
