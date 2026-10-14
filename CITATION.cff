@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Fair on Paper: reproduction package"
+version: 1.0.0
+license: "MIT"
+type: software
+abstract: >-
+  Code, day series, analysis plans and results for the working paper "Fair on Paper: What a Prop-Firm
+  Challenge Is Worth, and Who Pays for It". It prices a retail prop firm's published evaluation contract on
+  twenty years of intraday index prices at measured broker costs. One command reproduces every table, figure
+  and the PDF. Nothing here is investment advice.
+message: "If you use this package, please cite it as below."
+authors:
+  - given-names: Timothy Oluwatobi
+    family-names: Ojebiyi
+    affiliation: Independent researcher
+keywords:
+  - proprietary trading firms
+  - evaluation contracts
+  - option pricing
+  - dynamic programming
+  - pre-registration
+  - reproducibility
