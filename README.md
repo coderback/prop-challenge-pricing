@@ -81,4 +81,4 @@ the paper and the package:
 That DOI always resolves to the latest version; version 1.0.0 itself is https://doi.org/10.5281/zenodo.23374898.
 `CITATION.cff` holds the same details, and GitHub's "Cite this repository" button reads it.
 
-Contact: Timothy Oluwatobi Ojebiyi, tobiojebiyi@gmail.com
+Contact: Timothy Oluwatobi Ojebiyi, tobiojebiyi@gmail.com, ORCID [0009-0009-7786-8549](https://orcid.org/0009-0009-7786-8549)
