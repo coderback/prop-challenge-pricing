@@ -18,3 +18,4 @@ c87a97f0213d701c6a1e61925f9746f41c97ae97  2026-10-13T22:12:04+01:00  docs(resear
 2a46830134a75bf6557f00156a28c5847874b2ab  2026-10-13T23:05:49+01:00  docs(paper): first full draft of paper 2 (fair on paper), exhibits for K5-K9, export of the extension results
 342ad569399e6a3843700bf1153d59bb5c780936  2026-10-14T00:34:34+01:00  feat(research): reproduction package for paper 2 (standalone book builder verified against the cached day series, package builder, one-command runner)
 5101998d9ddb2003fe36cffe636c966a46e3536c  2026-10-14T15:45:43+01:00  docs(paper): repository link for the reproduction package; measured run times in its README
+70f146d0e1cfeb20a22dec7d93aa349f830eab6c  2026-10-14T15:56:32+01:00  docs(paper): research repository available on request; provenance folder is the public record

@@ -61,11 +61,12 @@ sizes are in `data/derived/book_meta.json`.
 
 ## Timestamps of the plans
 
-The plan and its amendments were committed and pushed to a private repository before the runs they describe.
-`provenance/plan_history.txt` is the full history of the plan file with commit hashes and dates, and
-`provenance/commits.txt` lists every commit that touched the plan, the scripts and the results, in order. Git
-dates can be set by the author, so this is a record, not proof. Plans for later work will be registered with a
-third-party service before they are run.
+The plan and its amendments were committed and pushed to a private research repository before the runs they
+describe. `provenance/plan_history.txt` is the full history of the plan file with commit hashes and dates, and
+`provenance/commits.txt` lists every commit that touched the plan, the scripts and the results, in order. The full
+research repository is available to editors and referees on request (contact below); it is not public because it
+also holds unrelated personal tools. Git dates can be set by the author, so this is a record, not proof. Plans for
+later work will be registered with a third-party service before they are run.
 
 ## Licence and citation
 
