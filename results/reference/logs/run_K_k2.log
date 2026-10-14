@@ -1,0 +1,133 @@
+  K2 coin FTG done
+  K2 coin STD done
+  K2 0.3 FTG done
+  K2 0.3 STD done
+  K2 1.0 FTG done
+  K2 1.0 STD done
+
+=== K2 leave one out: skill coin, FTG, r=3.5%, r_f=1% ===
+                          variant  p_pass  p_payout       V  dP_pass  dP_payout      dV   dV_lo   dV_hi
+                         baseline   0.247     0.155 103.120    0.000      0.000   0.000   0.000   0.000
+                 a no daily floor   0.247     0.155 103.120    0.000      0.000   0.000   0.000   0.000
+       b floors at the close only   0.269     0.170 112.864    0.022      0.015   9.744   8.915  10.572
+                       c one step   0.429     0.270 180.734    0.182      0.115  77.614  75.654  79.575
+                d no minimum days   0.248     0.156 103.483    0.001      0.001   0.363   0.184   0.542
+     e no evaluation leverage cap   0.247     0.155 103.120    0.000      0.000   0.000   0.000   0.000
+ f no funded lot or position caps   0.247     0.154 109.132    0.000     -0.001   6.012   5.218   6.806
+               g no Max Risk Rule   0.247     0.155 103.120    0.000      0.000   0.000   0.000   0.000
+               h no Best Day Rule   0.247     0.183 115.371    0.000      0.028  12.251  11.556  12.945
+                  i no 2% minimum   0.247     0.160 103.500    0.000      0.005   0.380   0.076   0.685
+    j payout checks every 21 days   0.247     0.134  93.814    0.000     -0.021  -9.306 -10.007  -8.604
+                 k no payout lock   0.247     0.155 103.364    0.000      0.000   0.244  -0.227   0.714
+          n step maturities 30/60   0.118     0.074  50.658   -0.129     -0.081 -52.462 -54.366 -50.558
+               o no trading costs   0.276     0.193 142.937    0.029      0.038  39.817  38.332  41.301
+     bare contract (a, b, d-k, o)   0.303     0.258 184.515    0.056      0.103  81.395  79.281  83.509
+        l 100% split (arithmetic)   0.247     0.155 128.900    0.000      0.000  25.780     NaN     NaN
+ m fee refund at $40 (arithmetic)   0.247     0.155 109.327    0.000      0.000   6.207     NaN     NaN
+m fee refund at $147 (arithmetic)   0.247     0.155 125.931    0.000      0.000  22.811     NaN     NaN
+
+=== K2 leave one out: skill coin, STD, r=4%, r_f=2.5% ===
+                          variant  p_pass  p_payout       V  dP_pass  dP_payout      dV   dV_lo   dV_hi
+                         baseline   0.245     0.129 147.789    0.000      0.000   0.000   0.000   0.000
+                 a no daily floor   0.245     0.129 147.789    0.000      0.000   0.000   0.000   0.000
+       b floors at the close only   0.271     0.145 171.253    0.026      0.016  23.464  21.635  25.294
+                       c one step   0.431     0.226 258.507    0.185      0.097 110.718 107.380 114.057
+                d no minimum days   0.247     0.130 148.896    0.002      0.001   1.107   0.511   1.704
+     e no evaluation leverage cap   0.245     0.129 147.762    0.000      0.000  -0.027  -0.090   0.036
+ f no funded lot or position caps   0.245     0.121 154.176    0.000     -0.009   6.387   4.082   8.692
+               g no Max Risk Rule   0.245     0.129 147.789    0.000      0.000   0.000   0.000   0.000
+               h no Best Day Rule   0.245     0.184 161.461    0.000      0.054  13.672  11.659  15.686
+                  i no 2% minimum   0.245     0.130 148.018    0.000      0.001   0.229   0.059   0.400
+    j payout checks every 21 days   0.245     0.106 140.823    0.000     -0.024  -6.965  -8.752  -5.179
+                 k no payout lock   0.245     0.129 147.256    0.000      0.000  -0.533  -1.806   0.739
+          n step maturities 30/60   0.147     0.077  89.773   -0.099     -0.052 -58.015 -60.779 -55.252
+               o no trading costs   0.274     0.158 196.933    0.029      0.028  49.144  46.495  51.794
+     bare contract (a, b, d-k, o)   0.304     0.210 241.040    0.058      0.081  93.251  89.394  97.108
+        l 100% split (arithmetic)   0.245     0.129 184.736    0.000      0.000  36.947     NaN     NaN
+ m fee refund at $40 (arithmetic)   0.245     0.129 152.959    0.000      0.000   5.170     NaN     NaN
+m fee refund at $147 (arithmetic)   0.245     0.129 166.787    0.000      0.000  18.998     NaN     NaN
+
+=== K2 leave one out: skill 0.3, FTG, r=2.5%, r_f=1% ===
+                          variant  p_pass  p_payout       V  dP_pass  dP_payout       dV    dV_lo    dV_hi
+                         baseline   0.375     0.303 285.376    0.000      0.000    0.000    0.000    0.000
+                 a no daily floor   0.375     0.303 285.376    0.000      0.000    0.000    0.000    0.000
+       b floors at the close only   0.399     0.324 304.322    0.025      0.021   18.945   17.644   20.247
+                       c one step   0.553     0.450 435.267    0.178      0.147  149.891  147.060  152.722
+                d no minimum days   0.375     0.303 285.511    0.000      0.000    0.135    0.033    0.237
+     e no evaluation leverage cap   0.375     0.303 285.376    0.000      0.000    0.000    0.000    0.000
+ f no funded lot or position caps   0.375     0.298 303.695    0.000     -0.005   18.319   17.052   19.586
+               g no Max Risk Rule   0.375     0.303 285.376    0.000      0.000    0.000    0.000    0.000
+               h no Best Day Rule   0.375     0.327 303.423    0.000      0.024   18.047   17.023   19.071
+                  i no 2% minimum   0.375     0.306 285.667    0.000      0.004    0.291   -0.216    0.797
+    j payout checks every 21 days   0.375     0.281 270.159    0.000     -0.022  -15.218  -16.265  -14.171
+                 k no payout lock   0.375     0.303 287.870    0.000      0.000    2.494    1.704    3.284
+          n step maturities 30/60   0.073     0.060  60.541   -0.302     -0.243 -224.835 -229.149 -220.522
+               o no trading costs   0.426     0.364 385.773    0.051      0.061  100.396   97.817  102.975
+     bare contract (a, b, d-k, o)   0.450     0.418 464.071    0.076      0.115  178.695  175.320  182.070
+        l 100% split (arithmetic)   0.375     0.303 356.721    0.000      0.000   71.344      NaN      NaN
+ m fee refund at $40 (arithmetic)   0.375     0.303 297.494    0.000      0.000   12.118      NaN      NaN
+m fee refund at $147 (arithmetic)   0.375     0.303 329.909    0.000      0.000   44.532      NaN      NaN
+
+=== K2 leave one out: skill 0.3, STD, r=2%, r_f=2.5% ===
+                          variant  p_pass  p_payout       V  dP_pass  dP_payout       dV    dV_lo    dV_hi
+                         baseline   0.396     0.263 404.959    0.000      0.000    0.000    0.000    0.000
+                 a no daily floor   0.396     0.263 404.959    0.000      0.000    0.000    0.000    0.000
+       b floors at the close only   0.413     0.280 448.296    0.018      0.018   43.338   40.580   46.095
+                       c one step   0.571     0.380 590.208    0.176      0.117  185.249  180.835  189.662
+                d no minimum days   0.396     0.263 404.933    0.000      0.000   -0.026   -0.124    0.072
+     e no evaluation leverage cap   0.396     0.263 404.959    0.000      0.000    0.000    0.000    0.000
+ f no funded lot or position caps   0.396     0.242 402.678    0.000     -0.021   -2.280   -6.557    1.996
+               g no Max Risk Rule   0.396     0.263 404.959    0.000      0.000    0.000    0.000    0.000
+               h no Best Day Rule   0.396     0.324 391.492    0.000      0.061  -13.467  -17.075   -9.859
+                  i no 2% minimum   0.396     0.263 404.959    0.000      0.001    0.000   -0.486    0.486
+    j payout checks every 21 days   0.396     0.233 405.687    0.000     -0.030    0.728   -2.575    4.031
+                 k no payout lock   0.396     0.263 405.192    0.000      0.000    0.233   -2.410    2.875
+          n step maturities 30/60   0.030     0.020  31.955   -0.365     -0.242 -373.003 -380.661 -365.346
+               o no trading costs   0.458     0.323 553.455    0.062      0.061  148.496  143.377  153.615
+     bare contract (a, b, d-k, o)   0.478     0.373 606.932    0.082      0.110  201.973  195.113  208.834
+        l 100% split (arithmetic)   0.396     0.263 506.199    0.000      0.000  101.240      NaN      NaN
+ m fee refund at $40 (arithmetic)   0.396     0.263 415.465    0.000      0.000   10.506      NaN      NaN
+m fee refund at $147 (arithmetic)   0.396     0.263 443.567    0.000      0.000   38.608      NaN      NaN
+
+=== K2 leave one out: skill 1.0, FTG, r=2%, r_f=1% ===
+                          variant  p_pass  p_payout        V  dP_pass  dP_payout       dV    dV_lo    dV_hi
+                         baseline   0.636     0.602  885.966    0.000      0.000    0.000    0.000    0.000
+                 a no daily floor   0.636     0.602  885.966    0.000      0.000    0.000    0.000    0.000
+       b floors at the close only   0.660     0.625  916.538    0.023      0.023   30.572   28.673   32.472
+                       c one step   0.768     0.731 1143.889    0.132      0.130  257.923  254.152  261.694
+                d no minimum days   0.636     0.602  886.026    0.000      0.000    0.059   -0.065    0.184
+     e no evaluation leverage cap   0.636     0.602  885.966    0.000      0.000    0.000    0.000    0.000
+ f no funded lot or position caps   0.636     0.597  954.565    0.000     -0.005   68.599   66.515   70.682
+               g no Max Risk Rule   0.636     0.602  885.966    0.000      0.000    0.000    0.000    0.000
+               h no Best Day Rule   0.636     0.614  909.075    0.000      0.012   23.109   21.534   24.683
+                  i no 2% minimum   0.636     0.604  886.359    0.000      0.002    0.393   -0.514    1.299
+    j payout checks every 21 days   0.636     0.590  861.741    0.000     -0.012  -24.225  -25.862  -22.588
+                 k no payout lock   0.636     0.602  902.801    0.000      0.000   16.835   15.531   18.140
+          n step maturities 30/60   0.057     0.054   91.330   -0.579     -0.547 -794.636 -802.692 -786.581
+               o no trading costs   0.689     0.665 1091.297    0.053      0.064  205.331  201.684  208.978
+     bare contract (a, b, d-k, o)   0.713     0.699 1276.974    0.077      0.098  391.008  386.217  395.798
+        l 100% split (arithmetic)   0.636     0.602 1107.458    0.000      0.000  221.492      NaN      NaN
+ m fee refund at $40 (arithmetic)   0.636     0.602  910.032    0.000      0.000   24.066      NaN      NaN
+m fee refund at $147 (arithmetic)   0.636     0.602  974.407    0.000      0.000   88.441      NaN      NaN
+
+=== K2 leave one out: skill 1.0, STD, r=1.5%, r_f=2.5% ===
+                          variant  p_pass  p_payout        V  dP_pass  dP_payout        dV     dV_lo     dV_hi
+                         baseline   0.693     0.565 1317.976    0.000      0.000     0.000     0.000     0.000
+                 a no daily floor   0.693     0.565 1317.976    0.000      0.000     0.000     0.000     0.000
+       b floors at the close only   0.705     0.584 1416.273    0.012      0.020    98.297    93.615   102.979
+                       c one step   0.816     0.668 1627.061    0.124      0.103   309.085   300.547   317.622
+                d no minimum days   0.693     0.565 1317.989    0.000      0.000     0.014    -0.000     0.027
+     e no evaluation leverage cap   0.693     0.565 1317.976    0.000      0.000     0.000     0.000     0.000
+ f no funded lot or position caps   0.693     0.528 1306.426    0.000     -0.036   -11.550   -20.098    -3.002
+               g no Max Risk Rule   0.693     0.565 1317.976    0.000      0.000     0.000     0.000     0.000
+               h no Best Day Rule   0.693     0.622 1165.414    0.000      0.057  -152.561  -159.823  -145.300
+                  i no 2% minimum   0.693     0.566 1317.787    0.000      0.001    -0.188    -1.151     0.774
+    j payout checks every 21 days   0.693     0.538 1376.512    0.000     -0.027    58.537    51.782    65.291
+                 k no payout lock   0.693     0.565 1328.245    0.000      0.000    10.269     4.532    16.006
+          n step maturities 30/60   0.013     0.010   26.659   -0.680     -0.554 -1291.317 -1306.186 -1276.447
+               o no trading costs   0.754     0.635 1645.849    0.062      0.070   327.873   319.028   336.719
+     bare contract (a, b, d-k, o)   0.767     0.665 1770.568    0.074      0.100   452.593   439.870   465.315
+        l 100% split (arithmetic)   0.693     0.565 1647.470    0.000      0.000   329.494       NaN       NaN
+ m fee refund at $40 (arithmetic)   0.693     0.565 1340.559    0.000      0.000    22.583       NaN       NaN
+m fee refund at $147 (arithmetic)   0.693     0.565 1400.969    0.000      0.000    82.993       NaN       NaN
+exit 0

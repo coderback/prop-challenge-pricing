@@ -1,0 +1,20 @@
+=== Exploratory 1: H2's two gains by horizon (FTG, policies fixed at the 36-month selection) ===
+ months  V_coin  V_coin_1%/1%  V_S0.3  sizing_gain  skill_gain      D
+     12    50.7           2.1    90.6         48.5        39.9    8.7
+     24    84.3          18.3   201.8         66.0       117.6  -51.6
+     36   103.1          32.9   285.4         70.3       182.3 -112.0
+
+=== Exploratory 2: the 2 x 2 of sizing and skill (FTG, 36 months) ===
+       1%/1%  selected
+coin    32.9     103.1
+S=0.3  149.5     285.4
+
+=== Exploratory 3: FTG with the 2% Max Risk Rule of accounts from $50k (selected policies) ===
+  skill coin: V at 3% 103.1, at 2% 103.1, difference $0.0 [0.0, 0.0]
+  skill 0.3: V at 3% 285.4, at 2% 285.4, difference $0.0 [-0.0, 0.0]
+  skill 1.0: V at 3% 886.0, at 2% 886.0, difference $0.0 [0.0, 0.0]
+
+=== Exploratory 4: the coin flip's funded stage (FTG selected policy) ===
+  P(pass) 0.247; V per funded account $418; share of funded accounts paid 0.628; payouts if paid: median $537, mean $665, 95th percentile $1604
+  buyers who get back at least $40: 0.155; at least $147: 0.155
+exit 0

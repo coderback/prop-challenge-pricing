@@ -1,0 +1,30 @@
+break-even Sharpe at the list fee (FTG): -0.05
+test  sharpe  years                                          sample   se  lower  upper  mde       at 0.3       at 0.5  at S*=-0.05
+  A1   -0.13   7.75 validation 2017-2024-09 (discovery 0.92 passed) 0.36  -0.72   0.46 0.89 INCONCLUSIVE      REFUTED INCONCLUSIVE
+ A2a    0.02  12.00                                       2005-2016 0.29  -0.45   0.49 0.72 INCONCLUSIVE      REFUTED INCONCLUSIVE
+ A2b    0.36  12.00                                       2005-2016 0.30  -0.13   0.85 0.72 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  A3    0.29  12.00                                       2005-2016 0.29  -0.19   0.77 0.72 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  A4    0.31  12.00                                       2005-2016 0.30  -0.18   0.80 0.72 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  A5   -0.13   7.25                                 2009-10 to 2016 0.37  -0.74   0.48 0.92 INCONCLUSIVE      REFUTED INCONCLUSIVE
+  A6    0.12  12.00                                       2005-2016 0.29  -0.36   0.60 0.72 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  A8   -0.08  11.67                              140 months to 2016 0.29  -0.56   0.40 0.73 INCONCLUSIVE      REFUTED INCONCLUSIVE
+  A9   -0.16  11.67                              140 months to 2016 0.29  -0.64   0.32 0.73 INCONCLUSIVE      REFUTED INCONCLUSIVE
+  B1    0.14  11.00                                       2006-2016 0.30  -0.36   0.64 0.75 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  B3    0.62   6.00                                       2014-2019 0.45  -0.11   1.35 1.02 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  M1   -1.09  10.00                                       2007-2016 0.40  -1.75  -0.43 0.79      REFUTED      REFUTED      REFUTED
+  M2   -0.28  10.00                                       2007-2016 0.32  -0.81   0.25 0.79      REFUTED      REFUTED INCONCLUSIVE
+ M1r    0.65  10.00                                       2007-2016 0.35   0.08   1.22 0.79 INCONCLUSIVE INCONCLUSIVE     MATERIAL
+  P1   -0.74  10.00                     2007-2016, quarterly series 0.36  -1.33  -0.15 0.79      REFUTED      REFUTED      REFUTED
+  R1   -0.45  11.00                                       2006-2016 0.32  -0.97   0.07 0.75      REFUTED      REFUTED INCONCLUSIVE
+  R2   -0.77  11.00                                       2006-2016 0.34  -1.33  -0.21 0.75      REFUTED      REFUTED      REFUTED
+  L1   -0.01   8.00                          2009-2016 walk-forward 0.35  -0.59   0.57 0.88 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  L2   -0.35   4.00                                       2017-2020 0.52  -1.20   0.50 1.25 INCONCLUSIVE      REFUTED INCONCLUSIVE
+  L3   -0.04   9.00                                       2008-2016 0.33  -0.59   0.51 0.83 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  I1   -0.22   3.58                                 2017-06 to 2020 0.53  -1.10   0.66 1.32 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  I2    0.09   4.67                                 2012-05 to 2016 0.46  -0.67   0.85 1.15 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  T1   -0.09  12.00                                       2005-2016 0.29  -0.57   0.39 0.72 INCONCLUSIVE      REFUTED INCONCLUSIVE
+  T2    0.05  12.00                                       2005-2016 0.29  -0.43   0.53 0.72 INCONCLUSIVE INCONCLUSIVE INCONCLUSIVE
+  at 0.3: {'INCONCLUSIVE': 19, 'REFUTED': 5}
+  at 0.5: {'REFUTED': 12, 'INCONCLUSIVE': 12}
+  at S*=-0.05: {'INCONCLUSIVE': 20, 'REFUTED': 3, 'MATERIAL': 1}
+  median minimum detectable Sharpe 0.77; tests with a point estimate above 0.3: ['A2b', 'A4', 'B3', 'M1r']

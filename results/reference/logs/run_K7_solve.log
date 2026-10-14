@@ -1,0 +1,43 @@
+  coin FTG B: model 111.5, real paths $103.1 [100.5, 105.8], A 103.1 (solve 17s, simulate 7s)
+  coin FTG C: model 127.2, real paths $119.9 [117.1, 122.7], A 103.1 (solve 62s, simulate 5s)
+  coin FTG D: model 127.2, real paths $119.9 [117.1, 122.7], A 103.1 (solve 56s, simulate 5s)
+  0.3 FTG B: model 298.8, real paths $285.4 [280.6, 290.2], A 285.4 (solve 14s, simulate 6s)
+  0.3 FTG C: model 319.5, real paths $305.5 [300.7, 310.3], A 285.4 (solve 52s, simulate 9s)
+  0.3 FTG D: model 319.5, real paths $305.5 [300.7, 310.3], A 285.4 (solve 63s, simulate 8s)
+  1.0 FTG B: model 919.6, real paths $896.4 [888.1, 904.7], A 886.0 (solve 16s, simulate 11s)
+  1.0 FTG C: model 998.2, real paths $975.7 [967.6, 983.7], A 886.0 (solve 63s, simulate 11s)
+  1.0 FTG D: model 1006.1, real paths $982.4 [974.3, 990.6], A 886.0 (solve 63s, simulate 10s)
+  coin STD B: model 161.6, real paths $147.8 [143.5, 152.1], A 147.8 (solve 30s, simulate 5s)
+  coin STD C: model 185.2, real paths $171.4 [166.8, 175.9], A 147.8 (solve 87s, simulate 4s)
+  coin STD D: model 185.2, real paths $171.4 [166.8, 175.9], A 147.8 (solve 86s, simulate 5s)
+  0.3 STD B: model 462.0, real paths $440.9 [431.6, 450.3], A 405.0 (solve 27s, simulate 6s)
+  0.3 STD C: model 476.4, real paths $459.6 [451.5, 467.6], A 405.0 (solve 94s, simulate 7s)
+  0.3 STD D: model 501.9, real paths $483.3 [473.9, 492.7], A 405.0 (solve 87s, simulate 7s)
+  1.0 STD B: model 1643.1, real paths $1,607.5 [1,590.0, 1,624.9], A 1318.0 (solve 27s, simulate 9s)
+  1.0 STD C: model 1652.8, real paths $1,617.5 [1,602.3, 1,632.7], A 1318.0 (solve 97s, simulate 10s)
+  1.0 STD D: model 1906.0, real paths $1,880.8 [1,862.9, 1,898.7], A 1318.0 (solve 98s, simulate 11s)
+skill regime class  model_value        V     V_lo     V_hi  p_pass  p_payout  payouts_if_any  paid_mean_usd  eval_risk_mean  size_span_median  size_span_p90  funded_reaching_cap
+ coin    FTG     A          NaN  103.120  100.487  105.753     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+ coin    FTG     B      111.542  103.120  100.487  105.753   0.247     0.155           2.448        664.518           0.035             1.000          5.984                0.000
+ coin    FTG     C      127.182  119.861  117.066  122.656   0.286     0.182           2.515        660.320           0.042             9.689         32.000                0.000
+ coin    FTG     D      127.182  119.861  117.066  122.656   0.286     0.182           2.515        660.320           0.042             9.689         32.000                0.000
+  0.3    FTG     A          NaN  285.376  280.601  290.151     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+  0.3    FTG     B      298.836  285.376  280.601  290.151   0.375     0.303           3.491        942.021           0.025             1.000          4.390                0.000
+  0.3    FTG     C      319.528  305.541  300.739  310.342   0.416     0.334           3.421        915.340           0.016            13.000         15.000                0.000
+  0.3    FTG     D      319.530  305.537  300.735  310.339   0.416     0.334           3.422        915.548           0.016            13.000         15.000                0.000
+  1.0    FTG     A          NaN  885.966  877.736  894.197     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+  1.0    FTG     B      919.613  896.406  888.069  904.743   0.636     0.586           4.107       1529.755           0.020             2.719          3.896                0.000
+  1.0    FTG     C      998.205  975.664  967.650  983.679   0.729     0.689           5.406       1415.648           0.017            12.000         14.000                0.000
+  1.0    FTG     D     1006.063  982.449  974.308  990.590   0.727     0.670           4.054       1466.036           0.017            12.000         14.000                0.000
+ coin    STD     A          NaN  147.789  143.459  152.119     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+ coin    STD     B      161.555  147.789  143.459  152.119   0.245     0.129           2.142       1143.523           0.040             1.000          2.985                0.000
+ coin    STD     C      185.175  171.361  166.803  175.919   0.285     0.156           2.227       1101.150           0.037            20.000         32.000                0.000
+ coin    STD     D      185.175  171.361  166.803  175.919   0.285     0.156           2.227       1101.150           0.037            20.000         32.000                0.000
+  0.3    STD     A          NaN  404.965  397.025  412.905     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+  0.3    STD     B      461.980  440.933  431.558  450.308   0.396     0.189           2.387       2327.070           0.020             1.000          2.137                0.018
+  0.3    STD     C      476.417  459.570  451.544  467.596   0.446     0.310           2.822       1483.728           0.013            10.000         13.000                0.000
+  0.3    STD     D      501.917  483.315  473.941  492.689   0.436     0.226           2.410       2134.782           0.014            11.000         13.000                0.009
+  1.0    STD     A          NaN 1317.976 1303.002 1332.949     NaN       NaN             NaN            NaN             NaN               NaN            NaN                  NaN
+  1.0    STD     B     1643.072 1607.490 1590.041 1624.938   0.693     0.496           2.722       3240.776           0.015             1.699          2.367                0.087
+  1.0    STD     C     1652.785 1617.516 1602.306 1632.726   0.753     0.664           4.671       2437.413           0.015            10.000         13.000                0.000
+  1.0    STD     D     1905.977 1880.800 1862.898 1898.702   0.735     0.585           2.776       3214.054           0.016            11.000         14.000                0.075

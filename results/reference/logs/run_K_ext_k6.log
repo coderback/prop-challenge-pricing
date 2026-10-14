@@ -1,0 +1,29 @@
+spec research/PREREGISTRATION_paper2_contract_map.md@a9134c0 (amendment 2)
+
+NAS100_USD: 4879 trade days from 2005-01-21; reference price 25,765.3000; FTG lot cap as leverage 3.22 (limit 5); stop/price median 0.0152; longest gap 5 days
+  coin flip: mean -0.0050R a trade, net Sharpe -0.147; hit rate on the better side for a Sharpe of 0.3: 0.5183; funded risk allowed at the median day 1.00%
+  selection set done
+  evaluation set done
+  V of the coin flip along the sizing grid (funded 1%): {'0.5%': 1.4, '1.0%': 51.0, '1.5%': 103.5, '2.0%': 122.5, '2.5%': 128.4, '3.0%': 130.7, '3.5%': 131.2, '4.0%': 129.2, '4.5%': 128.2, '5.0%': 98.3, '6.0%': 51.5, '8.0%': 35.1}
+
+EUR_USD: 5096 trade days from 2005-01-21; reference price 1.1620; FTG lot cap as leverage 14.53 (limit 15); stop/price median 0.0078; longest gap 5 days
+  coin flip: mean -0.0049R a trade, net Sharpe -0.209; hit rate on the better side for a Sharpe of 0.3: 0.5212; funded risk allowed at the median day 1.00%
+  selection set done
+  evaluation set done
+  V of the coin flip along the sizing grid (funded 1%): {'0.5%': 0.0, '1.0%': 9.8, '1.5%': 41.2, '2.0%': 67.9, '2.5%': 81.6, '3.0%': 88.2, '3.5%': 91.7, '4.0%': 93.5, '4.5%': 95.2, '5.0%': 82.4, '6.0%': 53.9, '8.0%': 41.0}
+
+USD_JPY: 5095 trade days from 2005-01-21; reference price 157.7240; FTG lot cap as leverage 12.50 (limit 15); stop/price median 0.0084; longest gap 5 days
+  coin flip: mean -0.0075R a trade, net Sharpe -0.346; hit rate on the better side for a Sharpe of 0.3: 0.5277; funded risk allowed at the median day 1.00%
+  selection set done
+  evaluation set done
+  V of the coin flip along the sizing grid (funded 1%): {'0.5%': 0.0, '1.0%': 3.3, '1.5%': 18.3, '2.0%': 33.8, '2.5%': 44.9, '3.0%': 51.1, '3.5%': 54.2, '4.0%': 56.6, '4.5%': 57.9, '5.0%': 52.1, '6.0%': 35.4, '8.0%': 26.7}
+
+=== K6: the same contract on other books (FTG, 36 months, evaluation set) ===
+      book  cost_R  net_sharpe_coin  r_pct  rf_pct  p_pass  V_coin    V_lo    V_hi  V_coin_1%/1%  r_pct_S0.3  V_S0.3        D     D_lo     D_hi  V_coin_no_costs        H8        H9
+NAS100_USD  -0.005           -0.147    3.0     1.0   0.263 130.670 127.505 133.835        51.022         2.0 317.001 -106.684 -111.889 -101.480          164.547 straddles SUPPORTED
+   EUR_USD  -0.005           -0.209    4.5     1.0   0.257  95.234  92.934  97.534         9.813         3.0 253.445  -72.790  -76.614  -68.966          149.144    inside SUPPORTED
+   USD_JPY  -0.007           -0.346    4.5     1.0   0.225  57.936  56.258  59.615         3.292         3.5 220.501 -107.920 -111.060 -104.781          134.934   outside SUPPORTED
+  reference, US500 (K1): cost -0.0069R, coin flip $103 [100, 106] at 3.5%/1%, $33 at 1%/1%, $285 at S = 0.3
+
+  H8 every book's coin-flip V between $75 and $130: REFUTED
+  H9 D < 0 in every book: SUPPORTED

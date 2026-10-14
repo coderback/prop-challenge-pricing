@@ -1,0 +1,6 @@
+G2 largest absolute difference from S2_results.csv, by column:
+{'p_pass': 0.0, 'p1_pass': 0.0, 'p_breach': 0.0, 'pay_a_0.66%': 0.0, 'pay_b_1.75%': 0.0, 'pay_c_uncapped': 0.0, 'months_p50': 0.0}
+G2: PASS
+G3: 2178 cases against r2.evalsim, 0 mismatches -> PASS
+inactivity: longest gap between trade days 5 calendar days (must stay under 25)
+GATES PASSED

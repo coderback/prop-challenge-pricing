@@ -1,0 +1,597 @@
+{
+ "fetched_utc": "2026-10-13T11:24:53+00:00",
+ "note": "SHA-256 of the raw HTML as fetched directly on this date; the pages themselves are kept locally and are not committed.",
+ "quoted_pages": {
+  "swing": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/9789907-alpha-swing",
+   "sha256": "86d44416f1c0b50d4cf5b33bae107fd61c2036762bd4d04253b5c8104ae44036",
+   "bytes": 82633,
+   "quotes_found": 5,
+   "quotes_checked": 5
+  },
+  "daily": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934210-what-are-the-daily-risk-limits-and-how-do-they-work",
+   "sha256": "004ba1505fa92339a970df89a307f3eb0c2ccd903a9e4cdb4c4fc296ac116b73",
+   "bytes": 85309,
+   "quotes_found": 1,
+   "quotes_checked": 1
+  },
+  "inactivity": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420080-inactivity",
+   "sha256": "4e1fb6188ced80c65757373a1ab44dac7358f901ccb0ded7a5e849b068c61f9a",
+   "bytes": 69007,
+   "quotes_found": 1,
+   "quotes_checked": 1
+  },
+  "lots": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934289-what-is-the-lot-size-limit-on-qualified-analyst-accounts",
+   "sha256": "981acc695850699f8cd0581f862a8518e3535b0f0a0cc941a5dd33fa9910a7b3",
+   "bytes": 77226,
+   "quotes_found": 1,
+   "quotes_checked": 1
+  },
+  "maxrisk": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/15888623-what-is-the-max-risk-rule-and-how-does-it-work",
+   "sha256": "3fef8cf08497438244e12dde74091fa9a9ccfce250f52057b5f93fe6c7c3fd9c",
+   "bytes": 78005,
+   "quotes_found": 2,
+   "quotes_checked": 2
+  },
+  "ondemand": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/10102634-performance-fee-on-demand",
+   "sha256": "da43ce661e20ab17eddc55af5519c0c3d2f1a8797724fd3f465ccc8c485c8171",
+   "bytes": 93420,
+   "quotes_found": 2,
+   "quotes_checked": 2
+  },
+  "paid": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933755-how-do-i-get-paid-performance-fees",
+   "sha256": "ff875d3836f57bbdbd2270aa1c93932b371e662f8366c68904bf67ba97f3aaeb",
+   "bytes": 74654,
+   "quotes_found": 2,
+   "quotes_checked": 2
+  },
+  "earn": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060937-what-do-qualified-analysts-earn-from-account-profits",
+   "sha256": "0664b03660b24cc42cd275d32ed5c7bfe343799f1dbfa93aaebe1eb2453dd781",
+   "bytes": 66793,
+   "quotes_found": 1,
+   "quotes_checked": 1
+  },
+  "ftg": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/9691161-focused-trader-group",
+   "sha256": "ebddee6b3610ce5612c1d84e0b8f893ee7984f43071597a552bffd0c6eb4d9a7",
+   "bytes": 97005,
+   "quotes_found": 4,
+   "quotes_checked": 4
+  },
+  "gambling": {
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060909-what-is-alpha-capital-group-s-policy-against-gambling-in-trading",
+   "sha256": "9cfba56d9c6fc3a2c9956feea03937a5b64f06d0a838c7f2beefb8243fbabb1b",
+   "bytes": 71294,
+   "quotes_found": 3,
+   "quotes_checked": 3
+  },
+  "terms": {
+   "url": "https://alphacapitalgroup.uk/terms-and-conditions",
+   "sha256": "d9fda661a6b9fc5ee5b22d433e7daef0eabf484642b8eef45cf2f10b9f7e5e5d",
+   "bytes": 180273,
+   "quotes_found": 6,
+   "quotes_checked": 6
+  }
+ },
+ "help_centre_articles": [
+  {
+   "id": "10097421",
+   "collection": "alpha-plans",
+   "title": "alpha one 6%/10%/12%",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/10097421-alpha-one-6-10-12",
+   "sha256": "a5b674e54d47e7a61440d776bc2848d6a5fcd2cebff0cf19bdeed7f09c89fdd2"
+  },
+  {
+   "id": "10192958",
+   "collection": "alpha-plans",
+   "title": "alpha three",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/10192958-alpha-three",
+   "sha256": "f95587019d9027ea92ae43ef126110a1c29694d8a3e1eca02be219e25d3b137c"
+  },
+  {
+   "id": "11378706",
+   "collection": "alpha-plans",
+   "title": "alpha pro 6%",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/11378706-alpha-pro-6",
+   "sha256": "3a015692c54fc5fee5fb4d649fadf25d7489007bfdfe3d067504c557f997673b"
+  },
+  {
+   "id": "16003693",
+   "collection": "alpha-plans",
+   "title": "alpha direct",
+   "page_date": "",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/16003693-alpha-direct",
+   "sha256": "7d01b5120de0e98cefe9eadfa0f15eee1a49f327dfd215f8c1e3ef73ef62ba94"
+  },
+  {
+   "id": "16004122",
+   "collection": "alpha-plans",
+   "title": "90% profit split and swap-free add-ons",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/16004122-90-profit-split-and-swap-free-add-ons",
+   "sha256": "04d8c72a360c5c117374107148d50c533907eeebc1fa56d716483af06e587e0d"
+  },
+  {
+   "id": "8420429",
+   "collection": "alpha-plans",
+   "title": "alpha pro 8%/10%",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420429-alpha-pro-8-10",
+   "sha256": "05aace379c9a9c804fb6185b7b309ef60d7e64eae90074e3a3c3bc4afee84a66"
+  },
+  {
+   "id": "9789907",
+   "collection": "alpha-plans",
+   "title": "alpha swing",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/9789907-alpha-swing",
+   "sha256": "4d44c626e298278ad638e5ca2c792b88f2ae89f01d86e278341040b0acc86ab3"
+  },
+  {
+   "id": "15701381",
+   "collection": "trading-rules",
+   "title": "can i hold trades overnight?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/15701381-can-i-hold-trades-overnight",
+   "sha256": "3e643ccb58bda76c19f4655f6d95b4c14bbc4d1ebf2ef108ba180d04558532c0"
+  },
+  {
+   "id": "15888623",
+   "collection": "trading-rules",
+   "title": "what is the max risk rule, and how does it work?",
+   "page_date": "august 25, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/15888623-what-is-the-max-risk-rule-and-how-does-it-work",
+   "sha256": "afdcd030de6f4a5c503af06bb36f1da954a1c0301fcbb01ad5ff891a4d0607ae"
+  },
+  {
+   "id": "6933901",
+   "collection": "trading-rules",
+   "title": "what is classified as hedging and stacking?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933901-what-is-classified-as-hedging-and-stacking",
+   "sha256": "6b5a73ff8d98381d5b861d10eacb1d58afb2daffac295270dedea0323463d417"
+  },
+  {
+   "id": "6933904",
+   "collection": "trading-rules",
+   "title": "are stop-loss and take-profit orders required?",
+   "page_date": "july 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933904-are-stop-loss-and-take-profit-orders-required",
+   "sha256": "cd8bde2f90d2e9034b38ef95260332a2c82d5d2ad1148ef06d7e3a0548bbdf7b"
+  },
+  {
+   "id": "6934210",
+   "collection": "trading-rules",
+   "title": "what are the daily risk limits and how do they work?",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934210-what-are-the-daily-risk-limits-and-how-do-they-work",
+   "sha256": "65838ae846ca9cb96c9ddc0b26ce46687153b86d28e55406de1cedc76c20f3af"
+  },
+  {
+   "id": "6934220",
+   "collection": "trading-rules",
+   "title": "what is the maximum total loss?",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934220-what-is-the-maximum-total-loss",
+   "sha256": "f584e49e03286325fa06b71b8510553da51e93ccfe1fdcff6273adc06bbb9035"
+  },
+  {
+   "id": "6934236",
+   "collection": "trading-rules",
+   "title": "can i use an expert advisor (ea)?",
+   "page_date": "september 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934236-can-i-use-an-expert-advisor-ea",
+   "sha256": "042dacef4b229db1e5ec15cc1c838e040781c99a511029b116784c112f45ba01"
+  },
+  {
+   "id": "6934247",
+   "collection": "trading-rules",
+   "title": "can i hold trades over the weekend?",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934247-can-i-hold-trades-over-the-weekend",
+   "sha256": "ec4b8279107389b2e0371d14e472c8640f932e81d7cb908680b7260f44054dda"
+  },
+  {
+   "id": "6934275",
+   "collection": "trading-rules",
+   "title": "what are prohibited trading strategies?",
+   "page_date": "",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934275-what-are-prohibited-trading-strategies",
+   "sha256": "b2e96b8934723f30794202104c3e4b27e0ae9c3adfec3f579af2938f25719fb3"
+  },
+  {
+   "id": "7060898",
+   "collection": "trading-rules",
+   "title": "can i pass using someone's signals?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060898-can-i-pass-using-someone-s-signals",
+   "sha256": "992ec19a9de8c4acd46f02def5b8aa64369bd28b4d55c550474f1fb9d9a68ab7"
+  },
+  {
+   "id": "7060906",
+   "collection": "trading-rules",
+   "title": "what happens if i violate a rule?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060906-what-happens-if-i-violate-a-rule",
+   "sha256": "36f5e5f648740e87a23a9d8526910f2a7a222bf4cdeb17f1d2d383d9eda536bd"
+  },
+  {
+   "id": "7060909",
+   "collection": "trading-rules",
+   "title": "what is alpha capital group's policy against gambling in trading?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060909-what-is-alpha-capital-group-s-policy-against-gambling-in-trading",
+   "sha256": "9de93b6cefa9cfcda72ff9d02fb45a3e62990a584c37ddf820121fa2f443bf26"
+  },
+  {
+   "id": "8420080",
+   "collection": "trading-rules",
+   "title": "inactivity",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420080-inactivity",
+   "sha256": "72ae1f54012520aa5eaf81778f045c3a29abb6482d111d0e86970573f3133873"
+  },
+  {
+   "id": "8420522",
+   "collection": "trading-rules",
+   "title": "what is the ip rule? are vpns and vpss allowed?",
+   "page_date": "",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420522-what-is-the-ip-rule-are-vpns-and-vpss-allowed",
+   "sha256": "b301e8db4b3425abcd1fb76d613fa1b251f3d1292f0d2a0b5d9170e22f441384"
+  },
+  {
+   "id": "8447268",
+   "collection": "trading-rules",
+   "title": "what is the 2-minute average trade duration rule?",
+   "page_date": "september 10, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8447268-what-is-the-2-minute-average-trade-duration-rule",
+   "sha256": "5131e4f69ea24c0f41b26e45a3140c166242b04bbc33893b3bc4ebd0b3c26643"
+  },
+  {
+   "id": "8786973",
+   "collection": "trading-rules",
+   "title": "is copy trading allowed?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8786973-is-copy-trading-allowed",
+   "sha256": "f8668a8ec6437bd9eec5c689dda5b2414745317da1cf1c8d019cb6420ddc79c3"
+  },
+  {
+   "id": "9293522",
+   "collection": "trading-rules",
+   "title": "can i trade news?",
+   "page_date": "august 25, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/9293522-can-i-trade-news",
+   "sha256": "9c3f8b37dfb2cfa42915e22ecf7ea2e651c2e0f07143b6435a2e10b146a011aa"
+  },
+  {
+   "id": "6933849",
+   "collection": "general",
+   "title": "how long will it take to get my credentials?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933849-how-long-will-it-take-to-get-my-credentials",
+   "sha256": "0bedbe01c4a1e08d07d99e172de9dd054068e3f7c60a650b0a0c8312ae9b44b3"
+  },
+  {
+   "id": "6933883",
+   "collection": "general",
+   "title": "what trading platforms are available for use?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933883-what-trading-platforms-are-available-for-use",
+   "sha256": "c0fd4fb0a24507e498da3f8ca064de8393d3c4803acdfa710fd39db08172abf1"
+  },
+  {
+   "id": "6933919",
+   "collection": "general",
+   "title": "do i need experience before i apply?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933919-do-i-need-experience-before-i-apply",
+   "sha256": "3b6e1a2dcbae5b249dd61d80be8d64bcd66faed569ab8d283ebe363dce087afc"
+  },
+  {
+   "id": "6933922",
+   "collection": "general",
+   "title": "are you a broker?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933922-are-you-a-broker",
+   "sha256": "222275f18e2bea168a98c059701ae720855ee34049ccedb714cdb64d59a37eb1"
+  },
+  {
+   "id": "6933925",
+   "collection": "general",
+   "title": "which broker do we use?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933925-which-broker-do-we-use",
+   "sha256": "9a2fedc489fbfe6674e6dec9d86945697e0a8f367ac39b8e68afaed9bae5ac19"
+  },
+  {
+   "id": "7883145",
+   "collection": "general",
+   "title": "third-party payments",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7883145-third-party-payments",
+   "sha256": "a8ec2c44e468badf0641b6c4bf903b201592481d1b3495a5ce388f8fcfa107ec"
+  },
+  {
+   "id": "8420051",
+   "collection": "general",
+   "title": "how does trading on alpha capital group compare to a real market environment?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420051-how-does-trading-on-alpha-capital-group-compare-to-a-real-market-environment",
+   "sha256": "55fc9b2cc3f6ea9e1a2183756bacf37fb8f9b590562dfabb5e8eec3a8276f7d9"
+  },
+  {
+   "id": "8420066",
+   "collection": "general",
+   "title": "are there commission fees?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420066-are-there-commission-fees",
+   "sha256": "b54b1957a24352409a3c51d29ee31ac8ddad1ea768838248b7bbebb82f675b6d"
+  },
+  {
+   "id": "8420070",
+   "collection": "general",
+   "title": "am i trading with real funds?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420070-am-i-trading-with-real-funds",
+   "sha256": "99ed08c7bea9f7c361f888c0575a9d675cf893d72f4d1ef54a12a6a40b81d814"
+  },
+  {
+   "id": "8420072",
+   "collection": "general",
+   "title": "who can i contact for technical support?",
+   "page_date": "july 21, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420072-who-can-i-contact-for-technical-support",
+   "sha256": "882cb7379b4c4d1a8863f1c70ebc961efe129f6a2a63e4d7a70994d931a2a155"
+  },
+  {
+   "id": "8420078",
+   "collection": "general",
+   "title": "how should i handle taxes when trading with alpha capital group?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420078-how-should-i-handle-taxes-when-trading-with-alpha-capital-group",
+   "sha256": "6d6a5a9d5ca8bd45fce9fcf2ff98e36aec0ab954700bbcac14b7575cc6a75c39"
+  },
+  {
+   "id": "8775575",
+   "collection": "general",
+   "title": "countries with limitations",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8775575-countries-with-limitations",
+   "sha256": "147d63be1188fa5bcca2fc1348b44f6bad759a306091802c1aadb18723136872"
+  },
+  {
+   "id": "8786240",
+   "collection": "general",
+   "title": "tradeable assets",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8786240-tradeable-assets",
+   "sha256": "e015e54bcf4f8916a8136c99e0489fb8b145bdd55a5c2c6d06932445b7c2188b"
+  },
+  {
+   "id": "8853079",
+   "collection": "general",
+   "title": "liability and responsibility",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8853079-liability-and-responsibility",
+   "sha256": "ac2f53b5ac69f928b41aa8b36818e997d167218abd44f183bf5362f0cd223bd2"
+  },
+  {
+   "id": "6933851",
+   "collection": "evaluation",
+   "title": "are there free retakes?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933851-are-there-free-retakes",
+   "sha256": "54615773d61a9486dc33ede29fbe5efdecdb3df5d27b63e2f283da0d91deb3f3"
+  },
+  {
+   "id": "6933908",
+   "collection": "evaluation",
+   "title": "if i pass before the minimum trading days, what is required for the remaining days?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933908-if-i-pass-before-the-minimum-trading-days-what-is-required-for-the-remaining-days",
+   "sha256": "29a33b73154182b1065342762faa6568abb3ae1b1bd9897404679d055a5aad7d"
+  },
+  {
+   "id": "6934203",
+   "collection": "evaluation",
+   "title": "what is leverage, and what leverage is offered during the evaluation and for qualified analyst accounts?",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934203-what-is-leverage-and-what-leverage-is-offered-during-the-evaluation-and-for-qualified-analyst-accounts",
+   "sha256": "1093cdfebd8b41c5843868eb5d14af54c4db4fd94dce0c08960558729fd59953"
+  },
+  {
+   "id": "6934224",
+   "collection": "evaluation",
+   "title": "what are the minimum and maximum trading days for the evaluation?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934224-what-are-the-minimum-and-maximum-trading-days-for-the-evaluation",
+   "sha256": "5f8fcbad0c1c3a2f086c457d35f75ca80b06f728a96166866faea46473942664"
+  },
+  {
+   "id": "6934229",
+   "collection": "evaluation",
+   "title": "what is the total duration of the evaluation period?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934229-what-is-the-total-duration-of-the-evaluation-period",
+   "sha256": "72e1fc9480ae768ebbc1fb54466afb53df1f41602a19d959b57837b007a9c70d"
+  },
+  {
+   "id": "6934287",
+   "collection": "evaluation",
+   "title": "is there a lot size limit during the evaluation?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934287-is-there-a-lot-size-limit-during-the-evaluation",
+   "sha256": "6855beb8128c541766c0d4d02e5d02f8b1599ed043f156cfb83ec33c216224a1"
+  },
+  {
+   "id": "7060901",
+   "collection": "evaluation",
+   "title": "when does my evaluation start?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060901-when-does-my-evaluation-start",
+   "sha256": "3103c0b70001100673d047280b0808b5ce832554750f54e406eac3a5ebcac016"
+  },
+  {
+   "id": "7060904",
+   "collection": "evaluation",
+   "title": "what happens once the evaluation process is passed?",
+   "page_date": "july 23, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060904-what-happens-once-the-evaluation-process-is-passed",
+   "sha256": "68ef8167cfab145ae4c83e85e916689d613a3b2f0863fb9a3fc45cfb78900e12"
+  },
+  {
+   "id": "8420592",
+   "collection": "evaluation",
+   "title": "is it possible to receive a refund for the evaluation fees once i have completed my evaluation?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420592-is-it-possible-to-receive-a-refund-for-the-evaluation-fees-once-i-have-completed-my-evaluation",
+   "sha256": "9498930c4bee019316e661d920675307a4a1e9d826fddbc487e778fdb9dd73ce"
+  },
+  {
+   "id": "10102634",
+   "collection": "qualified-analyst",
+   "title": "on-demand performance fee",
+   "page_date": "july 22, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/10102634-on-demand-performance-fee",
+   "sha256": "c65bc10e00386ee5867f69cce908da733a980c475fc8dd1cb2d8ecbc895f47e5"
+  },
+  {
+   "id": "10570531",
+   "collection": "qualified-analyst",
+   "title": "bi-weekly performance fee",
+   "page_date": "july 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/10570531-bi-weekly-performance-fee",
+   "sha256": "46a95c06e2847549f5bececc88c447d8b7121867c6613fbe3f2e42a759268de9"
+  },
+  {
+   "id": "6933755",
+   "collection": "qualified-analyst",
+   "title": "how do i get paid performance fees?",
+   "page_date": "july 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933755-how-do-i-get-paid-performance-fees",
+   "sha256": "1828f10925faa43229f010c7d2806ff840fe2e19d5776a0d7e45c16108134bea"
+  },
+  {
+   "id": "6933852",
+   "collection": "qualified-analyst",
+   "title": "how does the scaling plan work?",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933852-how-does-the-scaling-plan-work",
+   "sha256": "19a180530c40a0ddebe855bf19b1f5eaa2d2c8834e6184442f388cd45207081c"
+  },
+  {
+   "id": "6933882",
+   "collection": "qualified-analyst",
+   "title": "is there a legal agreement for qualified analyst accounts with alpha capital group?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933882-is-there-a-legal-agreement-for-qualified-analyst-accounts-with-alpha-capital-group",
+   "sha256": "839e8e1da912282acc9f71c51bfc28d75c24c721f2a1130f8fc21e15ad4f844a"
+  },
+  {
+   "id": "6933909",
+   "collection": "qualified-analyst",
+   "title": "are there any profit targets on a qualified analyst account?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933909-are-there-any-profit-targets-on-a-qualified-analyst-account",
+   "sha256": "51e34a7f5cb3ae21b1ad6e0819c17c49d6d5798b7e643f4389c8eeca0754cd00"
+  },
+  {
+   "id": "6933910",
+   "collection": "qualified-analyst",
+   "title": "is there a minimum target required on a qualified analyst account before i can receive a performance fee?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6933910-is-there-a-minimum-target-required-on-a-qualified-analyst-account-before-i-can-receive-a-performance-fee",
+   "sha256": "2e0551ebbdceb3146b5173aca012e0cfcc6d865ed9ecbc44c65298b0674d8172"
+  },
+  {
+   "id": "6934289",
+   "collection": "qualified-analyst",
+   "title": "what is the lot size limit on qualified analyst accounts?",
+   "page_date": "july 21, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/6934289-what-is-the-lot-size-limit-on-qualified-analyst-accounts",
+   "sha256": "69ef86ed6d3949c6fb5b0fe7acd0ad5992c9ba699a8743775b85c9e7281b9c6b"
+  },
+  {
+   "id": "7060937",
+   "collection": "qualified-analyst",
+   "title": "what do qualified analysts earn from account profits?",
+   "page_date": "july 21, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060937-what-do-qualified-analysts-earn-from-account-profits",
+   "sha256": "259c135562d98d35b65aafee391910fa5a68af76c11f08b9acfed3c4e81d5994"
+  },
+  {
+   "id": "7060940",
+   "collection": "qualified-analyst",
+   "title": "what happens if a rule is broken on a qualified analyst account?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/7060940-what-happens-if-a-rule-is-broken-on-a-qualified-analyst-account",
+   "sha256": "de1dc8334162c2eed598808eb6c417bdab85fde559795e61d2e204f1d0cccb38"
+  },
+  {
+   "id": "8420532",
+   "collection": "qualified-analyst",
+   "title": "what documentation is required for a qualified analyst account?",
+   "page_date": "july 23, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420532-what-documentation-is-required-for-a-qualified-analyst-account",
+   "sha256": "cae2f5a888ba1e801ad4f021cac7b24ae60908d500abd99cf1fb8e4a61ded018"
+  },
+  {
+   "id": "8420537",
+   "collection": "qualified-analyst",
+   "title": "what is the performance fee bonus?",
+   "page_date": "july 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420537-what-is-the-performance-fee-bonus",
+   "sha256": "16fc81289a99db765f076d4c2f2c59f6fc778f7730f2e9091b65ec186cd95222"
+  },
+  {
+   "id": "8786521",
+   "collection": "qualified-analyst",
+   "title": "merging accounts",
+   "page_date": "july 24, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8786521-merging-accounts",
+   "sha256": "44a6e8c401634214144e45300e642d66c8376c5b671cc3c55434e17c5d4d1b1a"
+  },
+  {
+   "id": "8804535",
+   "collection": "qualified-analyst",
+   "title": "how many accounts can i have? what is the maximum allocation per strategy?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8804535-how-many-accounts-can-i-have-what-is-the-maximum-allocation-per-strategy",
+   "sha256": "a86535573e6141f6f76b146fd91ed7f81af8b6d46749d92e5fa54bab9a56abc5"
+  },
+  {
+   "id": "9691161",
+   "collection": "qualified-analyst",
+   "title": "focused trader group",
+   "page_date": "september 7, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/9691161-focused-trader-group",
+   "sha256": "927557d4c5552d7e857e90796fb003051271b4243b7e2e8bafb994821a295a54"
+  },
+  {
+   "id": "8420541",
+   "collection": "important-trading-terms",
+   "title": "what are the ask price and bid price?",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8420541-what-are-the-ask-price-and-bid-price",
+   "sha256": "0b0a8fbb6f68be5601254ca8d43fc8d9bda51c4ff67f032624c55ebd134526c0"
+  },
+  {
+   "id": "8783017",
+   "collection": "important-trading-terms",
+   "title": "important trading terms",
+   "page_date": "july 6, 2026",
+   "url": "https://help.alphacapitalgroup.uk/en/articles/8783017-important-trading-terms",
+   "sha256": "41dd59a24eddf703af628b29523fc19c1c7704b10ce75c769a0a976c947033f8"
+  }
+ ]
+}

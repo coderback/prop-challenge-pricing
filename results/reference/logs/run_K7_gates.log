@@ -1,0 +1,6 @@
+spec research/PREREGISTRATION_paper2_contract_map.md@bb03b76 (amendment 3)
+10002 outcomes of a day; coin flip, FTG, K1 policy r=3.5%, r_f=1.0%
+G5: solver 111.54; simulated on independent days 110.47 (se 0.70) -> PASS (39s)
+    D solved in 62s: value 127.18
+G6: solver 127.18; simulated on independent days 127.24 (se 0.74) -> PASS; half-step grid 127.07 (-0.09%) -> PASS (219s)
+K7 GATES PASSED

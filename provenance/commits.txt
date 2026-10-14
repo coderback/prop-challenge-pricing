@@ -1,0 +1,20 @@
+Commits to the plan, the analysis code, the results and the paper, oldest first (hash, author date, subject).
+
+a102df49b68033c8954f2f0624d8c48f8e7f9451  2026-10-13T04:07:05+01:00  docs(research): pre-register paper 2 contract map (skill x sizing, rule decomposition, fee break-evens, claim exclusion)
+217db49343c37e891314c22a12c339552bd69cef  2026-10-13T04:20:06+01:00  feat(research): vectorised contract simulator for paper 2, gated against S2 and evalsim; alpha swing rules as read on 2026-10-13
+bd2627d11a24a76b6ba0f834209949a0f62d94b7  2026-10-13T04:59:45+01:00  feat(research): run paper 2 contract map (H1 supported, H2 and H3 refuted), rule breakdown, lim bridge, fee by account size, claim exclusion
+8d9bbd877a1a3f76fe044ef2361ff3871ae6f9ba  2026-10-13T05:18:56+01:00  feat(research): exploratory stop-slippage and funded-risk checks for the contract map; paper 2 exhibits and result export
+5338ffe3c20a52f9e050ee2191060b555e02ec61  2026-10-13T12:23:20+01:00  docs(research): amendment 1 to the paper 2 plan, validation of outside sources (independent re-implementation of lim's model, rule text verbatim)
+1391a7b27dd53216b21b7eae735856208d5d693e  2026-10-13T12:34:30+01:00  feat(research): validate paper 2 sources (lim's model re-implemented and reproduced, alpha rules verbatim, four missed terms recorded, fourth-payout bonus priced)
+a9134c0c95a1535318d286787bea8e698563979a  2026-10-13T13:07:05+01:00  docs(research): amendment 2 to the paper 2 plan, horizon grid (K5) and other books (K6)
+bb03b76f5b652f7e9fc41cbf4c4f6ec87e3c777c  2026-10-13T13:17:40+01:00  docs(research): amendment 3 to the paper 2 plan, the buyer's best policy (K7); record the framing decision
+d18499c44fd3f265884c796e12e1e838985b3d30  2026-10-13T13:32:12+01:00  feat(research): horizon grid and other books for paper 2 (H4-H6 and H9 supported, H7 inconclusive, H8 refuted); policy solver and simulator hooks for the best-policy analysis
+9823eed7904ac36239d66873bb0fba37636ff9dc  2026-10-13T13:58:50+01:00  feat(research): best-policy results for paper 2 (H10, H12, H13 supported, H11 refuted; adaptive play adds 16% without skill)
+ec0deb4e3a7f837f26b5d9d17b7130a5e52242f8  2026-10-13T14:20:33+01:00  docs(research): amendment 4 to the paper 2 plan, the firm's plan menu (K8)
+01267c79a2f69c8a17523fdf72328deb0c502da6  2026-10-13T21:20:52+01:00  feat(research): trailing limits, retained buffers and cash-out closure in the contract simulator; plan-menu runner (K8)
+c16a359f54f3203342e889c9c36037f26b9701d2  2026-10-13T22:02:25+01:00  feat(research): plan-menu results for paper 2 (H14, H15, H17, H18 supported, H16 refuted; value per fee dollar from 0.49 to 1.60 across plans)
+c87a97f0213d701c6a1e61925f9746f41c97ae97  2026-10-13T22:12:04+01:00  docs(research): amendment 5 to the paper 2 plan, real strategies through the contract (K9)
+5cedac7a88a4690912089ae04e3e1b4d426addf8  2026-10-13T22:14:54+01:00  feat(research): real strategies through the contract for paper 2 (H19 supported, H20 and H21 inconclusive)
+2a46830134a75bf6557f00156a28c5847874b2ab  2026-10-13T23:05:49+01:00  docs(paper): first full draft of paper 2 (fair on paper), exhibits for K5-K9, export of the extension results
+342ad569399e6a3843700bf1153d59bb5c780936  2026-10-14T00:34:34+01:00  feat(research): reproduction package for paper 2 (standalone book builder verified against the cached day series, package builder, one-command runner)
+5101998d9ddb2003fe36cffe636c966a46e3536c  2026-10-14T15:45:43+01:00  docs(paper): repository link for the reproduction package; measured run times in its README

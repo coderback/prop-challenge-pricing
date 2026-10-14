@@ -1,0 +1,46 @@
+
+=== K4 FTG: break-even fee by skill (V at the selected policy) ===
+skill  net_sharpe  V_usd  se  V_pct_of_account  denial_break_even_at_40  denial_break_even_at_147
+ coin      -0.215  103.1 1.3             1.031                    0.612                    -0.426
+  0.0       0.000  159.3 1.7             1.593                    0.749                     0.077
+ 0.15       0.150  214.6 2.1             2.146                    0.814                     0.315
+  0.3       0.300  285.4 2.4             2.854                    0.860                     0.485
+  0.5       0.500  413.4 2.9             4.134                    0.903                     0.644
+ 0.75       0.750  623.2 3.6             6.232                    0.936                     0.764
+  1.0       1.000  886.0 4.2             8.860                    0.955                     0.834
+  1.5       1.500 1544.5 5.2            15.445                    0.974                     0.905
+  2.0       2.000 2306.7 5.7            23.067                    0.983                     0.936
+  break-even Sharpe at $40: below the coin flip (-0.21);  at $147: -0.05
+  sizing gain for the coin flip (selected vs 1%/1%): $70.3; skill equivalent of sizing: S = 0.04
+  skill equivalent of the $107 promo discount: S = 0.14
+  list fee by account size against V (% of account; rules scale with size under FTG):
+ account  fee  fee_pct           break_even_sharpe  EV_coin_pct  EV_coin_usd  EV_S0.3_usd  denial_break_even_coin
+    5000   70    1.400                       -0.07       -0.369        -18.0         73.0                  -0.358
+   10000  147    1.470                       -0.05       -0.439        -44.0        138.0                  -0.426
+   25000  247    0.988 below the coin flip (-0.21)        0.043         11.0        466.0                   0.042
+   50000  357    0.714 below the coin flip (-0.21)        0.317        159.0       1070.0                   0.308
+  100000  577    0.577 below the coin flip (-0.21)        0.454        454.0       2277.0                   0.440
+  200000 1097    0.548 below the coin flip (-0.21)        0.483        965.0       4611.0                   0.468
+  fee with the best code (ALPHA20; 10KFOR40 at $10k) by account size against V (% of account; rules scale with size under FTG):
+ account   fee  fee_pct           break_even_sharpe  EV_coin_pct  EV_coin_usd  EV_S0.3_usd  denial_break_even_coin
+    5000  56.0    1.120                       -0.18       -0.089         -4.0         87.0                  -0.086
+   10000  40.0    0.400 below the coin flip (-0.21)        0.631         63.0        245.0                   0.612
+   25000 197.6    0.790 below the coin flip (-0.21)        0.241         60.0        516.0                   0.234
+   50000 285.6    0.571 below the coin flip (-0.21)        0.460        230.0       1141.0                   0.446
+  100000 461.6    0.462 below the coin flip (-0.21)        0.570        570.0       2392.0                   0.552
+  200000 877.6    0.439 below the coin flip (-0.21)        0.592       1185.0       4830.0                   0.574
+
+=== K4 STD: break-even fee by skill (V at the selected policy) ===
+skill  net_sharpe  V_usd   se  V_pct_of_account  denial_break_even_at_40  denial_break_even_at_147
+ coin      -0.215  147.8  2.2             1.478                    0.729                     0.005
+  0.0       0.000  224.8  2.9             2.248                    0.822                     0.346
+ 0.15       0.150  304.2  3.4             3.042                    0.869                     0.517
+  0.3       0.300  405.0  4.1             4.050                    0.901                     0.637
+  0.5       0.500  579.9  5.0             5.799                    0.931                     0.746
+ 0.75       0.750  895.7  6.2             8.957                    0.955                     0.836
+  1.0       1.000 1318.0  7.6            13.180                    0.970                     0.888
+  1.5       1.500 2415.4 10.3            24.154                    0.983                     0.939
+  2.0       2.000 3838.3 12.7            38.383                    0.990                     0.962
+  break-even Sharpe at $40: below the coin flip (-0.21);  at $147: below the coin flip (-0.21)
+  sizing gain for the coin flip (selected vs 1%/1%): $112.8; skill equivalent of sizing: S = 0.07
+  skill equivalent of the $107 promo discount: S = 0.06

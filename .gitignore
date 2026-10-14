@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+data/raw/
+data/checks/
+data/logs/
+data/sources/
+data/r2cache/K7_policies/
+*.aux
+*.log
+*.out
+!results/reference/logs/*.log

@@ -1,0 +1,238 @@
+{
+ "a": {
+  "table 2": {
+   "daily only, S=0": [
+    0.4548,
+    0.453,
+    0.0018
+   ],
+   "maturity only, S=0": [
+    0.3084,
+    0.31,
+    0.0016
+   ],
+   "both, S=0": [
+    0.3,
+    0.298,
+    0.002
+   ],
+   "daily only, S=2": [
+    0.7451,
+    0.744,
+    0.0011
+   ],
+   "maturity only, S=2": [
+    0.5495,
+    0.55,
+    0.0005
+   ],
+   "both, S=2": [
+    0.5321,
+    0.532,
+    0.0001
+   ]
+  },
+  "table 2 worst": 0.0019850000000000145,
+  "table 3 worst": 0.0023336715499999716,
+  "table 3 cells within 0.01": 45,
+  "of": 45,
+  "ok": true
+ },
+ "by convention": {
+  "primary (no sweep on day 250)": {
+   "b": {
+    "E": 7273.150893593547,
+    "q": 0.56147,
+    "fair": 1483.4945731882503,
+    "ok": true
+   },
+   "c": {
+    "cells within tolerance": 45,
+    "of": 45,
+    "worst relative difference where Lim >= $100": 0.02211947197448858,
+    "median relative difference where Lim >= $100": -0.0005831123126170401,
+    "misses": [],
+    "ok": true
+   },
+   "d": {
+    "got": {
+     "value, refundable classic": 211.877,
+     "value, non-refundable classic": 203.0362,
+     "value, no time limit (non-refundable)": 369.886,
+     "value, no cost drag (classic)": 1124.4388,
+     "P(funded), classic": 0.0752,
+     "P(funded), no time limit": 0.1048,
+     "P(funded), no cost drag": 0.1529,
+     "break-even net Sharpe at 2%": -0.8706,
+     "break-even net Sharpe at 5%": 1.8861,
+     "break-even net Sharpe at 1%": 0.5642
+    },
+    "lim": {
+     "value, refundable classic": 221.0,
+     "value, non-refundable classic": 203.0,
+     "value, no time limit (non-refundable)": 369.0,
+     "value, no cost drag (classic)": 1098.0,
+     "P(funded), classic": 0.075,
+     "P(funded), no time limit": 0.105,
+     "P(funded), no cost drag": 0.153,
+     "break-even net Sharpe at 2%": -0.87,
+     "break-even net Sharpe at 5%": 1.94,
+     "break-even net Sharpe at 1%": 0.56
+    },
+    "within": {
+     "value, refundable classic": true,
+     "value, non-refundable classic": true,
+     "value, no time limit (non-refundable)": true,
+     "value, no cost drag (classic)": true,
+     "P(funded), classic": true,
+     "P(funded), no time limit": true,
+     "P(funded), no cost drag": true,
+     "break-even net Sharpe at 2%": true,
+     "break-even net Sharpe at 5%": true,
+     "break-even net Sharpe at 1%": true
+    },
+    "ok": true
+   },
+   "e": {
+    "got": {
+     "conservative, k=0.05": 391.9,
+     "conservative, k=0.1": 155.3,
+     "conservative, k=0.15": 59.8,
+     "base, k=0.05": 498.1,
+     "base, k=0.1": 211.9,
+     "base, k=0.15": 87.4,
+     "aggressive, k=0.05": 466.9,
+     "aggressive, k=0.1": 205.7,
+     "aggressive, k=0.15": 87.8
+    },
+    "lim": {
+     "conservative, k=0.05": 441,
+     "conservative, k=0.1": 163,
+     "conservative, k=0.15": 60,
+     "base, k=0.05": 557,
+     "base, k=0.1": 221,
+     "base, k=0.15": 87,
+     "aggressive, k=0.05": 517,
+     "aggressive, k=0.1": 213,
+     "aggressive, k=0.15": 87
+    },
+    "within": {
+     "conservative, k=0.05": false,
+     "conservative, k=0.1": true,
+     "conservative, k=0.15": true,
+     "base, k=0.05": false,
+     "base, k=0.1": true,
+     "base, k=0.15": true,
+     "aggressive, k=0.05": true,
+     "aggressive, k=0.1": true,
+     "aggressive, k=0.15": true
+    },
+    "ok": false
+   },
+   "verdict": "PARTLY REPRODUCED"
+  },
+  "alternative (final sweep on day 250)": {
+   "b": {
+    "E": 7283.109658117233,
+    "q": 0.56147,
+    "fair": 1485.5258486756818,
+    "ok": true
+   },
+   "c": {
+    "cells within tolerance": 45,
+    "of": 45,
+    "worst relative difference where Lim >= $100": 0.04828421232119164,
+    "median relative difference where Lim >= $100": 0.004778936387842436,
+    "misses": [],
+    "ok": true
+   },
+   "d": {
+    "got": {
+     "value, refundable classic": 212.2671,
+     "value, non-refundable classic": 203.4261,
+     "value, no time limit (non-refundable)": 372.4535,
+     "value, no cost drag (classic)": 1132.3821,
+     "P(funded), classic": 0.0752,
+     "P(funded), no time limit": 0.1048,
+     "P(funded), no cost drag": 0.1529,
+     "break-even net Sharpe at 2%": -0.8708,
+     "break-even net Sharpe at 5%": 1.8861,
+     "break-even net Sharpe at 1%": 0.5523
+    },
+    "lim": {
+     "value, refundable classic": 221.0,
+     "value, non-refundable classic": 203.0,
+     "value, no time limit (non-refundable)": 369.0,
+     "value, no cost drag (classic)": 1098.0,
+     "P(funded), classic": 0.075,
+     "P(funded), no time limit": 0.105,
+     "P(funded), no cost drag": 0.153,
+     "break-even net Sharpe at 2%": -0.87,
+     "break-even net Sharpe at 5%": 1.94,
+     "break-even net Sharpe at 1%": 0.56
+    },
+    "within": {
+     "value, refundable classic": true,
+     "value, non-refundable classic": true,
+     "value, no time limit (non-refundable)": true,
+     "value, no cost drag (classic)": true,
+     "P(funded), classic": true,
+     "P(funded), no time limit": true,
+     "P(funded), no cost drag": true,
+     "break-even net Sharpe at 2%": true,
+     "break-even net Sharpe at 5%": true,
+     "break-even net Sharpe at 1%": true
+    },
+    "ok": true
+   },
+   "e": {
+    "got": {
+     "conservative, k=0.05": 394.7,
+     "conservative, k=0.1": 155.9,
+     "conservative, k=0.15": 59.9,
+     "base, k=0.05": 500.1,
+     "base, k=0.1": 212.3,
+     "base, k=0.15": 87.4,
+     "aggressive, k=0.05": 468.2,
+     "aggressive, k=0.1": 205.9,
+     "aggressive, k=0.15": 87.8
+    },
+    "lim": {
+     "conservative, k=0.05": 441,
+     "conservative, k=0.1": 163,
+     "conservative, k=0.15": 60,
+     "base, k=0.05": 557,
+     "base, k=0.1": 221,
+     "base, k=0.15": 87,
+     "aggressive, k=0.05": 517,
+     "aggressive, k=0.1": 213,
+     "aggressive, k=0.15": 87
+    },
+    "within": {
+     "conservative, k=0.05": false,
+     "conservative, k=0.1": true,
+     "conservative, k=0.15": true,
+     "base, k=0.05": false,
+     "base, k=0.1": true,
+     "base, k=0.15": true,
+     "aggressive, k=0.05": true,
+     "aggressive, k=0.1": true,
+     "aggressive, k=0.15": true
+    },
+    "ok": false
+   },
+   "verdict": "PARTLY REPRODUCED"
+  }
+ },
+ "f": {
+  "got": {
+   "S=0": 0.2727,
+   "S=2": 0.5033
+  },
+  "lim": {
+   "S=0": 0.273,
+   "S=2": 0.503
+  },
+  "ok": true
+ }
+}

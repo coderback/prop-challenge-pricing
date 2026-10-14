@@ -1,0 +1,49 @@
+spec research/PREREGISTRATION_paper2_contract_map.md@c87a97f (amendment 5)
+K1's idealised buyer by group of purchase days (FTG, selected policies):
+                  coin         0.0        0.15         0.3         0.5        0.75         1.0          1.5          2.0
+early       114.540001  175.850006  236.160004  310.429993  453.670013  677.049988  950.450012  1641.849976  2422.489990
+late         96.339996  151.169998  206.809998  279.989990  401.700012  613.099976  883.659973  1548.449951  2343.790039
+net_sharpe   -0.210000    0.000000    0.150000    0.300000    0.500000    0.750000    1.000000     1.500000     2.000000
+
+A1b: 15317 trades, 5106 days with a position, up to 3 open at once; longest spell without an entry 4 calendar days; selected 0.75% a trade in the evaluation, 0.50% funded
+  V by evaluation risk (early purchases, selected funded risk): {'0.25%': 2.5, '0.50%': 268.6, '0.75%': 467.6, '1.00%': 416.7, '1.50%': 382.3, '2.00%': 245.6, '3.00%': 116.4, '4.00%': 73.9, '6.00%': 23.7, '8.00%': 11.2, '12.00%': 9.2, '16.00%': 9.2}
+
+A2b: 1175 trades, 484 days with a position, up to 5 open at once; longest spell without an entry 33 calendar days; selected 3.00% a trade in the evaluation, 0.25% funded
+  V by evaluation risk (early purchases, selected funded risk): {'0.25%': 0.0, '0.50%': 0.0, '0.75%': 0.0, '1.00%': 0.0, '1.50%': 0.0, '2.00%': 0.0, '3.00%': 0.1, '4.00%': 0.0, '6.00%': 0.0, '8.00%': 0.0, '12.00%': 0.0, '16.00%': 0.0}
+
+M1r: 3089 trades, 535 days with a position, up to 12 open at once; longest spell without an entry 56 calendar days; selected 1.50% a trade in the evaluation, 0.25% funded
+  V by evaluation risk (early purchases, selected funded risk): {'0.25%': 0.0, '0.50%': 0.0, '0.75%': 0.0, '1.00%': 1.2, '1.50%': 6.3, '2.00%': 2.3, '3.00%': 2.3, '4.00%': 1.6, '6.00%': 0.0, '8.00%': 0.0, '12.00%': 0.0, '16.00%': 0.0}
+
+R3: 4264 trades, 1004 days with a position, up to 12 open at once; longest spell without an entry 33 calendar days; selected 1.00% a trade in the evaluation, 0.25% funded
+  V by evaluation risk (early purchases, selected funded risk): {'0.25%': 0.0, '0.50%': 0.0, '0.75%': 10.6, '1.00%': 40.2, '1.50%': 22.8, '2.00%': 16.7, '3.00%': 5.7, '4.00%': 0.5, '6.00%': 0.2, '8.00%': 0.2, '12.00%': 0.2, '16.00%': 0.2}
+
+W3: 19581 trades, 5120 days with a position, up to 15 open at once; longest spell without an entry 4 calendar days; selected 0.75% a trade in the evaluation, 0.50% funded
+  V by evaluation risk (early purchases, selected funded risk): {'0.25%': 91.1, '0.50%': 509.7, '0.75%': 647.6, '1.00%': 428.9, '1.50%': 119.8, '2.00%': 65.6, '3.00%': 38.1, '4.00%': 36.2, '6.00%': 21.1, '8.00%': 13.0, '12.00%': 11.3, '16.00%': 11.3}
+
+=== K9: real strategies through the Alpha Swing contract (FTG; policy selected on early purchases) ===
+book purchases    n  net_sharpe  trades_per_year  p_pass  months_p50  still_in_evaluation  p_payout       V    V_lo    V_hi  V_ideal_same_sharpe  V_minus_ideal_lo  V_minus_ideal_hi
+ A1b     early 2351       0.797          775.941   0.587      11.714                0.038     0.566 467.647 162.704 779.464              728.653          -565.949            50.811
+ A1b      late 1266       0.491          775.941   0.429      12.095                0.250     0.283 154.784  10.298 319.508              396.501          -386.203           -76.993
+ A2b     early 2351       0.338           59.524   0.010       2.667                0.000     0.000   0.097   0.000   0.292              337.898          -337.898          -337.606
+ A2b      late 1266       0.488           59.524   0.001       3.048                0.000     0.001   0.137   0.000   0.411              394.643          -394.643          -394.233
+ M1r     early 2351       0.579          156.485   0.155       7.143                0.012     0.026   6.346   0.000  17.770              524.175          -524.175          -506.405
+ M1r      late 1266       0.098          156.485   0.039      11.214                0.000     0.000   0.000   0.000   0.000              187.440          -187.440          -187.440
+  R3     early 2351       0.670          216.009   0.376      14.714                0.129     0.169  40.205   6.418  87.133              605.834          -599.416          -518.700
+  R3      late 1266       0.320          216.009   0.308      13.571                0.036     0.089  16.951   0.000  43.096              292.008          -292.008          -248.912
+  W3     early 2351       1.031          991.950   0.721       9.381                0.014     0.707 647.586 310.510 984.968              993.904          -683.395            -8.936
+  W3      late 1266       0.582          991.950   0.322       7.595                0.008     0.258  80.472  18.605 147.663              470.776          -452.171          -323.113
+
+=== Hypotheses (late purchases; 95% intervals from a stationary bootstrap of the purchase days) ===
+  H19 A1b: V $154.8 [10.3, 319.5] against $396.5 for an idealised buyer at Sharpe +0.49  SUPPORTED
+  H19 A2b: V $0.1 [0.0, 0.4] against $394.6 for an idealised buyer at Sharpe +0.49  SUPPORTED
+  H19 M1r: V $0.0 [0.0, 0.0] against $187.4 for an idealised buyer at Sharpe +0.10  SUPPORTED
+  H19 R3: V $17.0 [0.0, 43.1] against $292.0 for an idealised buyer at Sharpe +0.32  SUPPORTED
+  H19 W3: V $80.5 [18.6, 147.7] against $470.8 for an idealised buyer at Sharpe +0.58  SUPPORTED
+  H19 overall: SUPPORTED
+  H20 best book A1b: V $154.8 [10.3, 319.5] against the coin flip's $96.3  INCONCLUSIVE
+  H21 A1b: late minus early $-312.9 [-652.9, +19.6]  INCONCLUSIVE
+  H21 A2b: late minus early $+0.0 [-0.2, +0.3]  INCONCLUSIVE
+  H21 M1r: late minus early $-6.3 [-17.8, +0.0]  INCONCLUSIVE
+  H21 R3: late minus early $-23.3 [-74.3, +19.8]  INCONCLUSIVE
+  H21 W3: late minus early $-567.1 [-912.3, -222.1]  SUPPORTED
+  H21 overall: INCONCLUSIVE

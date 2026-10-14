@@ -1,0 +1,303 @@
+net Sharpe -5.0 done (6s)
+net Sharpe -4.0 done (15s)
+net Sharpe -3.0 done (25s)
+net Sharpe -2.0 done (34s)
+net Sharpe -1.0 done (48s)
+net Sharpe -0.5 done (64s)
+net Sharpe +0.0 done (79s)
+net Sharpe +0.5 done (93s)
+net Sharpe +1.0 done (106s)
+net Sharpe +2.0 done (120s)
+net Sharpe +3.0 done (135s)
+net Sharpe +4.0 done (149s)
+~\PycharmProjects\EOD-Swing-Trade\research\validate_lim.py:162: RuntimeWarning: divide by zero encountered in divide
+  "median relative difference where Lim >= $100": float(np.median((F / LIM4 - 1)[big])),
+~\PycharmProjects\EOD-Swing-Trade\research\validate_lim.py:162: RuntimeWarning: invalid value encountered in divide
+  "median relative difference where Lim >= $100": float(np.median((F / LIM4 - 1)[big])),
+
+Table 3, P(funded): ours
+       0.5%   1.0%   2.0%   3.0%   5.0%
+-3.0  0.000  0.001  0.022  0.046  0.069
+-2.0  0.000  0.002  0.049  0.079  0.095
+-1.0  0.000  0.009  0.100  0.127  0.130
+-0.5  0.000  0.015  0.137  0.160  0.150
+ 0.0  0.000  0.026  0.183  0.195  0.172
+ 0.5  0.000  0.042  0.236  0.234  0.196
+ 1.0  0.000  0.065  0.298  0.277  0.220
+ 2.0  0.001  0.136  0.436  0.373  0.273
+ 3.0  0.003  0.242  0.576  0.470  0.334
+
+Table 4, fair fee: ours, primary
+      0.5%     1.0%     2.0%    3.0%    5.0%
+-3.0   0.0      0.0     23.0    33.0     9.0
+-2.0   0.0      3.0    100.0   102.0    23.0
+-1.0   0.0     27.0    404.0   281.0    56.0
+-0.5   0.0     72.0    783.0   461.0    85.0
+ 0.0   0.0    186.0   1483.0   732.0   130.0
+ 0.5   1.0    434.0   2761.0  1129.0   188.0
+ 1.0   1.0    959.0   5054.0  1724.0   266.0
+ 2.0  12.0   3771.0  15819.0  3841.0   530.0
+ 3.0  65.0  11391.0  44789.0  7891.0  1001.0
+
+Table 4, fair fee: ours, alternative
+      0.5%     1.0%     2.0%    3.0%    5.0%
+-3.0   0.0      0.0     23.0    33.0     9.0
+-2.0   0.0      3.0    100.0   102.0    23.0
+-1.0   0.0     27.0    404.0   281.0    56.0
+-0.5   0.0     73.0    784.0   461.0    85.0
+ 0.0   0.0    189.0   1486.0   732.0   130.0
+ 0.5   1.0    444.0   2769.0  1129.0   188.0
+ 1.0   2.0    988.0   5076.0  1724.0   266.0
+ 2.0  13.0   3916.0  15974.0  3841.0   530.0
+ 3.0  68.0  11871.0  45535.0  7892.0  1001.0
+
+Table 4: Lim
+      0.5%     1.0%     2.0%    3.0%    5.0%
+-3.0   0.0      0.0     24.0    33.0     9.0
+-2.0   0.0      3.0    102.0   100.0    24.0
+-1.0   0.0     27.0    404.0   280.0    58.0
+-0.5   0.0     72.0    783.0   457.0    85.0
+ 0.0   0.0    183.0   1502.0   728.0   127.0
+ 0.5   1.0    432.0   2790.0  1143.0   184.0
+ 1.0   2.0    979.0   5058.0  1730.0   263.0
+ 2.0  13.0   3746.0  15826.0  3865.0   534.0
+ 3.0  68.0  11324.0  44874.0  7955.0  1005.0
+
+{
+ "a": {
+  "table 2": {
+   "daily only, S=0": [
+    0.4548,
+    0.453,
+    0.0018
+   ],
+   "maturity only, S=0": [
+    0.3084,
+    0.31,
+    0.0016
+   ],
+   "both, S=0": [
+    0.3,
+    0.298,
+    0.002
+   ],
+   "daily only, S=2": [
+    0.7451,
+    0.744,
+    0.0011
+   ],
+   "maturity only, S=2": [
+    0.5495,
+    0.55,
+    0.0005
+   ],
+   "both, S=2": [
+    0.5321,
+    0.532,
+    0.0001
+   ]
+  },
+  "table 2 worst": 0.0019850000000000145,
+  "table 3 worst": 0.0023336715499999716,
+  "table 3 cells within 0.01": 45,
+  "of": 45,
+  "ok": true
+ },
+ "by convention": {
+  "primary (no sweep on day 250)": {
+   "b": {
+    "E": 7273.150893593547,
+    "q": 0.56147,
+    "fair": 1483.4945731882503,
+    "ok": true
+   },
+   "c": {
+    "cells within tolerance": 45,
+    "of": 45,
+    "worst relative difference where Lim >= $100": 0.02211947197448858,
+    "median relative difference where Lim >= $100": -0.0005831123126170401,
+    "misses": [],
+    "ok": true
+   },
+   "d": {
+    "got": {
+     "value, refundable classic": 211.877,
+     "value, non-refundable classic": 203.0362,
+     "value, no time limit (non-refundable)": 369.886,
+     "value, no cost drag (classic)": 1124.4388,
+     "P(funded), classic": 0.0752,
+     "P(funded), no time limit": 0.1048,
+     "P(funded), no cost drag": 0.1529,
+     "break-even net Sharpe at 2%": -0.8706,
+     "break-even net Sharpe at 5%": 1.8861,
+     "break-even net Sharpe at 1%": 0.5642
+    },
+    "lim": {
+     "value, refundable classic": 221.0,
+     "value, non-refundable classic": 203.0,
+     "value, no time limit (non-refundable)": 369.0,
+     "value, no cost drag (classic)": 1098.0,
+     "P(funded), classic": 0.075,
+     "P(funded), no time limit": 0.105,
+     "P(funded), no cost drag": 0.153,
+     "break-even net Sharpe at 2%": -0.87,
+     "break-even net Sharpe at 5%": 1.94,
+     "break-even net Sharpe at 1%": 0.56
+    },
+    "within": {
+     "value, refundable classic": true,
+     "value, non-refundable classic": true,
+     "value, no time limit (non-refundable)": true,
+     "value, no cost drag (classic)": true,
+     "P(funded), classic": true,
+     "P(funded), no time limit": true,
+     "P(funded), no cost drag": true,
+     "break-even net Sharpe at 2%": true,
+     "break-even net Sharpe at 5%": true,
+     "break-even net Sharpe at 1%": true
+    },
+    "ok": true
+   },
+   "e": {
+    "got": {
+     "conservative, k=0.05": 391.9,
+     "conservative, k=0.1": 155.3,
+     "conservative, k=0.15": 59.8,
+     "base, k=0.05": 498.1,
+     "base, k=0.1": 211.9,
+     "base, k=0.15": 87.4,
+     "aggressive, k=0.05": 466.9,
+     "aggressive, k=0.1": 205.7,
+     "aggressive, k=0.15": 87.8
+    },
+    "lim": {
+     "conservative, k=0.05": 441,
+     "conservative, k=0.1": 163,
+     "conservative, k=0.15": 60,
+     "base, k=0.05": 557,
+     "base, k=0.1": 221,
+     "base, k=0.15": 87,
+     "aggressive, k=0.05": 517,
+     "aggressive, k=0.1": 213,
+     "aggressive, k=0.15": 87
+    },
+    "within": {
+     "conservative, k=0.05": false,
+     "conservative, k=0.1": true,
+     "conservative, k=0.15": true,
+     "base, k=0.05": false,
+     "base, k=0.1": true,
+     "base, k=0.15": true,
+     "aggressive, k=0.05": true,
+     "aggressive, k=0.1": true,
+     "aggressive, k=0.15": true
+    },
+    "ok": false
+   },
+   "verdict": "PARTLY REPRODUCED"
+  },
+  "alternative (final sweep on day 250)": {
+   "b": {
+    "E": 7283.109658117233,
+    "q": 0.56147,
+    "fair": 1485.5258486756818,
+    "ok": true
+   },
+   "c": {
+    "cells within tolerance": 45,
+    "of": 45,
+    "worst relative difference where Lim >= $100": 0.04828421232119164,
+    "median relative difference where Lim >= $100": 0.004778936387842436,
+    "misses": [],
+    "ok": true
+   },
+   "d": {
+    "got": {
+     "value, refundable classic": 212.2671,
+     "value, non-refundable classic": 203.4261,
+     "value, no time limit (non-refundable)": 372.4535,
+     "value, no cost drag (classic)": 1132.3821,
+     "P(funded), classic": 0.0752,
+     "P(funded), no time limit": 0.1048,
+     "P(funded), no cost drag": 0.1529,
+     "break-even net Sharpe at 2%": -0.8708,
+     "break-even net Sharpe at 5%": 1.8861,
+     "break-even net Sharpe at 1%": 0.5523
+    },
+    "lim": {
+     "value, refundable classic": 221.0,
+     "value, non-refundable classic": 203.0,
+     "value, no time limit (non-refundable)": 369.0,
+     "value, no cost drag (classic)": 1098.0,
+     "P(funded), classic": 0.075,
+     "P(funded), no time limit": 0.105,
+     "P(funded), no cost drag": 0.153,
+     "break-even net Sharpe at 2%": -0.87,
+     "break-even net Sharpe at 5%": 1.94,
+     "break-even net Sharpe at 1%": 0.56
+    },
+    "within": {
+     "value, refundable classic": true,
+     "value, non-refundable classic": true,
+     "value, no time limit (non-refundable)": true,
+     "value, no cost drag (classic)": true,
+     "P(funded), classic": true,
+     "P(funded), no time limit": true,
+     "P(funded), no cost drag": true,
+     "break-even net Sharpe at 2%": true,
+     "break-even net Sharpe at 5%": true,
+     "break-even net Sharpe at 1%": true
+    },
+    "ok": true
+   },
+   "e": {
+    "got": {
+     "conservative, k=0.05": 394.7,
+     "conservative, k=0.1": 155.9,
+     "conservative, k=0.15": 59.9,
+     "base, k=0.05": 500.1,
+     "base, k=0.1": 212.3,
+     "base, k=0.15": 87.4,
+     "aggressive, k=0.05": 468.2,
+     "aggressive, k=0.1": 205.9,
+     "aggressive, k=0.15": 87.8
+    },
+    "lim": {
+     "conservative, k=0.05": 441,
+     "conservative, k=0.1": 163,
+     "conservative, k=0.15": 60,
+     "base, k=0.05": 557,
+     "base, k=0.1": 221,
+     "base, k=0.15": 87,
+     "aggressive, k=0.05": 517,
+     "aggressive, k=0.1": 213,
+     "aggressive, k=0.15": 87
+    },
+    "within": {
+     "conservative, k=0.05": false,
+     "conservative, k=0.1": true,
+     "conservative, k=0.15": true,
+     "base, k=0.05": false,
+     "base, k=0.1": true,
+     "base, k=0.15": true,
+     "aggressive, k=0.05": true,
+     "aggressive, k=0.1": true,
+     "aggressive, k=0.15": true
+    },
+    "ok": false
+   },
+   "verdict": "PARTLY REPRODUCED"
+  }
+ },
+ "f": {
+  "got": {
+   "S=0": 0.2727,
+   "S=2": 0.5033
+  },
+  "lim": {
+   "S=0": 0.273,
+   "S=2": 0.503
+  },
+  "ok": true
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "read": "2026-10-13, list prices shown by the checkout widget on alphacapitalgroup.uk (read through the author's browser; no discount code entered; United Kingdom selected)",
+ "sizes_usd": [5000, 10000, 25000, 50000, 100000, 200000],
+ "plans": {
+  "Swing (2 step: 10% / 5%, static 10%, daily 5%, 1:30)": {"on_demand": [70, 147, 247, 357, 577, 1097], "bi_weekly": null},
+  "Alpha Pro 10% (2 step: 10% / 5%, static 10%, daily 5%, 1:100)": {"on_demand": [33, 77, 177, 267, 447, 897], "bi_weekly": [37, 87, 197, 297, 497, 997]},
+  "Alpha Pro 8% (2 step: 8% / 5%, static 8%, daily 4%, 1:100)": {"on_demand": [37, 57, 177, 297, 527, 997], "bi_weekly": [40, 67, 197, 327, 577, 1097]},
+  "Alpha Pro 6% (2 step: 6% / 6%, static 6%, daily 3%, 1:100)": {"on_demand": [27, 47, 117, 217, 397, 797], "bi_weekly": [30, 55, 127, 227, 427, 847]},
+  "Alpha One 6% (1 step: 6%, trailing 4%, daily 3%, 1:30)": {"on_demand": [37, 67, 157, 237, 397, 647], "bi_weekly": null},
+  "Alpha One 10% (1 step: 10%, trailing 6%, daily 4%, 1:30)": {"on_demand": [47, 87, 187, 277, 477, 947], "bi_weekly": null},
+  "Alpha One 12% (1 step: 12%, trailing 8%, daily 5%, 1:30)": {"on_demand": [57, 107, 217, 347, 587, null], "bi_weekly": null},
+  "Alpha Direct (no evaluation, trailing 5%, daily 3%, 90% split)": {"on_demand": [67, 97, 197, 257, 457, 897], "bi_weekly": null, "also": {"2500": 30}}
+ },
+ "add_ons": {"90% split": "+10% of the on-demand price, on-demand only (Alpha Pro 6% $10k: $52)", "swap free": "about +10%", "raw spread account": "no change in price"},
+ "notes": ["Bi-weekly is offered on Alpha Pro only; the control is disabled on Alpha One, and Swing and Direct are on-demand only.",
+           "Alpha Three is not offered at checkout.",
+           "The site banner showed '40% Off All Accounts - Use code NIGERIA'; no code was applied.",
+           "The home page's embedded plan table gives the same on-demand prices; its 'Price' field differs from the bi-weekly prices shown at checkout for the smaller Alpha Pro accounts, so the checkout figures are used."]
+}
