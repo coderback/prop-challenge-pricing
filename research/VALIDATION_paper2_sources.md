@@ -175,6 +175,46 @@ The pre-registrations are dated records and are left as written; the corrections
   clock change); evaluation start date; IP rule; platform names.
 - Fees were not re-read (they need the checkout in a browser).
 
+## Youngblood (2026) and Rüther (2026), found in the venue pass and read in full 2026-11-09
+Both PDFs were downloaded by the author (SSRN blocks automated reads): `docs/ssrn-7514219.pdf` and
+`docs/ssrn-7579458.pdf`. Neither is peer reviewed. Both repositories were listed through the GitHub API on 2026-11-09.
+
+**Youngblood, Z. (student, Gabelli School of Business, Fordham), "The Inherent Value of Retail Prop Firms for Fixed-Size Trading
+Strategies", SSRN 7514219, dated 21 August 2026, 13 pp.** One Topstep $50,000 Combine and Express Funded Account
+($85 a month, reset credits, 90% split, $6,000 payout cap). Strategy: 8 MNQ contracts, one trade a day at 10:00 ET
+in a random direction, 100-tick take-profit and stop-loss, $1.22 round turn a contract; 10,000 random direction
+paths over the same 2,485 days (Aug 2016 to Aug 2026, one-minute data bought from BacktestMarket). Raw strategy:
+49.98% win rate, net -$24,670 a path. Through the firm: mean payouts $9,368.50 against account costs $7,878.30,
+net +$1,490.19 (median +$1,036.83), 60.30% of paths profitable, $1.19 of payouts per $1 of fees; $1.06 in
+2016–21 and $1.22 in 2021–26. Fixed $400 risk makes the daily loss limit and the Combine consistency rule
+non-binding. Not pre-registered; no intervals beyond percentiles; one size, one plan, one instrument, fixed size.
+Code and per-day results are public (github.com/zyoungblood6/The-Inherent-Edge-of-Retail-Proprietary-Trading-Firms,
+created 2026-08-09; the raw price data are not). AI disclosure: ChatGPT for language editing.
+*Overlap with paper 2:* the closest design to our coin flip (random daily direction, fixed stop, real intraday
+paths, measured costs), and the same qualitative finding that a no-skill buyer can come out ahead. Paper 2 adds
+contract-optimal and state-dependent sizing, the whole menu at every size, every rule priced one at a time, four
+instruments, the restricted regime, intervals, pre-registration and the skill side. Credited in the introduction
+(prior work and first result) and in the rule-cost and source-validation paragraphs.
+
+**Rüther, L. (independent; TU Dortmund email), "The Payoff Structure of Hedged Prop Firm Evaluation Accounts with
+Static Drawdown: A Closed-Form Analysis", SSRN 7579458, dated 6 October 2026, 10 pp.** Gambler's-ruin model of a
+static-drawdown evaluation held against an opposing smaller position on a personal account (hedge ratios h_E,
+h_F); pass probability D/(D+T); expected value and Sortino-optimal hedge ratios by grid (example $50k, $149 fee,
+T 8%, D 4%: E = $269.67, all terminal outcomes positive at h_E 0.25, h_F 0.65). Findings: value roughly linear
+in the drawdown; far more sensitive to rules than to the fee; at a 50% win rate the daily limit and consistency
+rule are a common ceiling on position size; break-even honoured-payout rate 43.8% in the example. Trailing limits
+and state-dependent ratios explicitly left for future work. Single payout only. Code: github.com/Lennart967/PropHedge
+(notebook; created 2026-08-10). AI disclosure: Claude used to assist writing.
+*Overlap with paper 2:* the size-ceiling reading of the daily and consistency rules, and a break-even refusal rate
+like ours (`\DenialPromo`). The hedged position is conduct the firms forbid, so it belongs with the discretion
+argument. Credited in the introduction, the contributions, the rule-cost paragraph and the discretion paragraph.
+
+**Claims revised as a result (2026-11-09):** "Three recent working papers price it" is now five; the clause "none
+releases code and data that reproduce every number" was removed, since both new papers release code (Youngblood
+also the per-day results); the distinguishing claim is now that none solves for a state-dependent sizing policy.
+A pre-registration claim was NOT added: Villahermosa (2026) refers to a "pre-registered grid" for his
+directional tests. "Four papers closest" in the limitations is now six.
+
 ## What is still unchecked
 1. The specific claims attached to citations (other than the one above) have not been checked against each
    paper's text. Chague et al.'s figures in particular are from memory, because SSRN blocks the abstract page.

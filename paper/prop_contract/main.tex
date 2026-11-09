@@ -54,7 +54,7 @@ a share of its profits, typically 80\%. \citet{lim2026} documents consumer warni
 and an unsettled legal classification. What the contract is worth to the person who buys it has only begun to be
 studied.
 
-Three recent working papers price it, two of them by the same author. \citet{lim2026} treats a stylised two-step
+Five recent working papers price it, two of them by the same author. \citet{lim2026} treats a stylised two-step
 challenge as a contingent claim on a Brownian account and finds that its value sits on a narrow ridge of risk
 sizing, that the classic time limit and daily rule lower a no-skill buyer's step-one pass probability from 0.50 to
 0.30, and that the product is sold with no disclosure of any of this. \citet{lim2026b} takes the same model to 31
@@ -63,10 +63,16 @@ whose average net Sharpe ratio is $-1.59$. He finds 29 of them worth less than t
 barely explains, and one-step contracts with trailing loss limits that are the easiest to pass and among the worst
 value. \citet{villahermosa2026} bounds the pass probability of a no-skill buyer at a futures firm by the ratio of
 the loss limit to the sum of loss limit and target, prices the full life cycle of one product on one-minute data,
-and finds that the sign of the buyer's expected value turns on the fee. Lim's two papers model returns as Brownian
-motion, check the limits at daily closes and leave consistency rules unpriced; all three hold the buyer's sizing
-fixed or treat skill as a parameter, and none releases code and data that reproduce every number. A third paper, \citet{darmanin2026}, tests popular chart signals and finds no net edge,
-without a held-out sample.
+and finds that the sign of the buyer's expected value turns on the fee. \citet{youngblood2026} runs a fixed-size trade
+in a random direction, once a day on ten years of one-minute Nasdaq futures prices, through one futures firm's
+\$50,000 account, and finds that payouts return \$1.19 per dollar of subscription fees, with a margin that
+differs between the two halves of the sample. \citet{ruether2026} derives in closed form the value of an
+evaluation with a static loss limit held against an opposing position on a personal account, which most firms'
+terms forbid, and finds the value more sensitive to the rules than to the fee and positive only if enough payouts
+are honoured. Lim's two papers model returns as Brownian motion, check the limits at daily closes and leave
+consistency rules unpriced. All five hold the buyer's sizing fixed, choose it from a grid or treat skill as a
+parameter; none solves for a sizing policy that responds to the state of the account. A sixth paper,
+\citet{darmanin2026}, tests popular chart signals and finds no net edge, without a held-out sample.
 
 This paper prices one firm's complete published contract and asks three questions the earlier work leaves open.
 What is the contract worth on real price paths, under every published rule, across the firm's whole menu and every
@@ -81,7 +87,8 @@ The answers are as follows.
 takes one random-direction index trade a day, sized for the contract and stopped out at a fixed distance, has
 expected payouts of \Vcoin{} per \$10,000 account (95\% interval \VcoinLo{} to \VcoinHi{}) over 36 months in the
 firm's restricted regime. That is \VcoinPct{} of the account at any account size, because every limit scales with
-the account. The list fee falls from 1.47\% of the account at \$10,000 to 0.55\% at \$200,000. The value is not a
+the account. The list fee falls from 1.47\% of the account at \$10,000 to 0.55\% at \$200,000.
+\citet{youngblood2026} reports a similar result for a random trade of fixed size at a futures firm. The value is not a
 constant: it runs from \BookLo{} to \BookHi{} across four instruments, in line with the cost of a random trade,
 and falls to 0.75\% if stops slip by a tenth of their distance.
 
@@ -118,8 +125,8 @@ The paper makes four contributions. It prices one firm's full rule set on real p
 consistency rule and intraday monitoring, which both of Lim's papers omit or approximate, the lot and position caps
 and the firm's restricted regime, with the fee at every size and on every plan, and it releases everything needed
 to reproduce each number. It solves for the buyer's best state-dependent policy, which \citet{lim2026} names as a
-limitation, \citet{lim2026b} calls the natural next step and \citet{villahermosa2026} treats only through a
-bold-play argument, and checks the solution on real price paths. It reproduces \citet{lim2026}'s tables from an independent implementation, which locates one
+limitation, \citet{lim2026b} calls the natural next step, \citet{ruether2026} leaves open for trailing limits and
+\citet{villahermosa2026} treats only through a bold-play argument, and checks the solution on real price paths. It reproduces \citet{lim2026}'s tables from an independent implementation, which locates one
 definitional difference in his headline figure, and reproduces \citet{lim2026b}'s values for two of this firm's
 plans before decomposing the difference from its own. And it joins contract value to a measured supply of skill.
 Of 24 registered hypotheses, 15 were supported, 5 refuted, 3 inconclusive and 1 partly supported; each is reported
@@ -235,7 +242,8 @@ variant (\$369.89 against \$369) and his Student-$t$ check. Two of nine cells in
 10\%, which traces to a definition: his ``average value'' of the refundable contract is the population mean of
 the fair fee, whereas the expected receipts at the posted \$500 fee are \$212 rather than \$221. His conclusions
 are unaffected. \citet{villahermosa2026}'s arithmetic is internally consistent, but his data and code are not
-released, so I cite his findings as reported and rely on none of his numbers.
+released, so I cite his findings as reported and rely on none of his numbers. \citet{youngblood2026} and
+\citet{ruether2026} release their code; I cite their findings as reported and rely on none of their numbers either.
 
 \section{Results}\label{sec:results}
 \subsection{A no-skill buyer on the base contract}
@@ -351,7 +359,9 @@ step, trading costs, the firm's 20\% share and the absence of a fee refund. A sp
 trade takes 28\% of the coin flip's value. The frictions \citet{lim2026} omits or approximates are small here:
 taken one at a time, the Best Day Rule, a consistency rule, costs the coin flip \$12 and intraday monitoring of
 the floors \$10. Two rules his model also lacks, the funded lot and position caps and the Max Risk Rule, cost \$6
-and nothing, and the daily limit costs nothing. So his caveat that the omissions bias his values upward is, on
+and nothing, and the daily limit costs nothing. A daily limit and a consistency rule act as a ceiling on size, as
+\citet{ruether2026} shows for a coin-flip trader and \citet{youngblood2026} observes for his fixed-size trade, and
+bind little below it. So his caveat that the omissions bias his values upward is, on
 this contract, a modest one. The restricted regime is the large one: it lowers the no-skill
 value from \VcoinStd{} to \Vcoin. Appendix~\ref{app:more} gives the same table for the standard regime, in which
 a skilled buyer is better off without the earliest possible payouts, a point the next subsection measures.
@@ -743,7 +753,8 @@ That is a conjecture; the data that would test it are the firm's.
 The published restriction regime removes 30\% of the no-skill value on the base contract. The gambling policy is
 aimed at the state-dependent sizing worth a further sixth. Beyond those, the terms reserve review of every pass
 and every payout. At the \$40 promotional fee available on the base contract's \$10,000 account, the no-skill
-buyer's expected value is zero if \DenialPromo{} of payouts are refused. I cannot observe how often any of this is
+buyer's expected value is zero if \DenialPromo{} of payouts are refused; \citet{ruether2026} computes the analogous
+break-even refusal rate for a hedged buyer, whose position most firms' terms forbid. I cannot observe how often any of this is
 used. The point for disclosure policy is that an average pass rate or payout ratio, as \citet{lim2026} proposes
 firms should publish, would describe the firm's customers and its discretion as much as its contract. Both are
 worth knowing; they are not the same thing as the odds the rules imply.
@@ -776,7 +787,7 @@ The history of the plan and of every commit touching the analysis is in the repr
 be set by the author, so this is a record rather than proof; later plans will be registered with a third party
 before they are run. The 24 tests were run in adaptive batches and their family was fixed as it grew.
 
-\emph{Unrefereed neighbours.} The four papers closest to this one are working papers. I reproduced the one whose
+\emph{Unrefereed neighbours.} The six papers closest to this one are working papers. I reproduced the one whose
 model I rely on and cite the others as reported.
 
 \section{Conclusion}\label{sec:conclusion}
@@ -1015,6 +1026,9 @@ momentum. \emph{Journal of Financial Economics}, 104(2), 228--250.
 and monetary policy uncertainty. \emph{Journal of Finance}, 72(3), 1213--1252.
 \bibitem[Politis and Romano(1994)]{politis1994} Politis, D. N., \& Romano, J. P. (1994). The stationary bootstrap.
 \emph{Journal of the American Statistical Association}, 89(428), 1303--1313.
+\bibitem[R\"uther(2026)]{ruether2026} R\"uther, L. (2026). The payoff structure of hedged prop firm evaluation
+accounts with static drawdown: A closed-form analysis. SSRN working paper 7579458, version of 6 October 2026 (not
+peer reviewed).
 \bibitem[Tetlock(2007)]{tetlock2007} Tetlock, P. C. (2007). Giving content to investor sentiment: The role of media
 in the stock market. \emph{Journal of Finance}, 62(3), 1139--1168.
 \bibitem[Tornell and Yuan(2012)]{tornell2012} Tornell, A., \& Yuan, C. (2012). Speculation and hedging in the
@@ -1022,6 +1036,8 @@ currency futures markets: Are they informative to the spot exchange rates. \emph
 32(2), 122--151.
 \bibitem[Villahermosa(2026)]{villahermosa2026} Villahermosa, R. (2026). Prop-firm challenges: A barrier model of
 pass rates and expected value. SSRN working paper 7445798 (not peer reviewed).
+\bibitem[Youngblood(2026)]{youngblood2026} Youngblood, Z. (2026). The inherent value of retail prop firms for
+fixed-size trading strategies. SSRN working paper 7514219, version of 21 August 2026 (not peer reviewed).
 \end{thebibliography}
 
 \end{document}
