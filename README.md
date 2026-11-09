@@ -83,7 +83,8 @@ the paper and the package:
 > Ojebiyi, T. O. (2026). *Fair on Paper: reproduction package* (version 1.1.0). Zenodo.
 > https://doi.org/10.5281/zenodo.23374897
 
-That DOI always resolves to the latest version; version 1.0.0 itself is https://doi.org/10.5281/zenodo.23374898.
+That DOI always resolves to the latest version; version 1.1.0 itself is https://doi.org/10.5281/zenodo.24083151 and
+version 1.0.0 is https://doi.org/10.5281/zenodo.23374898.
 Version 1.1.0 adds the reconciliation with Lim (2026b), the per-position check of the real strategies, the
 re-reading of the firm's rules and the revised paper; every result of version 1.0.0 is unchanged.
 `CITATION.cff` holds the same details, and GitHub's "Cite this repository" button reads it.

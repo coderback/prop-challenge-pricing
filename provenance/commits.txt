@@ -26,3 +26,4 @@ b398ab8801635d388f702a34fe86b150afb23cb5  2026-11-08T23:36:39Z  docs(paper): pos
 a06e364a0b65d2f6e5175fba567992dffe131ad9  2026-11-09T00:14:46Z  docs(research): amendment 6 to the paper 2 plan, reconciliation with lim (2026b) (K10)
 c21d8c21efb912c292c551bae635eef7a9c469bd  2026-11-09T00:58:13Z  feat(research): run K10, reconciliation with lim (2026b) (H22 partly, H23 and H24 supported)
 0f933ba33f73c4ff7c5cd2ac550b902d292ef348  2026-11-09T12:05:02Z  docs(paper): report the K10 reconciliation with lim (2026b)
+8cefd736b2b6299c52a6f5f9426cbf5b5ada97bd  2026-11-09T12:48:21Z  fix(research): freeze the K9 daily series and rebuild the paper 2 package as v1.1.0

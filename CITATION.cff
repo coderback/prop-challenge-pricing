@@ -11,6 +11,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.23374898
     description: Version 1.0.0
+  - type: doi
+    value: 10.5281/zenodo.24083151
+    description: Version 1.1.0
 repository-code: "https://github.com/coderback/prop-challenge-pricing"
 abstract: >-
   Code, day series, analysis plans and results for the working paper "Fair on Paper: What a Prop-Firm
