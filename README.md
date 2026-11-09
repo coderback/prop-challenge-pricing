@@ -83,8 +83,8 @@ the paper and the package:
 > Ojebiyi, T. O. (2026). *Fair on Paper: reproduction package* (version 1.1.1). Zenodo.
 > https://doi.org/10.5281/zenodo.23374897
 
-That DOI always resolves to the latest version; version 1.1.0 is https://doi.org/10.5281/zenodo.24083151 and
-version 1.0.0 is https://doi.org/10.5281/zenodo.23374898.
+That DOI always resolves to the latest version; version 1.1.1 itself is https://doi.org/10.5281/zenodo.24092544,
+version 1.1.0 is https://doi.org/10.5281/zenodo.24083151 and version 1.0.0 is https://doi.org/10.5281/zenodo.23374898.
 Version 1.1.0 adds the reconciliation with Lim (2026b), the per-position check of the real strategies, the
 re-reading of the firm's rules and the revised paper; every result of version 1.0.0 is unchanged.
 Version 1.1.1 revises only the paper's account of prior work, adding Youngblood (2026) and Rüther (2026); no code
