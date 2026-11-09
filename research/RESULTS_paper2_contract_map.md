@@ -449,6 +449,30 @@ stationary bootstrap of the purchase days, because neighbouring purchases share 
 - The idealised comparison takes K1's value at each book's Sharpe as a constant, with no interval of its own.
 - Sharpe ratios here are from each book's daily series on each group of years, flat days included.
 
+**Exploratory (2026-11-08, not pre-registered): the funded 1% cap read per position.** Amendment 5 applies the
+FTG's 1% cap to all open positions together; the firm's article says "the maximum allowable risk for any single
+position is 1% of your initial balance". `research/info_K9_position_cap.py` keeps everything else in run_K9.py
+and lets each open trade risk up to 1% (total notional still capped at min(1.25 lots, 15x)). Log:
+`data/logs/info_K9_position_cap_2026-11-09.log`; table: `data/checks/K9_per_position/K9_real_books.csv`.
+It runs on the books' daily series exactly as the registered K9 run used them (`data/derived/K9_daily_series.npz`,
+the file the reproduction package ships). A first run on 2026-11-08 rebuilt the series instead and got a slightly
+different A2b, because A2b's swap costs are calibrated at the latest price in the data store; that run is
+superseded (A2b $73, R3 $39, W3 $301 there; A1b and M1r identical).
+
+| Book | Late V, registered | Late V, per position (95%) | Idealised | H19 per position |
+|---|---|---|---|---|
+| A1b | $155 | $508 ($32 to $1,056) | $397 | inconclusive |
+| A2b | $0 | $71 ($0 to $168) | $395 | supported |
+| M1r | $0 | $0 | $187 | supported |
+| R3 | $17 | $39 ($0 to $100) | $292 | supported |
+| W3 | $80 | $302 ($58 to $581) | $471 | inconclusive |
+
+- R3 stays far below its idealised value under either reading. H19 holds only under the registered reading:
+  per position, A1b (up to three long-dollar trades at once) and W3 can carry up to three times the idealised
+  buyer's funded risk, so the comparison is no longer like for like. H20 stays inconclusive.
+- The registered reading stays primary in the paper because it gives every book the idealised buyer's risk
+  budget; the per-position values are a column of Table 10 and a paragraph in Section 5.
+
 ## Exploratory, added after the first write-up (2026-10-13; `research/info_K_funded_risk.py`, `info_K_slippage.py`)
 **The simulated stop never slips.** In 9,758 simulated trades (both sides of 4,879 days) the worst loss is exactly
 1.00R: no 30-minute bar ever opened beyond a stop. So the map assumes every stop-out fills at the stop price.
@@ -487,3 +511,68 @@ stop distance:
   left. The rest is cost: the spread is a larger share of the variance at lower risk.
 - 0.66% came from the spec's allowance for overnight and event gaps (three times the stop). This trade is
   intraday with a stop, so the binding limit is the FTG's 1% cap, not the Max Risk Rule.
+
+## K10: reconciliation with Lim (2026b) (amendment 6, commit a06e364; run 2026-11-09)
+Script `research/run_K10.py` (stages step1, step2, report); logs `data/logs/run_K10_step1.log` and
+`data/logs/run_K10_step2.log`; tables `data/checks/K10_step1.csv`, `K10_cells.csv`, `K10_shapley.csv`,
+`K10_batches.npz`. All values in dollars at $100,000 (simulated at $10,000 and scaled; the rules scale). The engine
+gained one switch, `Contract.trail_lock` (default True, so every earlier result is unchanged; the 20 simulator
+tests pass).
+
+**Gates:** the all-ours cell reproduces K8's restricted-regime values exactly: $909.1729 (Pro 8%) and $329.7452
+(One 6%), with K8's selected sizes (3% and 1%; 2.5% and 0.5%).
+
+**Step 1, H22: PARTLY.** His conventions, 100,000 paths per grid point:
+
+| Plan | His gross V | Sweep every 20 days (primary) | Every 10 days | Every 5 days |
+|---|---|---|---|---|
+| Pro 8% | $281 | $211 ± 2 | **$276 ± 3** (EV −$251 vs his −$246) | $340 |
+| One 6%, floor rises past the initial balance (primary) | $209 | $86 ± 2 | **$212 ± 3** (EV −$185 vs his −$188) | $341 |
+| One 6%, floor stops at the initial balance | $209 | $147 | $252 | $356 |
+
+Both plans fall within tolerance only with sweeps every 10 days and the primary trailing reading, so that pair is
+step 2's base, as the amendment requires. Population pass rates: 9% (Pro 8%) and 22% (One 6%); his sample's range
+is 7.7% to 23%.
+
+**Step 2, restricted regime (primary).** 20,000 paths per grid point for the population, 50,000 a set for the
+coin flip; standard errors from 20 batches.
+
+| | Pro 8% | One 6% |
+|---|---|---|
+| His cell (all four factors at his level) | $271 | $203 |
+| Ours (all four at ours) | $909 | $330 |
+| Gap | +$638 (se 14) | +$127 (se 6) |
+| Shapley F1, the buyer | **+$838 (se 6)**, 131% of the gap | **+$261 (se 3)**, 206% |
+| Shapley F2, horizon and payout mechanics | +$78 (se 8) | −$7 (se 2) |
+| Shapley F3, real paths at intraday marks | −$132 (se 8) | −$159 (se 4) |
+| Shapley F4, the rules his model leaves out | −$146 (se 5) | +$32 (se 1) |
+| Waterfall F1, F2, F3, F4 | $271 → $1,348 → $1,426 → $1,154 → $909 | $203 → $519 → $535 → $307 → $330 |
+
+- **H23 (the buyer is the largest factor on both plans): SUPPORTED.** F1 exceeds the next factor by $761 on Pro 8%
+  and $229 on One 6%, many standard errors.
+- **H24 (the buyer alone reverses his ranking): SUPPORTED.** With only the buyer changed, EV(Pro 8%) − EV(One 6%)
+  = +$699 (95% interval $665 to $733); he finds −$58.
+- **Standard regime as F4 = 1 (secondary):** gap $789 on Pro 8% (F1 +$977, F2 +$45, F3 −$50, F4 −$184) and $127 on
+  One 6% (F1 +$301, F2 +$4, F3 −$154, F4 −$24). Same reading.
+
+**Reading K10:**
+1. **The buyer explains more than the whole gap.** Under every one of his other conventions, the disciplined
+   no-skill buyer already has a positive expected value on both plans: +$821 on Pro 8% and +$122 on One 6%. His
+   negative values come from his population (average net Sharpe −1.59, off-ridge volatility), not from the rules.
+2. **Real paths and the published rules work against the buyer, not for him.** Moving from Gaussian closes to the
+   real book costs $132 and $159; the rules his model leaves out cost $146 on Pro 8% (the restricted regime) and
+   add $32 on One 6% (mostly the floor stopping at the initial balance). So the gap would be larger, not smaller,
+   if his model had our paths and rules.
+3. **The horizon matters little here** once the buyer re-sizes: +$78 and −$7.
+4. **The ranking reversal is about the buyer.** His population passes the one-step plan more easily (22% against
+   9%), which is his phantom generosity; a buyer who sizes for the contract is worth far more on the two-step plan.
+
+**Implementation choices the amendment did not fix (stated here, not tuned):**
+- The amendment does not say which factor carries the trailing floor's stop at the initial balance and the
+  daily limit's reference (his close-to-close change of the account, against the firm's day's opening balance).
+  Both switch with F4, "the plan as the firm publishes it".
+- On real paths, F2 = 0 cells use 900-day windows and F2 = 1 cells K8's 756-day draws, so the two F2 levels are
+  not paired on real paths; the batch standard errors include that.
+- The coin flip on Gaussian paths in One 6% selects 8% a trade, the top of K1's grid, so those cells are lower
+  bounds; this makes F1 on One 6%, if anything, understated.
+- In step 2 the base cell at 20,000 paths per grid point gives $271 and $203 (step 1 at 100,000: $276 and $212).

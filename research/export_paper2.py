@@ -47,6 +47,10 @@ def main():
                  "K_bonus.csv"):
         shutil.copyfile(OUT / name, DST / name)
     shutil.copyfile("research/FEES_alpha_2026-10-13.json", DST / "FEES_alpha_2026-10-13.json")
+    # exploratory: K9 with the funded 1% cap read per position (research/info_K9_position_cap.py)
+    shutil.copyfile(OUT / "K9_per_position" / "K9_real_books.csv", DST / "K9_per_position.csv")
+    for name in ("K10_step1.csv", "K10_cells.csv", "K10_shapley.csv"):          # amendment 6
+        shutil.copyfile(OUT / name, DST / name)
 
     # ---- stop slippage and funded risk (exploratory), from their logs
     s = table_from_log(LOGS / "explore_slippage.log", "slip (share of stop)")
@@ -133,6 +137,16 @@ def main():
                         "coin": float(m.group(5)), "verdict": m.group(6)}
     ext["K9"]["H21_steps"] = {b: {"d": float(d), "lo": float(lo), "hi": float(hi), "verdict": v} for b, d, lo, hi, v in
                               re.findall(r"H21 (\w+): late minus early \$([+-][\d.]+) \[([+-][\d.]+), ([+-][\d.]+)\]\s+(\w+)", log)}
+    # ---- K10 (verdict lines as printed by the run)
+    log1 = (LOGS / "run_K10_step1.log").read_text(encoding="utf-8", errors="replace")
+    log2 = (LOGS / "run_K10_step2.log").read_text(encoding="utf-8", errors="replace")
+    h22 = re.search(r"H22 \(reproduction[^:]*\): (\w+)", log1).group(1)
+    h23 = re.search(r"H23 \(the buyer is the largest factor on both plans\): (\w+)", log2).group(1)
+    m = re.search(r"H24 .*= \$([\d,.-]+) \(([\d,.-]+) to ([\d,.-]+)\); (\w+)", log2)
+    num = lambda x: float(x.replace(",", ""))                                    # noqa: E731
+    ext["K10"] = {"H22": h22, "H23": h23,
+                  "H24": {"mean": num(m.group(1)), "lo": num(m.group(2)), "hi": num(m.group(3)), "verdict": m.group(4)}}
+
     (DST / "extensions.json").write_text(json.dumps(ext, indent=1), encoding="utf-8")
     print("exported to", DST)
     print(json.dumps({k: {h: (v["verdict"] if isinstance(v, dict) and "verdict" in v else v) for h, v in d.items() if h.startswith("H")}

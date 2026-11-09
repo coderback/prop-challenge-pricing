@@ -443,3 +443,71 @@ strategy has been run through the contract as written.
 - **H21 (decay):** every book is worth less on late purchases than on early ones. Verdict from the difference
   of the two group means with their bootstrap intervals, book by book.
 - My expectation before running: H19 likely, H21 likely, H20 uncertain. Each is reported as found.
+
+### Amendment 6 (written 2026-11-08, pushed 2026-11-09, before any K10 code was written or run): reconciliation with Lim (2026b)
+**Reason:** Lim (2026b), *Phantom Generosity* (SSRN 7184138, version of 26 July 2026, `docs/ssrn-7184138.pdf`),
+values Alpha Pro 8% and Alpha One 6% at $100,000 at −$246 and −$188 against list fees of $527 and $397, that is
+gross values of $281 and $209, for his benchmark population of buyers. At the same fees K8 gives the disciplined
+coin flip gross values of $909 and $330 (restricted regime). His ranking of the two plans is the reverse of ours.
+The paper currently says the gap is not measured. K10 measures it. Script: `research/run_K10.py`.
+
+**Already known, so not predictions:** the four endpoint values above; K5 (value falls with the window); K2 (what
+each rule costs at fixed policy); K3 (iii) (Gaussian increments overstate the restricted-regime value by about 30%).
+
+**Lim's conventions, read from his Sections 4 and 6, and the two readings I have to choose**
+- **Returns:** an arithmetic random walk with daily drift S·σ/√252 and daily volatility σ, as in amendment 1's
+  re-implementation of Lim (2026a). All limits are checked at daily closes; the daily rule is close to close.
+- **Population:** net annual Sharpe S = g − 0.10·√252 with g standard normal (mean −1.59), and σ in {0.5, 1, 2, 3,
+  5}% with weights 5, 20, 30, 25 and 20%, independent of S. Values are computed on amendment 1's grid S ∈ {−5, ...,
+  +4} and integrated over g exactly as amendment 1's `population()`. Each type keeps its σ in both stages. No lot,
+  leverage or position caps and no Max Risk Rule.
+- **Evaluation:** each phase is capped at 300 trading days, and a path still alive at the cap fails. Minimum
+  trading days as published: 3 a phase on Pro, 1 on One.
+- **Funded stage:** 250 trading days. Every τ days, 80% of positive profit since the last sweep is paid; the
+  profit counter resets to zero while the balance and any trailing high-water mark carry on; losses are carried,
+  not forgiven. No consistency rule and no payout minimum. Alpha's fee is not refundable, so there is no refund.
+- **Rules (our record, `RULES_alpha_swing_2026-10-13.md` and amendment 4):** Pro 8%: 8% then 5%, 8% static, 4%
+  daily. One 6%: 6%, 4% trailing, 3% daily in the evaluation and 4% when funded.
+- **Readings fixed now.** (a) The sweep interval for on-demand payouts, which his text does not give: primary
+  τ = 20 days, the cadence of his companion paper; alternatives τ = 5 and τ = 10. (b) The trailing floor: primary
+  as his Section 4.1 writes it, a knock-out when X − max(max X, 0) ≤ −b, with no stop at the initial balance;
+  alternative: the floor stops at the initial balance, as the firm publishes.
+
+**Step 1, reproduction (H22).** His conventions, both plans, 100,000 paths per grid point, as in his paper.
+- **H22:** gross V within the larger of 10% and $20 of his value: $281 ± $28 for Pro 8%, $209 ± $21 for One 6%.
+  SUPPORTED if both plans are within tolerance under the primary readings; PARTLY if both are within tolerance
+  only under an alternative reading, which is then reported and becomes the base for step 2; NOT REPRODUCED
+  otherwise. If not reproduced, step 2 still runs, relative to my implementation of his conventions, but is
+  labelled exploratory and the paper does not attribute the gap.
+
+**Step 2, decomposition (H23, H24).** Four factors, each at his level (0) or ours (1). All 16 combinations for
+each plan, at $100,000 and list fees.
+- **F1, the buyer.** 0: his population. 1: the coin flip, re-sized for each cell (evaluation and funded risk
+  selected on a selection set and reported on an independent evaluation set, as in K8).
+- **F2, horizon and payout mechanics.** 0: the 300-day phase cap, 250 funded days and sweeps every τ, with no
+  consistency rule. 1: K1's 36-month window from purchase, the evaluation cut off at 504 days, and on-demand
+  payouts with the 2% minimum, the 40% Best Day Rule and the two-day lock.
+- **F3, paths and monitoring.** 0: Gaussian increments at daily closes. 1: the real US500 book at its worst
+  intraday marks. A population type (S, σ) on real paths takes skill p(S), solving net SR(p) = S on the full
+  sample, and evaluation risk r = σ / sd(R), the mappings K1 uses. The coin flip on Gaussian increments takes the
+  real book's mean and standard deviation per unit of risk, as in K3 (iii).
+- **F4, the rules his model leaves out.** 0: none. 1: the lot and leverage caps, the Max Risk Rule (2% at
+  $100,000) and the restricted regime (half the lots, a 1% position cap), which is the paper's primary regime. The
+  standard regime is reported as a secondary row.
+- **Paths:** 20,000 per grid point in population cells and 50,000 in coin-flip cells, shared across cells
+  (common random numbers). Standard errors from 20 batches of the evaluation set.
+- **Gates:** the all-zeros cell is step 1, and the all-ones cell must reproduce K8's restricted-regime values at
+  $100,000 ($909 and $330) to the cent with K8's seeds.
+- **Attribution:** each factor's Shapley value (its marginal effect averaged over all 24 orders), and for display
+  one fixed order: F1, F2, F3, F4.
+- **H23 (the buyer is the largest factor):** F1 has the largest Shapley value on both plans. SUPPORTED if F1
+  exceeds each other factor by more than two batch standard errors of the difference on both plans, REFUTED if
+  another factor exceeds F1 by that margin on either plan, otherwise INCONCLUSIVE.
+- **H24 (the buyer alone reverses his ranking):** in the cell F1 = 1, F2 = F3 = F4 = 0, EV(Pro 8%) − EV(One 6%)
+  > 0 (he finds −$58). Verdict from that difference's batch interval.
+- My expectation before running: H22 uncertain (his code is not public and two conventions are read from his
+  text), H23 likely, H24 likely. Each is reported as found.
+
+**Not compared or modelled:** his codebook's July reading of the firm's rules (the fees are identical; the rules
+are not compared), monthly rebilling (not relevant to these plans), and everything K8 lists as not modelled. If
+Lim shares his code or codebook, step 1 is re-run against it and reported beside this one.

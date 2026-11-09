@@ -1,0 +1,88 @@
+spec research/PREREGISTRATION_paper2_contract_map.md@a06e364 (amendment 6)
+K10 step 2: 16 cells per plan
+
+H22 (reproduction within max(10%, $20) of $281 and $209): PARTLY (within tolerance only under tau=10, trail_lock=False)
+base readings for step 2: tau = 10, trail_lock = False
+  FTG Pro 8% (0, 0, 0, 0): V $271 (31s)
+  FTG Pro 8% (0, 0, 0, 1): V $351 (71s)
+  FTG Pro 8% (0, 0, 1, 0): V $257 (110s)
+  FTG Pro 8% (0, 0, 1, 1): V $180 (152s)
+  FTG Pro 8% (0, 1, 0, 0): V $262 (188s)
+  FTG Pro 8% (0, 1, 0, 1): V $343 (225s)
+  FTG Pro 8% (0, 1, 1, 0): V $259 (263s)
+  FTG Pro 8% (0, 1, 1, 1): V $232 (307s)
+  FTG Pro 8% (1, 0, 0, 0): V $1,348 (338s)
+  FTG Pro 8% (1, 0, 0, 1): V $830 (362s)
+  FTG Pro 8% (1, 0, 1, 0): V $1,169 (391s)
+  FTG Pro 8% (1, 0, 1, 1): V $729 (414s)
+  FTG Pro 8% (1, 1, 0, 0): V $1,426 (451s)
+  FTG Pro 8% (1, 1, 0, 1): V $1,143 (484s)
+  FTG Pro 8% (1, 1, 1, 0): V $1,154 (523s)
+  FTG Pro 8% (1, 1, 1, 1): V $909 (555s)
+  FTG One 6% (0, 0, 0, 0): V $203 (575s)
+  FTG One 6% (0, 0, 0, 1): V $263 (596s)
+  FTG One 6% (0, 0, 1, 0): V $86 (618s)
+  FTG One 6% (0, 0, 1, 1): V $163 (645s)
+  FTG One 6% (0, 1, 0, 0): V $217 (671s)
+  FTG One 6% (0, 1, 0, 1): V $213 (697s)
+  FTG One 6% (0, 1, 1, 0): V $88 (723s)
+  FTG One 6% (0, 1, 1, 1): V $117 (752s)
+  FTG One 6% (1, 0, 0, 0): V $519 (772s)
+  FTG One 6% (1, 0, 0, 1): V $525 (791s)
+  FTG One 6% (1, 0, 1, 0): V $322 (810s)
+  FTG One 6% (1, 0, 1, 1): V $347 (828s)
+  FTG One 6% (1, 1, 0, 0): V $535 (878s)
+  FTG One 6% (1, 1, 0, 1): V $541 (919s)
+  FTG One 6% (1, 1, 1, 0): V $307 (955s)
+  FTG One 6% (1, 1, 1, 1): V $330 (989s)
+  STD Pro 8% (0, 0, 0, 1): V $91 (1019s)
+  STD Pro 8% (0, 0, 1, 1): V $106 (1052s)
+  STD Pro 8% (0, 1, 0, 1): V $104 (1082s)
+  STD Pro 8% (0, 1, 1, 1): V $121 (1117s)
+  STD Pro 8% (1, 0, 0, 1): V $892 (1145s)
+  STD Pro 8% (1, 0, 1, 1): V $982 (1173s)
+  STD Pro 8% (1, 1, 0, 1): V $1,137 (1207s)
+  STD Pro 8% (1, 1, 1, 1): V $1,060 (1243s)
+  STD One 6% (0, 0, 0, 1): V $112 (1264s)
+  STD One 6% (0, 0, 1, 1): V $63 (1286s)
+  STD One 6% (0, 1, 0, 1): V $150 (1306s)
+  STD One 6% (0, 1, 1, 1): V $63 (1327s)
+  STD One 6% (1, 0, 0, 1): V $525 (1344s)
+  STD One 6% (1, 0, 1, 1): V $347 (1358s)
+  STD One 6% (1, 1, 0, 1): V $541 (1407s)
+  STD One 6% (1, 1, 1, 1): V $330 (1449s)
+
+=== FTG regime at F4 = 1 ===
+Pro 8%: his cell $271, ours $909, gap $638 (se 14)
+  gate: all-ones $909.1729 against K8 $909.1729
+  Shapley F1: $+838 (se 6), 131% of the gap
+  Shapley F2: $+78 (se 8), 12% of the gap
+  Shapley F3: $-132 (se 8), -21% of the gap
+  Shapley F4: $-146 (se 5), -23% of the gap
+  waterfall F1, F2, F3, F4: $271 -> $1,348 -> $1,426 -> $1,154 -> $909
+One 6%: his cell $203, ours $330, gap $127 (se 6)
+  gate: all-ones $329.7452 against K8 $329.7452
+  Shapley F1: $+261 (se 3), 206% of the gap
+  Shapley F2: $-7 (se 2), -6% of the gap
+  Shapley F3: $-159 (se 4), -126% of the gap
+  Shapley F4: $+32 (se 1), 25% of the gap
+  waterfall F1, F2, F3, F4: $203 -> $519 -> $535 -> $307 -> $330
+  Pro 8%: F1 minus the next factor, smallest margin $761
+  One 6%: F1 minus the next factor, smallest margin $229
+
+H23 (the buyer is the largest factor on both plans): SUPPORTED (['above', 'above'])
+H24 (the buyer alone reverses his ranking): EV(Pro 8%) - EV(One 6%) = $699 (665 to 733); SUPPORTED
+
+=== STD regime at F4 = 1 ===
+Pro 8%: his cell $271, ours $1,060, gap $789 (se 18)
+  Shapley F1: $+977 (se 7), 124% of the gap
+  Shapley F2: $+45 (se 9), 6% of the gap
+  Shapley F3: $-50 (se 9), -6% of the gap
+  Shapley F4: $-184 (se 4), -23% of the gap
+  waterfall F1, F2, F3, F4: $271 -> $1,348 -> $1,426 -> $1,154 -> $1,060
+One 6%: his cell $203, ours $330, gap $127 (se 6)
+  Shapley F1: $+301 (se 3), 238% of the gap
+  Shapley F2: $+4 (se 2), 3% of the gap
+  Shapley F3: $-154 (se 4), -122% of the gap
+  Shapley F4: $-24 (se 1), -19% of the gap
+  waterfall F1, F2, F3, F4: $203 -> $519 -> $535 -> $307 -> $330

@@ -37,6 +37,10 @@ K6 = pd.read_csv(RES / "K6_books.csv")
 K7 = pd.read_csv(RES / "K7_classes.csv", dtype={"skill": str})
 K8 = pd.read_csv(RES / "K8_plans.csv", dtype={"skill": str})
 K9 = pd.read_csv(RES / "K9_real_books.csv")
+K9P = pd.read_csv(RES / "K9_per_position.csv")      # exploratory: funded 1% cap per position
+K10S1 = pd.read_csv(RES / "K10_step1.csv")          # amendment 6: reconciliation with Lim (2026b)
+K10C = pd.read_csv(RES / "K10_cells.csv")
+K10P = pd.read_csv(RES / "K10_shapley.csv")
 SLIP = pd.read_csv(RES / "K_slippage.csv")
 POLICY = pd.read_csv(RES / "K7_policy_step1.csv")
 BONUS = pd.read_csv(RES / "K_bonus.csv", dtype={"skill": str})
@@ -465,9 +469,10 @@ rows = []
 for b, label in BOOKS9.items():
     for g in ("early", "late"):
         r = K9[(K9.book == b) & (K9.purchases == g)].iloc[0]
+        rp = K9P[(K9P.book == b) & (K9P.purchases == g)].iloc[0]
         mp = "--" if np.isnan(r.months_p50) else f"{r.months_p50:.1f}"
         rows.append(f"{label if g == 'early' else ''} & {g.capitalize()} & {r.net_sharpe:.2f} & {r.p_pass:.3f} & {mp} & {r.p_payout:.3f} & "
-                    f"{r.V:,.0f} ({r.V_lo:,.0f} to {r.V_hi:,.0f}) & {r.V_ideal_same_sharpe:,.0f}\\\\" + ("\\addlinespace" if g == "late" and b != "W3" else ""))
+                    f"{r.V:,.0f} ({r.V_lo:,.0f} to {r.V_hi:,.0f}) & {r.V_ideal_same_sharpe:,.0f} & {rp.V:,.0f}\\\\" + ("\\addlinespace" if g == "late" and b != "W3" else ""))
 write("tab_real", "\n".join(rows))
 
 swing_fees = plan_fees("Swing")
@@ -479,7 +484,7 @@ for s_ in (0.0, 0.05, 0.10, 0.25):
     rows.append(f"{s_ * 100:.0f}\\% & {r.p_pass:.3f} & {v:,.0f} & {v / 100:.2f}\\% & {first}\\\\")
 write("tab_slip", "\n".join(rows))
 
-VTXT = {"SUPPORTED": "Supported", "REFUTED": "Refuted", "INCONCLUSIVE": "Inconclusive"}
+VTXT = {"SUPPORTED": "Supported", "REFUTED": "Refuted", "INCONCLUSIVE": "Inconclusive", "PARTLY": "Partly"}
 
 
 def iv(d, pre="\\$"):
@@ -487,6 +492,11 @@ def iv(d, pre="\\$"):
 
 
 e5, e7, e8, e9 = EXT["K5"], EXT["K7"], EXT["K8"], EXT["K9"]
+k10s1 = lambda p, tau: K10S1[(K10S1.plan == p) & (K10S1.tau == tau) & (K10S1.trail_lock != True)].V.iloc[0]  # noqa: E712,E731
+k10p = lambda p, f: K10P[(K10P.regime == "FTG") & (K10P.plan == p) & (K10P.factor == f)].shapley.iloc[0]       # noqa: E731
+k10next = lambda p: max(k10p(p, f) for f in ("F2", "F3", "F4"))                                               # noqa: E731
+k10c = lambda p, f: K10C[(K10C.regime == "FTG") & (K10C.plan == p) &                                            # noqa: E731
+                         (K10C[["F1", "F2", "F3", "F4"]].to_numpy() == f).all(axis=1)].iloc[0]
 hf = hy["FTG"]
 k6v = {r.book: r for r in K6.itertuples()}
 verd = [
@@ -517,13 +527,33 @@ verd = [
     ("H20", "The best real book is worth less than the no-skill buyer",
      f"\\${e9['H20']['V']:,.0f} (\\${e9['H20']['lo']:,.0f} to \\${e9['H20']['hi']:,.0f}) against \\${e9['H20']['coin']:,.0f}", VTXT[e9["H20"]["verdict"]]),
     ("H21", "Every real book is worth less on late purchases than on early ones", "clear for one book of five", VTXT[e9["H21"]]),
+    ("H22", "Lim's conventions reproduce his two Alpha values within the larger of 10\\% and \\$20",
+     f"\\${k10s1('Pro 8%', 10):,.0f} and \\${k10s1('One 6%', 10):,.0f} against \\$281 and \\$209, with 10-day sweeps only",
+     VTXT[EXT["K10"]["H22"]]),
+    ("H23", "The buyer is the largest factor in the gap on both plans",
+     f"\\${k10p('Pro 8%', 'F1'):,.0f} and \\${k10p('One 6%', 'F1'):,.0f}; next \\${k10next('Pro 8%'):,.0f} and \\${k10next('One 6%'):,.0f}",
+     VTXT[EXT["K10"]["H23"]]),
+    ("H24", "The buyer alone reverses his ranking of the two plans", iv(EXT["K10"]["H24"]), VTXT[EXT["K10"]["H24"]["verdict"]]),
 ]
 write("tab_verdicts", "\n".join(f"{a} & {b} & {c} & {d}\\\\" for a, b, c, d in verd))
+
+# K10: the gap between Lim's value and ours, by factor (restricted regime)
+K10ROWS = [("Lim's conventions throughout", lambda p: k10c(p, (0, 0, 0, 0)).V),
+           ("This paper's throughout", lambda p: k10c(p, (1, 1, 1, 1)).V)]
+rows = [f"{lab} & {money(f('Pro 8%'))} & {money(f('One 6%'))}\\\\" for lab, f in K10ROWS]
+gap = {p: k10c(p, (1, 1, 1, 1)).V - k10c(p, (0, 0, 0, 0)).V for p in ("Pro 8%", "One 6%")}
+rows.append(f"Gap & {neg(gap['Pro 8%'], '+\\${:,.0f}')} & {neg(gap['One 6%'], '+\\${:,.0f}')}\\\\\\midrule")
+for f, lab in (("F1", "The buyer"), ("F2", "Horizon and payout mechanics"), ("F3", "Real paths, intraday marks"),
+               ("F4", "Rules his model leaves out")):
+    cell = lambda p: ("$-$" if k10p(p, f) < 0 else "+") + f"{abs(k10p(p, f)):,.0f}"                # noqa: E731
+    rows.append(f"{lab} & {cell('Pro 8%')} & {cell('One 6%')}\\\\")
+write("tab_k10", "\n".join(rows))
 
 # ------------------------------------------------------------------ number macros for K5-K9
 g5 = lambda clock, mo, s: K5[(K5.clock == clock) & (K5.months == mo) & (K5.skill == s)].iloc[0]          # noqa: E731
 conv_loss = {mo: 1 - g5("none", mo, "coin").V_conv / g5("none", mo, "coin").V for mo in (12, 24, 36, 60)}
 k9 = lambda b, g: K9[(K9.book == b) & (K9.purchases == g)].iloc[0]                                      # noqa: E731
+k9p = lambda b, g: K9P[(K9P.book == b) & (K9P.purchases == g)].iloc[0]                                  # noqa: E731
 k7v = lambda s, g, c: K7[(K7.skill == s) & (K7.regime == g) & (K7["class"] == c)].iloc[0]               # noqa: E731
 slip = lambda s_: SLIP[(SLIP.slip == s_) & (SLIP.r_pct == 3.5)]["V_FTG_1.0"].iloc[0]                     # noqa: E731
 bon = lambda s: BONUS[(BONUS.skill == s) & (BONUS.regime == "FTG")]["bonus value $"].iloc[0]            # noqa: E731
@@ -561,6 +591,21 @@ n1 = {
     "VRthreeLate": money(k9("R3", "late").V), "IdealRthreeLate": money(k9("R3", "late").V_ideal_same_sharpe),
     "SharpeRthreeLate": f"{k9('R3', 'late').net_sharpe:.2f}", "VWthreeLate": money(k9("W3", "late").V),
     "CoinLate": money(e9["H20"]["coin"]),
+    "VAoneLatePos": money(k9p("A1b", "late").V), "VAoneLatePosLo": money(k9p("A1b", "late").V_lo),
+    "VAoneLatePosHi": money(k9p("A1b", "late").V_hi), "VRthreeLatePos": money(k9p("R3", "late").V),
+    "VRthreeLatePosHi": money(k9p("R3", "late").V_hi), "VWthreeLatePos": money(k9p("W3", "late").V),
+    "VWthreeLatePosLo": money(k9p("W3", "late").V_lo), "VWthreeLatePosHi": money(k9p("W3", "late").V_hi),
+    "IdealWthreeLate": money(k9("W3", "late").V_ideal_same_sharpe),
+    "KtenProRepro": money(k10s1("Pro 8%", 10)), "KtenOneRepro": money(k10s1("One 6%", 10)),
+    "KtenProPrimary": money(k10s1("Pro 8%", 20)), "KtenOnePrimary": money(k10s1("One 6%", 20)),
+    "KtenProBuyer": money(k10p("Pro 8%", "F1")), "KtenOneBuyer": money(k10p("One 6%", "F1")),
+    "KtenProPaths": money(-k10p("Pro 8%", "F3")), "KtenOnePaths": money(-k10p("One 6%", "F3")),
+    "KtenProRules": money(-k10p("Pro 8%", "F4")), "KtenOneRules": money(k10p("One 6%", "F4")),
+    "KtenProEVbuyer": money(k10c("Pro 8%", (1, 0, 0, 0)).EV), "KtenOneEVbuyer": money(k10c("One 6%", (1, 0, 0, 0)).EV),
+    "KtenRank": money(EXT["K10"]["H24"]["mean"]), "KtenRankLo": money(EXT["K10"]["H24"]["lo"]),
+    "KtenRankHi": money(EXT["K10"]["H24"]["hi"]),
+    "KtenPassPro": f"{k10c('Pro 8%', (0, 0, 0, 0)).p_pass * 100:.0f}\\%",
+    "KtenPassOne": f"{k10c('One 6%', (0, 0, 0, 0)).p_pass * 100:.0f}\\%",
     "VslipFive": money(slip(0.05)), "VslipTen": money(slip(0.10)), "VslipTwentyFive": money(slip(0.25)),
     "BonusCoin": money(bon("coin"), 2), "BonusOne": money(bon("1.0"), 2),
 }

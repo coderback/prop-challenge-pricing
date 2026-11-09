@@ -1,0 +1,106 @@
+articles: 64 on 13 Oct, 64 on 2026-11-08
+  added: {}
+  removed: {}
+
+=== 10102634  https://help.alphacapitalgroup.uk/en/articles/10102634-on-demand-performance-fee
+  -if you earn $1,000 on a particular trading day, you will be eligible to request a withdrawal only after your account balance exceeds $2,500.
+  +if you earn $1,000 on a particular trading day, you will be eligible to request a withdrawal only once your account balance is more than $2,500 above its initial balance.
+  -once your account balance reaches $3,000, you are eligible to request a payout because your consistency score is exactly 40%:
+  +once your account balance is $3,000 above its initial balance, you are eligible to request a payout because your consistency score is exactly 40%:
+  -however, note that once the account balance is up $2,500, you still cannot request your withdrawal, as $200 of it is from the previous payout window.
+  +however, note that once the account balance is $2,500 above its initial balance, you still cannot request your withdrawal, as $200 of it is from the previous payout window.
+  -$2,300 (account balance is up $2,500, but $200 is from the previous window) - consistency score:
+  -1,000 / 2,300 = 43%, therefore not compliant with the rule the account balance must be above $2,700 for you to request a withdrawal; that is $1,000 (best day) � 2.5 = $2,500 (required profit), plus the $200 that remained from the previous window.
+  +$2,300 (account balance is $2,500 above its initial balance, but $200 is from the previous window) - consistency score:
+  +1,000 / 2,300 = 43%, therefore not compliant with the rule the account balance must be more than $2,700 above its initial balance for you to request a withdrawal; that is $1,000 (best day) � 2.5 = $2,500 (required profit), plus the $200 that remained from the previous window.
+
+=== 15888623  https://help.alphacapitalgroup.uk/en/articles/15888623-what-is-the-max-risk-rule-and-how-does-it-work
+  +all trading costs, including commissions, swaps and slippage, count toward the threshold.
+  +we recommend leaving a buffer below the threshold, as these costs can take a loss beyond the level you planned.
+  +this applies to each further trade opened within 10 minutes of the previous trade closing, so a sequence of trades can form a single continuous chain.
+  +the chain ends once more than 10 minutes pass between one trade closing and the next trade opening.
+  +trades in the opposite direction on the same asset form a separate chain and do not interrupt this one.
+  +example:
+  +you have a $100,000 alpha pro qualified analyst account and close an xau/usd buy with a $1,000 loss.
+  +you open another xau/usd buy 5 minutes later and close it with a $500 loss, then open a third xau/usd buy 7 minutes later.
+  +the three trades form one chain, and the max risk rule is breached once the third trade reaches $500 in open drawdown, as the combined loss reaches $2,000 (2%).
+  +had the third trade been opened 12 minutes after the second one closed, it would start a new chain, and only its own loss would count toward the threshold.
+
+=== 16003693  https://help.alphacapitalgroup.uk/en/articles/16003693-alpha-direct
+  +all trading costs, including commissions, swaps and slippage, count toward the threshold.
+  +we recommend leaving a buffer below the threshold, as these costs can take a loss beyond the level you planned.
+  +this applies to each further trade opened within 10 minutes of the previous trade closing, so a sequence of trades can form a single continuous chain.
+  +the chain ends once more than 10 minutes pass between one trade closing and the next trade opening.
+  +trades in the opposite direction on the same asset form a separate chain and do not interrupt this one.
+  +example:
+  +you have a $100,000 alpha direct account and close an xau/usd buy with a $500 loss.
+  +you open another xau/usd buy 5 minutes later and close it with a $250 loss, then open a third xau/usd buy 7 minutes later.
+  +the three trades form one chain, and the max risk rule is breached once the third trade reaches $250 in open drawdown, as the combined loss reaches $1,000 (1%).
+  +had the third trade been opened 12 minutes after the second one closed, it would start a new chain, and only its own loss would count toward the threshold.
+
+=== 6933852  https://help.alphacapitalgroup.uk/en/articles/6933852-how-does-the-scaling-plan-work
+  -to scale the account, a 10% gain on the account balance must be achieved each time.
+  +to scale the account, a gain of 10% of the initial account balance must be achieved each time.
+
+=== 6933883  https://help.alphacapitalgroup.uk/en/articles/6933883-what-trading-platforms-are-available-for-use
+  -our platform currently offers exclusive access to metatrader 5, ctrader, dx trade, and tradelocker.
+  +our platform currently offers exclusive access to metatrader 5, ctrader, dxtrade, and tradelocker.
+  -residents, the available platforms are ctrader*, dx trade, and tradelocker.
+  +residents, the available platforms are ctrader*, dxtrade, and tradelocker.
+
+=== 6933919  https://help.alphacapitalgroup.uk/en/articles/6933919-do-i-need-experience-before-i-apply
+  -no prior experience is required to purchase and attempt an assessment with alpha capital group.
+  +no prior experience is required to purchase and attempt an evaluation with alpha capital group.
+
+=== 6933925  https://help.alphacapitalgroup.uk/en/articles/6933925-which-broker-do-we-use
+  -extensive institutional trading experience prime or prime liquidity ultra-low latency targeted execution time of less than 30ms raw spreads starting from 0.1 commission-free trading offerings in fx, indices, and commodities
+  +extensive institutional trading experience prime of prime liquidity ultra-low latency targeted execution time of less than 30ms raw spreads starting from 0.1 commission-free trading offerings in fx, indices, and commodities
+
+=== 6934210  https://help.alphacapitalgroup.uk/en/articles/6934210-what-are-the-daily-risk-limits-and-how-do-they-work
+  -the starting balance and equity refer to the account balance and equity at the end of the trading day/beginning of the daily candle (broker time), which is 00:00 gmt+3 .
+  +the starting balance and equity refer to the account balance and equity at the end of the trading day/beginning of the daily candle (broker time), which is 00:00 gmt+2 .
+
+=== 6934224  https://help.alphacapitalgroup.uk/en/articles/6934224-what-are-the-minimum-and-maximum-trading-days-for-the-evaluation
+  -1 there are no maximum trading days imposed during the assessment.
+  +1 there are no maximum trading days imposed during the evaluation.
+
+=== 6934236  https://help.alphacapitalgroup.uk/en/articles/6934236-can-i-use-an-expert-advisor-ea
+  -ea functionality is not currently available for ctrader, dx trade, or tradelocker accounts, nor on swap-free or alpha direct accounts.
+  +ea functionality is not currently available for ctrader, dxtrade, or tradelocker accounts, nor on swap-free or alpha direct accounts.
+
+=== 7060901  https://help.alphacapitalgroup.uk/en/articles/7060901-when-does-my-evaluation-start
+  -by default, the start date reflects the account creation date.
+  -if you wait a few days before placing your first trade, the start date will adjust to the date of your first trade.
+  +the start date shown on your dashboard is the date of your first trade.
+
+=== 7060909  https://help.alphacapitalgroup.uk/en/articles/7060909-what-is-alpha-capital-group-s-policy-against-gambling-in-trading
+  -trades initiated just before and closed right after the restricted high-impact news trading window on pro/one/three models, or generally short-term trades on the swing account model, identified as solely speculative around high-impact news, without any intent to hold the positions or follow a consistent strategy.
+  +trades initiated just before and closed right after the restricted high-impact news trading window on pro/one/three/direct models, or generally short-term trades on the swing account model, identified as solely speculative around high-impact news, without any intent to hold the positions or follow a consistent strategy.
+
+=== 8420522  https://help.alphacapitalgroup.uk/en/articles/8420522-what-is-the-ip-rule-are-vpns-and-vpss-allowed
+  -using ip masking, or masking your trade reasons on the platform, is also prohibited.
+  -any trades that appear to involve the masking of ip addresses or trade reasons will be treated as a violation.
+  +using ip masking, or masking the "reason" field of your trades on the platform (the field on trading platforms that shows whether a trade was placed from a desktop computer, a mobile device or an expert advisor), is also prohibited.
+  +any trades that appear to involve the masking of ip addresses or of the "reason" field will be treated as a violation.
+
+=== 8783017  https://help.alphacapitalgroup.uk/en/articles/8783017-important-trading-terms
+  -it is expressed as a ratio, such as 50:1 or 100:1, and determines how much you can control compared to your capital.
+  +it is expressed as a ratio, such as 1:50 or 1:100, and determines how much you can control compared to your capital.
+
+=== 8786973  https://help.alphacapitalgroup.uk/en/articles/8786973-is-copy-trading-allowed
+  -please note that copy trading on or from ctrader, dx trade, and tradelocker accounts is not possible at this time.
+  +please note that copy trading on or from ctrader, dxtrade, and tradelocker accounts is not possible at this time.
+
+15 of 64 common articles differ in body text
+
+quoted phrases: 28 checked, 0 missing
+terms: identical text = False
+  +lot size calculator work out your position size.
+  -build trading logic like a workflow coming soon alpha trader acg markets learn resources learn with trading resources.
+  +build trading logic like a workflow learn more alpha trader acg markets learn resources learn with trading resources.
+  -log in log in start your evaluation start your evaluation about us trading trading objectives platforms tools symbols leaderboard alpha trader acg markets learn resources trader interviews events media community help center faqs contact us careers log in start your evaluation legal terms & conditions the full terms for using alpha capital group's services and evaluations.
+  +log in log in start your evaluation start your evaluation about us trading trading objectives platforms tools lot size calculator symbols leaderboard alpha trader acg markets learn resources trader interviews events media community help center faqs contact us careers log in start your evaluation legal terms & conditions the full terms for using alpha capital group's services and evaluations.
+  -name: address: signature __________________________________ quick links home product trading about contact us careers resources resources prop firm guide prop firm evaluations alpha capital events promo codes archive legal cookie policy privacy policy terms of use disclaimer return policy newsletter subscribe for exclusive offers, trader insights, product updates, and discounts.
+  +name: address: signature __________________________________ quick links home product alpha one 2-step evaluation alpha pro trading about contact us official channels careers resources resources prop firm guide prop firm evaluations alpha capital events promo codes archive legal cookie policy privacy policy terms of use disclaimer return policy newsletter subscribe for exclusive offers, trader insights, product updates, and discounts.
+  -*note: all instances of the term trading refer exclusively to virtual trading alpha capital group limited company number 13719951 registered office: 1 allied business centre, coldharbour lane, harpenden, england, al5 4ut � copyright 2026 | mon - fri: 8am - 8pm (gmt) | info@alphacapitalgroup.uk
+  +*note: all instances of the term trading refer exclusively to virtual trading alpha capital group limited company number 13719951 registered office: 1 allied business centre, coldharbour lane, harpenden, england, al5 4ut � copyright 2026 | mon - fri: 8am - 8pm (gmt) | info@alphacapitalgroup.uk en es de fr pt cs hi en

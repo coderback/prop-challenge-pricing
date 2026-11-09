@@ -21,7 +21,7 @@ measure its spreads. I have never bought one of its evaluations or received a pa
 commercial relationship with any firm in this industry. Nothing in this paper is investment advice or a
 recommendation to buy any product. I used Anthropic's Claude to assist with code and drafting; I verified all design
 choices, results and conclusions and take full responsibility for them. All errors are mine.}}
-\date{Draft, October 2026}
+\date{Draft, November 2026}
 
 \begin{document}
 \maketitle
@@ -34,12 +34,14 @@ contract of a named UK firm on twenty years of intraday index prices at measured
 hypothesis fixed and time-stamped before its run. Three results stand out. First, the written rules are close to a
 fair bet for a disciplined buyer with no skill: expected payouts are about \VcoinPct{} of the account on the base
 contract, between \BookLo{} and \BookHi{} across four instruments, against list fees of 0.3\% to 1.5\%. Second, the
-price list does not follow contract value. Across the firm's nine plans the same buyer gets back between
+price list does not follow contract value, as a recent cross-firm study also finds. Across the nine contracts on the firm's price list the same buyer gets back between
 \PerFeeMin{} and \PerFeeMax{} per dollar of fee, and one plan sells the same targets and limits as another at half
 the price. Third, the contract pays steeply for skill, but for a kind of skill a pre-registered search did not
 find: an idealised Sharpe ratio of 0.3 is worth \Vskill{} per \$10,000 account, while the one strategy ensemble
-that survived to untouched data is worth \VRthreeLate{}. The rules are therefore not where the seller's margin
-comes from. It comes from how buyers size and trade, from an edge they lack and cannot verify, and from the firm's
+that survived to untouched data is worth \VRthreeLate{}, or \VRthreeLatePos{} under a looser reading of one position
+limit. On the conventions of a recent cross-firm study, two of these plans lose money for that study's assumed
+buyers; a registered decomposition traces more than the whole difference from this paper's values to the buyer,
+not to the rules or the price paths. The rules are therefore not where the seller's margin comes from. It comes from how buyers size and trade, from an edge they lack and cannot verify, and from the firm's
 published discretion over the conduct that extracts value without skill. All values assume the firm pays every
 valid request.
 \end{abstract}
@@ -52,18 +54,23 @@ a share of its profits, typically 80\%. \citet{lim2026} documents consumer warni
 and an unsettled legal classification. What the contract is worth to the person who buys it has only begun to be
 studied.
 
-Two recent working papers price it. \citet{lim2026} treats a stylised two-step challenge as a contingent claim on
-a Brownian account and finds that its value sits on a narrow ridge of risk sizing, that the classic time limit and
-daily rule lower a no-skill buyer's step-one pass probability from 0.50 to 0.30, and that the product is sold with
-no disclosure of any of this. \citet{villahermosa2026} bounds the pass probability of a no-skill buyer at a futures firm by the
-ratio of the loss limit to the sum of loss limit and target, prices the full life cycle on one-minute data, and
-finds that the sign of the buyer's expected value turns on the fee. Both papers set skill aside or treat it as a
-parameter, both price one contract at one account size, and neither names the firm or releases code and data that
-reproduce every number. A third paper, \citet{darmanin2026}, tests popular chart signals and finds no net edge,
+Three recent working papers price it, two of them by the same author. \citet{lim2026} treats a stylised two-step
+challenge as a contingent claim on a Brownian account and finds that its value sits on a narrow ridge of risk
+sizing, that the classic time limit and daily rule lower a no-skill buyer's step-one pass probability from 0.50 to
+0.30, and that the product is sold with no disclosure of any of this. \citet{lim2026b} takes the same model to 31
+contracts at 21 named firms, including the firm studied here, and values each for a benchmark population of buyers
+whose average net Sharpe ratio is $-1.59$. He finds 29 of them worth less than their list fee, values that the fee
+barely explains, and one-step contracts with trailing loss limits that are the easiest to pass and among the worst
+value. \citet{villahermosa2026} bounds the pass probability of a no-skill buyer at a futures firm by the ratio of
+the loss limit to the sum of loss limit and target, prices the full life cycle of one product on one-minute data,
+and finds that the sign of the buyer's expected value turns on the fee. Lim's two papers model returns as Brownian
+motion, check the limits at daily closes and leave consistency rules unpriced; all three hold the buyer's sizing
+fixed or treat skill as a parameter, and none releases code and data that reproduce every number. A third paper, \citet{darmanin2026}, tests popular chart signals and finds no net edge,
 without a held-out sample.
 
-This paper prices a named firm's complete published contract and asks three questions the earlier work leaves
-open. What is the contract worth across the firm's whole menu of plans and account sizes? How much of that value
+This paper prices one firm's complete published contract and asks three questions the earlier work leaves open.
+What is the contract worth on real price paths, under every published rule, across the firm's whole menu and every
+account size, to a buyer who sizes for it? How much of that value
 comes from skill, and how much from sizing, from the horizon and from each rule? And is the skill the contract
 rewards actually available to a careful retail researcher? The third question draws on a programme of 24
 pre-registered tests of published trading effects at the same broker's costs, run before this study.
@@ -78,11 +85,14 @@ the account. The list fee falls from 1.47\% of the account at \$10,000 to 0.55\%
 constant: it runs from \BookLo{} to \BookHi{} across four instruments, in line with the cost of a random trade,
 and falls to 0.75\% if stops slip by a tenth of their distance.
 
-\emph{The price list does not follow contract value.} Priced the same way, the firm's nine plans return between
-\PerFeeMin{} and \PerFeeMax{} per dollar of list fee to the same no-skill buyer. Every two-step plan in its
-standard line is worth more than its list fee at every account size, and one of them has the same targets and
+\emph{The price list does not follow contract value.} Priced the same way, the nine contracts on the firm's price
+list (eight plans, one of them sold with two payout schedules) return between \PerFeeMin{} and \PerFeeMax{} per
+dollar of list fee to the same no-skill buyer. Every two-step plan in its Pro line is worth more than its list fee
+at every account size, and one of them has the same targets and
 loss limits as the base contract at half its fee. The one-step plans with trailing loss limits are worth about
-half as much as the two-step plans and cost more.
+half as much as the two-step plans and cost more. \citet{lim2026b} finds the same two patterns across 21 firms on a
+stylised model; here they hold within one firm's complete menu, on real paths, with every rule priced and at every
+account size.
 
 \emph{Skill is worth more than sizing once the buyer stays long enough, and the contract pays for a kind of skill
 that was not found.} I had registered the opposite hypothesis, that sizing would be worth more than a research-grade
@@ -91,22 +101,41 @@ contract-optimal sizing is worth \SizingGain{}. A second registered run shows wh
 Over one year the two are level; from two years on skill leads, with or without the classic time limit. But the
 24 tests confirmed no edge, most cannot exclude a Sharpe ratio of 0.3, and when the programme's surviving
 strategies are run through the contract as they actually trade, the one ensemble tested on untouched data is
-worth \VRthreeLate{} against \IdealRthreeLate{} for an idealised buyer with the same Sharpe ratio.
+worth \VRthreeLate{} against \IdealRthreeLate{} for an idealised buyer with the same Sharpe ratio (\VRthreeLatePos{}
+if the firm's 1\% risk cap is read per position rather than for all positions together).
 
 \emph{The seller's protection is therefore not in the rules.} A buyer's best state-dependent policy is worth
 \GainBestCoin{} more than the best fixed size without skill, and it is exactly the conduct the firm's published
 policies name as grounds for restricting an account or removing profits. The published restriction regime itself
 removes 30\% of the no-skill value. What remains to the seller is the behaviour of buyers, who by one trade-press
-account realise a fraction of the no-skill benchmark, and its own discretion.
+account realise a fraction of the no-skill benchmark, and its own discretion. The contrast with \citet{lim2026b}
+makes the point directly. For his benchmark population the firm's Pro 8\% and One 6\% plans at \$100,000 are worth
+\$246 and \$188 less than their fees; for the disciplined no-skill buyer here Pro 8\% is worth \$382 more than its
+fee and One 6\% \$67 less. A registered reconciliation reproduces his two values and finds that the buyer accounts
+for more than the whole difference; real price paths and the rules his model leaves out work the other way.
 
-The paper makes four contributions. It is, to my knowledge, the first reproducible pricing of a named firm's full
-rule set, including the consistency rule, intraday monitoring, lot and position caps and the restriction regime
-that \citet{lim2026} lists as omitted, with the firm's fee at every size and on every plan. It solves for the
-buyer's best state-dependent policy, the open limitation both earlier papers name, and checks the solution on real
-price paths. It reproduces \citet{lim2026}'s tables from an independent implementation, which locates one
-definitional difference in his headline figure. And it joins contract value to a measured supply of skill. Of 21
-registered hypotheses, 13 were supported, 5 refuted and 3 inconclusive; each is reported as found
+The paper makes four contributions. It prices one firm's full rule set on real price paths, including the
+consistency rule and intraday monitoring, which both of Lim's papers omit or approximate, the lot and position caps
+and the firm's restricted regime, with the fee at every size and on every plan, and it releases everything needed
+to reproduce each number. It solves for the buyer's best state-dependent policy, which \citet{lim2026} names as a
+limitation, \citet{lim2026b} calls the natural next step and \citet{villahermosa2026} treats only through a
+bold-play argument, and checks the solution on real price paths. It reproduces \citet{lim2026}'s tables from an independent implementation, which locates one
+definitional difference in his headline figure, and reproduces \citet{lim2026b}'s values for two of this firm's
+plans before decomposing the difference from its own. And it joins contract value to a measured supply of skill.
+Of 24 registered hypotheses, 15 were supported, 5 refuted, 3 inconclusive and 1 partly supported; each is reported
+as found
 (Table~\ref{tab:verdicts}).
+
+The contract also touches older literatures, most of which \citet{lim2026b} reviews. Its funded stage is a convex
+claim, and convex rewards push an agent near a threshold toward risk \citep{brown1996,carpenter2000}; the best
+policy of Section~\ref{sec:best} is that response, solved exactly for this contract. Reaching a target before a
+floor is the problem of \citet{browne1999}, and a trailing limit is the drawdown constraint of
+\citet{grossman1993}. On the buyer's side, few retail speculators show skill that persists \citep{barber2014}.
+European regulators restricted retail contracts for difference after national studies found that most retail
+accounts lost money, and required each provider to state its own loss rate beside a standard warning that 74\% to
+89\% of retail accounts lose money \citep{esma2018}; that regime is the model \citet{lim2026} proposes for
+disclosure. \citet{lim2026b} reads the market's menus as competition on salient evaluation terms with low-salience
+funded terms \citep{gabaix2006}.
 
 Section~\ref{sec:contract} describes the contract. Section~\ref{sec:method} sets out the design.
 Section~\ref{sec:results} reports the valuation. Section~\ref{sec:skill} asks whether the skill is there.
@@ -117,7 +146,12 @@ Section~\ref{sec:conclusion} concludes.
 The firm is Alpha Capital Group, a UK company whose accounts trade on the server of ACG Markets. I use its
 published help-centre articles and terms and conditions as they stood on 13 October 2026. Appendix~\ref{app:rules}
 lists each rule with its wording and source. Every quoted phrase was checked word for word against the page
-fetched directly, all 64 articles in the rule-bearing sections were read, and the pages' hashes are recorded.
+fetched directly, all 64 articles in the rule-bearing sections were read, and the pages' hashes are recorded. I
+fetched and compared all of them again on 8 November 2026. Every quoted phrase was unchanged. The only change to a
+rule priced here was two additions to the Max Risk Rule: trading costs count toward its threshold, and
+same-direction trades on one asset opened within ten minutes of each other count together. Neither binds the books
+priced here, which open a trade on each asset at most once a day and, on the one plan with a 1\% threshold, risk
+0.9\%.
 
 \paragraph{The base contract.} The ``Swing'' plan is a two-step evaluation. Step 1 requires a profit of 10\% and
 step 2 a further 5\% on a fresh balance, each with at least three trading days. The account is closed if equity
@@ -146,7 +180,8 @@ my base case and the standard regime the upper case.
 buyer to ``maintain the same level of risk''. And every passed evaluation is reviewed before a Qualified account
 is issued. All values in this paper are what the written rules pay if the firm pays every valid request.
 
-\paragraph{The menu.} The firm sells eight plans. Table~\ref{tab:menu} gives their structure. The ``Pro'' plans
+\paragraph{The menu.} The firm sells eight plans. The Pro plans can also be bought with bi-weekly payouts, and
+Table~\ref{tab:menu} prices Pro 10\% both ways, nine contracts in all. The ``Pro'' plans
 are two-step with static limits of 6\%, 8\% or 10\%; Pro 10\% has the same targets and limits as Swing, twice its
 lot cap, a five-minute restriction around news releases and no weekend holding once funded. The ``One'' plans are
 one-step with a trailing loss limit: the floor follows the highest end-of-day balance until it reaches the
@@ -184,7 +219,7 @@ solve for the policy that maximises expected payouts by backward induction on a 
 for that model. On the real history it is one admissible policy, so its realised value is a lower bound on the
 optimum there.
 
-\paragraph{Pre-registration and gates.} The analysis plan and five dated amendments, with 21 hypotheses, were
+\paragraph{Pre-registration and gates.} The analysis plan and six dated amendments, with 24 hypotheses, were
 committed and pushed to a version-controlled repository before the runs they describe; analyses outside them are
 labelled exploratory. Before any result was read, the simulator had to reproduce an earlier study's table exactly
 and agree with an older, independently written simulator path by path on 2,178 cases, which it did with no
@@ -313,10 +348,11 @@ the gain from a Sharpe ratio of 0.3.
 \subsection{What each rule costs}
 Table~\ref{tab:rules} removes one rule at a time with the policy held fixed. The largest items are the second
 step, trading costs, the firm's 20\% share and the absence of a fee refund. A spread of \CoinCost{} of the risk a
-trade takes 28\% of the coin flip's value. The rules \citet{lim2026} lists as omitted from his model are small
-here: the Best Day Rule, intraday monitoring, the funded caps and the Max Risk Rule together cost the coin flip
-about \$28, taken one at a time, and the daily limit costs nothing. So his caveat that the omissions bias his
-values upward is, on this contract, a modest one. The restricted regime is the large one: it lowers the no-skill
+trade takes 28\% of the coin flip's value. The frictions \citet{lim2026} omits or approximates are small here:
+taken one at a time, the Best Day Rule, a consistency rule, costs the coin flip \$12 and intraday monitoring of
+the floors \$10. Two rules his model also lacks, the funded lot and position caps and the Max Risk Rule, cost \$6
+and nothing, and the daily limit costs nothing. So his caveat that the omissions bias his values upward is, on
+this contract, a modest one. The restricted regime is the large one: it lowers the no-skill
 value from \VcoinStd{} to \Vcoin. Appendix~\ref{app:more} gives the same table for the standard regime, in which
 a skilled buyer is better off without the earliest possible payouts, a point the next subsection measures.
 
@@ -429,7 +465,8 @@ its value exceeds its \$77 fee by \EVProTen{} (H15 supported). The one-step plan
 10\% is worth \DiffOnePro{} less than Pro 10\% (H17 supported), because each payout ratchets the trailing floor up
 and the cushion never rebuilds. I had expected Swing to return the least per fee dollar; the One plans do, and
 H16 is refuted. Direct is close to fair, \VDirect{} of value against \$97 (H18 supported), with \PpaidDirect{} of
-buyers ever paid.
+buyers ever paid. The second and third patterns are those \citet{lim2026b} reports across 21 firms on a stylised
+model: fees that explain little of the value, and one-step contracts with trailing limits that are worth little.
 
 \begin{table}[t]
 \centering\small
@@ -549,8 +586,8 @@ The contract pays for skill. Whether a buyer has any is a separate question, and
 only for one kind of buyer: a researcher who tests published effects carefully at retail costs.
 
 \paragraph{Twenty-four tests.} Before this study I ran a programme of 24 pre-registered tests of published
-trading effects on currency, index, bond and commodity contracts at the same broker's measured spreads and swaps,
-with a discovery sample, a validation sample, one-time hold-outs, random-timing twins and a Benjamini--Hochberg
+trading effects on currency, index, bond, commodity and cryptocurrency contracts, at the same broker's measured
+spreads and swaps or, for the tests built on futures, at exchange futures costs, with a discovery sample, a validation sample, one-time hold-outs, random-timing twins and a Benjamini--Hochberg
 correction across the family \citep{benjamini1995}. The ideas came from work on currency fixings
 \citep{krohn2024}, month-end hedging flows \citep{melvin2015}, monetary policy announcements
 \citep{mueller2017,lee2025}, futures positioning \citep{tornell2012}, value, momentum and trend
@@ -575,7 +612,7 @@ refuted. At 0.3, only \RefutedThree{} are. The median test could have detected a
 80\% power. ``No edge was found'' is supported; ``no edge exists'' is not.
 
 This is not a weakness peculiar to the programme. The contract's break-even Sharpe ratio is about zero, and a
-ratio of 0.3 doubles its value, so the purchase turns on a difference of a few tenths. Telling a Sharpe ratio of
+ratio of 0.3 nearly doubles the value of a ratio of zero, so the purchase turns on a difference of a few tenths. Telling a Sharpe ratio of
 0.3 from zero with 80\% power at the 5\% level takes about 69 years of daily data. No retail track record and few
 backtests resolve the range that decides the purchase. The evaluation does not resolve it either: \Ppass{} of
 no-skill buyers pass, against 37.5\% at a Sharpe ratio of 0.3, so a pass multiplies the odds of that much skill
@@ -588,12 +625,12 @@ trade. None is a confirmed edge, and two were chosen after their parent tests we
 early purchases. Sizes are selected on purchases from 2005 to 2014 and held for purchases from 2017 to 2021.
 
 \begin{table}[t]
-\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{threeparttable}
 \caption{The programme's surviving strategies through the base contract}\label{tab:real}
-\begin{tabular}{L{4.2cm}lrrrrlr}
+\begin{tabular}{L{3.6cm}lrrrrlrr}
 \toprule
-Book & Purchases & Sharpe & P(pass) & Months & P(paid) & $V$ (95\% interval) & Idealised\\
+Book & Purchases & Sharpe & P(pass) & Months & P(paid) & $V$ (95\% interval) & Idealised & Per position\\
 \midrule
 \tabin{tab_real}
 \bottomrule
@@ -602,7 +639,8 @@ Book & Purchases & Sharpe & P(pass) & Months & P(paid) & $V$ (95\% interval) & I
 \item Dollars per \$10,000 purchase, restricted regime. ``Idealised'' is the value of the Section~\ref{sec:method}
 buyer at the same net Sharpe ratio on the same purchase days. Intervals are from a stationary bootstrap of the
 purchase days \citep{politis1994}, because neighbouring purchases share most of their path. ``Months'' is the
-median time to pass.
+median time to pass. ``Per position'' is $V$ when the funded 1\% cap applies to each open trade rather than to all
+of them together, with sizes re-selected in the same way (exploratory, not pre-registered).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -611,8 +649,20 @@ Every book is worth less than an idealised buyer with the same Sharpe ratio (H19
 was tested on untouched data has a Sharpe ratio of \SharpeRthreeLate{} on late purchases and is worth
 \VRthreeLate, against \IdealRthreeLate. Two mechanisms do this. An event-driven edge trades too rarely to reach
 the targets: the month-end book trades on about twelve days a year and passes 1\% of the time at any size. And
-once funded, the restricted regime caps the risk of all open positions together at 1\%, so a book with twelve
-trades open risks 0.08\% on each. The one book that trades daily is worth \VAoneEarly{} on the years it was
+once funded, the registered design reads the restricted regime's 1\% cap as a limit on the risk of all open
+positions together, the same budget the idealised buyer has, so a book with twelve trades open risks 0.08\% on
+each.
+
+The firm's wording, a 1\% cap on ``any single position'', also allows each open trade 1\%. Read that way, a book
+that holds several correlated trades at once can carry several times the idealised buyer's risk once funded, and
+the values rise (Table~\ref{tab:real}, last column; exploratory). The ensemble rises to \VRthreeLatePos{}
+(\$0 to \VRthreeLatePosHi), still far below \IdealRthreeLate. But A1b, which holds up to three long-dollar trades at
+once, rises to \VAoneLatePos{} (\VAoneLatePosLo{} to \VAoneLatePosHi) against \IdealAoneLate{} idealised, and W3
+to \VWthreeLatePos{} (\VWthreeLatePosLo{} to \VWthreeLatePosHi) against \IdealWthreeLate, so H19 would be
+inconclusive for those two. Whether the firm would treat three correlated trades at 1\% each as three positions,
+or as one position split three ways, its pages do not settle.
+
+Under the registered reading, the one book that trades daily is worth \VAoneEarly{} on the years it was
 chosen on and \VAoneLate{} afterwards, with an interval from \VAoneLateLo{} to \VAoneLateHi. Whether it beats the
 no-skill buyer's \CoinLate{} on the same purchase days is not settled (H20 inconclusive), and nor is whether
 every book has decayed (H21 inconclusive): five overlapping years hold few independent three-year windows.
@@ -626,16 +676,61 @@ I observe nothing of the firm's books, so this section draws implications and no
 \paragraph{Who pays.} The same contract returns very different amounts to different buyers.
 On the base contract at its \$147 list fee, expected payouts per dollar of fee are \$0.22 for a no-skill buyer at
 conventional 1\% sizing, \PerFeeSwing{} at contract-optimal sizing and \$1.94 at a Sharpe ratio of 0.3; on Pro
-10\% the middle figure is \PerFeeProTen. A seller whose buyers were all disciplined would lose money on most of
-its menu at list prices. It does not need to exclude them if they are few. \citet{lim2026} reaches the same
-conclusion from an assumed population, attributing the margin to cost drag and to buyers sizing away from the
-ridge, and \citet{villahermosa2026} from the pass rate at which his seller breaks even. The only public figure I
-could read at its source is a trade-press report of a technology vendor's data, in which 7\% of 300,000 accounts
-across ten firms achieved a payout and payouts averaged 4\% of the account \citep{financemagnates2025}. Taken at
-face value that is about 0.3\% of the account per purchase, against \VcoinPct{} for the disciplined no-skill buyer
-here and 0.33\% at 1\% sizing. The firms, rules and dates differ, the figure is not audited, and I do not rest
-anything on it. It is consistent with a customer base that does about as well as a no-skill buyer following
-conventional risk advice.
+10\% the middle figure is \PerFeeProTen. A seller whose buyers were all disciplined would pay out more than it
+collects at list prices on 29 of the 47 plan and account-size combinations in Table~\ref{tab:sizes}. It does not
+need to exclude them if they are few. \citet{lim2026} reaches the same conclusion from an assumed population,
+attributing the margin to cost drag and to buyers sizing away from the ridge, and \citet{villahermosa2026} from the
+pass rate at which his seller breaks even.
+
+The same contracts look very different to a less disciplined buyer. \citet{lim2026b} values the firm's Pro 8\% and
+One 6\% plans at \$100,000, at the same list fees I read, for his benchmark population, whose average net Sharpe
+ratio after costs is $-1.59$, over a one-year funded stage. Both come out below their fees, by \$246 and \$188, and
+on his benchmark the one-step plan is the better buy. For the disciplined no-skill buyer here, Pro 8\% returns
+\$909 against its \$527 fee and One 6\% \$330 against \$397, so the two-step plan is worth \$449 more.
+
+A registered reconciliation measures where the difference comes from. Run on his conventions, with his population,
+Gaussian daily increments, a 300-day cap on each phase, a one-year funded stage and payouts swept every ten days,
+my simulator gives \KtenProRepro{} and \KtenOneRepro{} against his \$281 and \$209 (H22). The match holds only for
+the ten-day sweep, one of the readings fixed in advance; the primary reading of twenty days gives \KtenProPrimary{}
+and \KtenOnePrimary, so H22 is partly supported. Four factors then move from his level to mine one at a time: the
+buyer, the horizon and payout mechanics, the price paths and their monitoring, and the rules his model leaves out.
+Table~\ref{tab:k10} attributes the difference to each, averaged over every order in which they can be switched.
+The buyer accounts for more than the whole of it on both plans (H23): with only the buyer changed, the disciplined
+no-skill buyer's expected value is already \KtenProEVbuyer{} on Pro 8\% and \KtenOneEVbuyer{} on One 6\%, and the
+ranking of the two plans reverses, by \KtenRank{} (\KtenRankLo{} to \KtenRankHi; H24). Real paths cost the buyer
+\KtenProPaths{} and \KtenOnePaths, and the rules his model omits cost \KtenProRules{} on Pro 8\% and add
+\KtenOneRules{} on One 6\%, where the trailing floor stops at the initial balance. His negative values come from his
+population, which passes the one-step plan more easily (\KtenPassOne{} against \KtenPassPro), not from the contracts.
+
+\begin{table}[t]
+\centering\small
+\begin{threeparttable}
+\caption{From Lim's values to this paper's, by factor}\label{tab:k10}
+\begin{tabular}{lrr}
+\toprule
+ & Pro 8\% & One 6\%\\
+\midrule
+\tabin{tab_k10}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Expected payouts in dollars per \$100,000 purchase at the firm's list fees, restricted regime. Factor rows are
+Shapley values: each factor's change in value averaged over all 24 orders of switching the four factors from Lim's
+level to this paper's, so they sum to the gap. Lim's conventions use ten-day sweeps (H22). Standard errors, from 20
+batches, are at most \$22 for a cell and \$8 for a factor.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The only public figures I
+could read at their source are a trade-press report of data from a technology vendor to prop firms, covering more
+than 300,000 accounts held by 100,000 traders at ten firms \citep{chmiel2024}: 14\% of traders passed a challenge,
+7\% of traders received a payout, and payouts averaged 4\% of the account. The report does not give the period
+covered, or say whether 4\% is per payout or per paid trader. Read as one payout per paid trader, the figures imply
+about 0.3\% of an account per trader and about 0.1\% per account bought, since traders held three accounts each.
+The disciplined no-skill buyer here receives \VcoinPct{}, and the same buyer at 1\% sizing 0.33\%. The firms, rules
+and dates differ, the figures are not audited, and I do not rest anything on them. They are consistent with a
+customer base that does no better than a no-skill buyer following conventional risk advice.
 
 \paragraph{What the price list suggests.} The menu's pricing is hard to explain by the cost of the claims. Fees
 fall with account size while the value of the claim per dollar does not. Two plans with identical targets and
@@ -655,7 +750,8 @@ worth knowing; they are not the same thing as the odds the rules imply.
 
 \section{Limitations}\label{sec:limits}
 \emph{One firm, one date.} The rules and fees are one firm's on 13 October 2026. They change; the rule sources are
-dated and hashed so that the contract priced here can be identified.
+dated and hashed so that the contract priced here can be identified. The rules were re-read on 8 November 2026
+without a change that moves any value here; the fees were not re-read.
 
 \emph{The firm pays.} Every value assumes each valid request is paid. Discretionary refusal, the gambling
 policy, the review on passing and the ``same level of risk'' clause are not modelled.
@@ -680,13 +776,13 @@ The history of the plan and of every commit touching the analysis is in the repr
 be set by the author, so this is a record rather than proof; later plans will be registered with a third party
 before they are run. The 24 tests were run in adaptive batches and their family was fixed as it grew.
 
-\emph{Unrefereed neighbours.} The three papers closest to this one are working papers. I reproduced the one whose
-numbers I use and cite the others as reported.
+\emph{Unrefereed neighbours.} The four papers closest to this one are working papers. I reproduced the one whose
+model I rely on and cite the others as reported.
 
 \section{Conclusion}\label{sec:conclusion}
 On its written rules, the contract examined here is close to a fair bet for a disciplined buyer with no skill
 and a cheap claim for one with a little. Its base plan returns about 1\% of the account in expected payouts
-against a fee of 0.55\% to 1.47\%; the firm's standard two-step plans return more than their list fee at every
+against a fee of 0.55\% to 1.47\%; the firm's two-step Pro plans return more than their list fee at every
 size; its one-step plans return about half of theirs. The value depends on the instrument's trading cost, on
 stops filling, and on the firm paying.
 
@@ -705,8 +801,10 @@ with a known optimum.
 \appendix
 \section{Rule sources}\label{app:rules}
 All pages were fetched directly on 13 October 2026 from \url{https://help.alphacapitalgroup.uk} and
-\url{https://alphacapitalgroup.uk/terms-and-conditions}. The repository records each page's address, date and
-SHA-256 hash and the script that checks every quoted phrase against the raw page.
+\url{https://alphacapitalgroup.uk/terms-and-conditions}, and again on 8 November 2026. The repository records each
+page's address, date and SHA-256 hash and the script that checks every quoted phrase against the raw page. On the
+second reading every phrase below was still on its page; the Max Risk Rule had gained the two additions described in
+Section~\ref{sec:contract}.
 
 \begin{longtable}{L{3.0cm}L{8.2cm}L{3.6cm}}
 \toprule
@@ -742,7 +840,7 @@ Scaling & At a 10\% gain the trader ``can request scaling''; not available in th
 caps, the news rule and the discretionary clauses.
 
 \section{Hypotheses and verdicts}\label{app:verdicts}
-\begin{table}[h]
+\begin{table}[ht]
 \centering\footnotesize
 \begin{threeparttable}
 \caption{All registered hypotheses}\label{tab:verdicts}
@@ -756,14 +854,15 @@ caps, the news rule and the discretionary clauses.
 \begin{tablenotes}\footnotesize
 \item $D$ is the gain from contract-optimal sizing minus the gain from a Sharpe ratio of 0.3. A hypothesis is
 supported if the interval excludes its boundary in the stated direction, refuted if it excludes it in the other,
-and inconclusive otherwise. H1 to H3 were fixed in the original plan; H4 to H9, H10 to H13, H14 to H18 and H19
-to H21 in four dated amendments, each committed before its run.
+and inconclusive otherwise. H22 is partly supported because it holds only under an alternative reading fixed in
+advance. H1 to H3 were fixed in the original plan; H4 to H9, H10 to H13, H14 to H18, H19 to H21 and H22 to H24 in
+five dated amendments, each committed before its run.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \section{Further tables}\label{app:more}
-\begin{table}[h]
+\begin{table}[ht]
 \centering\small
 \begin{threeparttable}
 \caption{The coin flip along the sizing grid, base contract, restricted regime}\label{tab:coin}
@@ -781,7 +880,7 @@ the share still in it after 504 trading days. Funded risk 1\%.
 \end{threeparttable}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering\small
 \begin{threeparttable}
 \caption{Change in value when one rule is removed, standard regime}\label{tab:rulesstd}
@@ -795,7 +894,7 @@ Rule removed & Coin flip & $S=0.3$ & $S=1.0$\\
 \end{threeparttable}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering\small
 \begin{threeparttable}
 \caption{Funding probabilities on \citet{lim2026}'s classic contract}\label{tab:lim}
@@ -815,7 +914,7 @@ and normal increments. The real book is sized to the same daily volatility.
 \end{threeparttable}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering\small
 \begin{threeparttable}
 \caption{The base contract's fee and the no-skill value by account size}\label{tab:fee}
@@ -840,6 +939,11 @@ value to be zero.
 \toprule
 Test & Idea & Years & Sharpe & 90\% interval & MDE & At $S^*$ & At 0.3 & At 0.5\\
 \midrule
+\endfirsthead
+\caption[]{The 24 tests: claim exclusion (continued)}\\
+\toprule
+Test & Idea & Years & Sharpe & 90\% interval & MDE & At $S^*$ & At 0.3 & At 0.5\\
+\midrule
 \endhead
 \tabin{tab_tests}
 \bottomrule
@@ -847,6 +951,7 @@ Test & Idea & Years & Sharpe & 90\% interval & MDE & At $S^*$ & At 0.3 & At 0.5\
 \noindent $S^*$ is the break-even Sharpe ratio at the base contract's \$10,000 list fee (\BEsharpeList). MDE is the
 Sharpe ratio detectable with 80\% power at the one-sided 5\% level. Intervals follow \citet{lo2002}.}
 
+\raggedright
 \begin{thebibliography}{99}
 \bibitem[Andersen et~al.(2003)]{andersen2003} Andersen, T. G., Bollerslev, T., Diebold, F. X., \& Vega, C. (2003).
 Micro effects of macro announcements: Real-time price discovery in foreign exchange. \emph{American Economic
@@ -855,29 +960,47 @@ Review}, 93(1), 38--62.
 momentum everywhere. \emph{Journal of Finance}, 68(3), 929--985.
 \bibitem[Avellaneda and Lee(2010)]{avellaneda2010} Avellaneda, M., \& Lee, J.-H. (2010). Statistical arbitrage in
 the US equities market. \emph{Quantitative Finance}, 10(7), 761--782.
+\bibitem[Barber et~al.(2014)]{barber2014} Barber, B. M., Lee, Y.-T., Liu, Y.-J., \& Odean, T. (2014). The
+cross-section of speculator skill: Evidence from day trading. \emph{Journal of Financial Markets}, 18, 1--24.
 \bibitem[Benjamini and Hochberg(1995)]{benjamini1995} Benjamini, Y., \& Hochberg, Y. (1995). Controlling the false
 discovery rate: A practical and powerful approach to multiple testing. \emph{Journal of the Royal Statistical
 Society: Series B}, 57(1), 289--300.
 \bibitem[Bernard and Thomas(1989)]{bernard1989} Bernard, V. L., \& Thomas, J. K. (1989). Post-earnings-announcement
 drift: Delayed price response or risk premium? \emph{Journal of Accounting Research}, 27 (Supplement), 1--36.
+\bibitem[Brown et~al.(1996)]{brown1996} Brown, K. C., Harlow, W. V., \& Starks, L. T. (1996). Of tournaments and
+temptations: An analysis of managerial incentives in the mutual fund industry. \emph{Journal of Finance}, 51(1),
+85--110.
+\bibitem[Browne(1999)]{browne1999} Browne, S. (1999). Reaching goals by a deadline: Digital options and
+continuous-time active portfolio management. \emph{Advances in Applied Probability}, 31(2), 551--577.
+\bibitem[Carpenter(2000)]{carpenter2000} Carpenter, J. N. (2000). Does option compensation increase managerial
+risk appetite? \emph{Journal of Finance}, 55(5), 2311--2331.
+\bibitem[Chmiel(2024)]{chmiel2024} Chmiel, D. (2024). Exclusive: Only 7\% of 300,000 prop trading accounts
+achieved payouts. \emph{Finance Magnates}, 18 September.
+\url{https://www.financemagnates.com/forex/analysis/exclusive-only-7-of-300000-prop-trading-accounts-achieved-payouts/}
+(accessed 8 November 2026).
 \bibitem[Darmanin(2026)]{darmanin2026} Darmanin, A. (2026). Retail trader's ruin: An anatomy of popular signal
 failure. arXiv:2607.20093 (working paper, not peer reviewed).
 \bibitem[Dubins and Savage(1965)]{dubins1965} Dubins, L. E., \& Savage, L. J. (1965). \emph{How to Gamble If You
 Must: Inequalities for Stochastic Processes}. McGraw-Hill.
-\bibitem[Finance Magnates(2025)]{financemagnates2025} Finance Magnates (2025). Only 1 in 20 traders pass prop firm
-challenges, reports The Funded Trader. 18 March.
-\url{https://www.financemagnates.com/forex/only-1-in-20-traders-pass-prop-firm-challenges-reports-the-funded-trader/}
-(accessed 13 October 2026).
+\bibitem[ESMA(2018)]{esma2018} European Securities and Markets Authority (2018). Decision (EU) 2018/796 of 22 May
+2018 to temporarily restrict contracts for differences in the Union. \emph{Official Journal of the European
+Union}, L 136, 1 June, 50--80.
+\bibitem[Gabaix and Laibson(2006)]{gabaix2006} Gabaix, X., \& Laibson, D. (2006). Shrouded attributes, consumer
+myopia, and information suppression in competitive markets. \emph{Quarterly Journal of Economics}, 121(2), 505--540.
 \bibitem[Gatev et~al.(2006)]{gatev2006} Gatev, E., Goetzmann, W. N., \& Rouwenhorst, K. G. (2006). Pairs trading:
 Performance of a relative-value arbitrage rule. \emph{Review of Financial Studies}, 19(3), 797--827.
+\bibitem[Grossman and Zhou(1993)]{grossman1993} Grossman, S. J., \& Zhou, Z. (1993). Optimal investment
+strategies for controlling drawdowns. \emph{Mathematical Finance}, 3(3), 241--276.
 \bibitem[Krohn et~al.(2024)]{krohn2024} Krohn, I., Mueller, P., \& Whelan, P. (2024). Foreign exchange fixings and
 returns around the clock. \emph{Journal of Finance}, 79(1), 541--578.
 \bibitem[Lakonishok and Smidt(1988)]{lakonishok1988} Lakonishok, J., \& Smidt, S. (1988). Are seasonal anomalies
 real? A ninety-year perspective. \emph{Review of Financial Studies}, 1(4), 403--425.
 \bibitem[Lee and Wang(2025)]{lee2025} Lee, S. S., \& Wang, M. (2025). Jumps and post-FOMC announcement returns in
 currency markets. \emph{Review of Asset Pricing Studies}, 15(3--4), 247--287.
-\bibitem[Lim(2026)]{lim2026} Lim, B. C. (2026). The price of a funded account: An actuarial analysis of
+\bibitem[Lim(2026a)]{lim2026} Lim, B. C. (2026a). The price of a funded account: An actuarial analysis of
 proprietary trading firm challenges. SSRN working paper 7178078 (not peer reviewed).
+\bibitem[Lim(2026b)]{lim2026b} Lim, B. C. (2026b). Phantom generosity: Contract design and value in the market
+for proprietary-trading evaluations. SSRN working paper 7184138, version of 26 July 2026 (not peer reviewed).
 \bibitem[Liu and Tsyvinski(2021)]{liu2021} Liu, Y., \& Tsyvinski, A. (2021). Risks and returns of cryptocurrency.
 \emph{Review of Financial Studies}, 34(6), 2689--2727.
 \bibitem[Lo(2002)]{lo2002} Lo, A. W. (2002). The statistics of Sharpe ratios. \emph{Financial Analysts Journal},

@@ -15,7 +15,7 @@ investment advice or a recommendation to buy any product. All values assume the 
 ```
 pip install -r requirements.txt
 python reproduce.py --quick     # about forty minutes: checks that everything runs (5,000 paths, not the paper's numbers)
-python reproduce.py             # about two and a quarter hours: every result, table, figure and the PDF
+python reproduce.py             # about two and three quarter hours: every result, table, figure and the PDF
 python reproduce.py --check     # compares the regenerated tables with results/reference
 ```
 
@@ -31,12 +31,15 @@ itself rebuilds in seconds from the shipped results: `python paper/prop_contract
 | `propcontract/optimal.py` | The buyer's best state-dependent policy by backward induction |
 | `propcontract/book.py` | Standalone builder of the one-trade-a-day book from raw 30-minute bars |
 | `propcontract/legacy/` | An older, independently written simulator, kept as a cross-check |
-| `research/PREREGISTRATION_paper2_contract_map.md` | The analysis plan and its five dated amendments (21 hypotheses) |
+| `research/PREREGISTRATION_paper2_contract_map.md` | The analysis plan and its six dated amendments (24 hypotheses) |
 | `research/RESULTS_paper2_contract_map.md` | Every result as first recorded, verdict by verdict |
 | `research/VALIDATION_paper2_sources.md` | What was checked about each outside source, and what could not be |
 | `research/RULES_alpha_swing_2026-10-13.md` | The firm's rules as read on 13 October 2026, with sources |
 | `research/run_K*.py`, `research/info_K_*.py` | The analyses, one script per plan amendment |
-| `research/validate_lim.py` | Independent re-implementation of Lim (2026), from his paper's text alone |
+| `research/validate_lim.py` | Independent re-implementation of Lim (2026a), from his paper's text alone |
+| `research/run_K10.py` | Reconciliation with Lim (2026b): his values for two of the firm's plans, then the gap by factor |
+| `research/info_K9_position_cap.py` | The real strategies with the funded 1% cap read per position (exploratory) |
+| `research/recheck_rules.py` | The re-reading of the firm's pages on 8 November 2026 (its log is in `results/reference/logs`) |
 | `data/r2cache/` | The day series every result is computed from (see below) |
 | `data/derived/` | Reference prices, contract sizes and hourly spread tables; daily series of the real strategies |
 | `results/reference/` | The tables and logs of the original runs |
@@ -56,7 +59,9 @@ sizes are in `data/derived/book_meta.json`.
   in `data/raw/` as described in `research/validate_book.py`, and the `book` stage rebuilds the day series and
   checks them against the shipped ones. In the research repository that check passes exactly.
 - *The firm's web pages.* `research/SOURCES_alpha_2026-10-13.json` records each page's address, date and SHA-256
-  hash; `python reproduce.py --only rules` re-checks every quoted phrase against the live pages.
+  hash; `python reproduce.py --only rules` re-checks every quoted phrase against the live pages. The
+  comparison of 8 November 2026 with 13 October (`research/recheck_rules.py`) needs both sets of saved pages, so it
+  is not a stage here; its log is shipped.
 - *The builders of the three real strategies in Table 10.* They depend on a larger private research codebase.
   Their daily profit-and-loss series are shipped in `data/derived/K9_daily_series.npz`, so the table reproduces,
   but the series themselves cannot be rebuilt from this package.
@@ -75,10 +80,12 @@ later work will be registered with a third-party service before they are run.
 Code: MIT (see `LICENSE`). Text, tables and figures of the paper: CC BY 4.0. If you use this package, please cite
 the paper and the package:
 
-> Ojebiyi, T. O. (2026). *Fair on Paper: reproduction package* (version 1.0.0). Zenodo.
+> Ojebiyi, T. O. (2026). *Fair on Paper: reproduction package* (version 1.1.0). Zenodo.
 > https://doi.org/10.5281/zenodo.23374897
 
 That DOI always resolves to the latest version; version 1.0.0 itself is https://doi.org/10.5281/zenodo.23374898.
+Version 1.1.0 adds the reconciliation with Lim (2026b), the per-position check of the real strategies, the
+re-reading of the firm's rules and the revised paper; every result of version 1.0.0 is unchanged.
 `CITATION.cff` holds the same details, and GitHub's "Cite this repository" button reads it.
 
 Contact: Timothy Oluwatobi Ojebiyi, tobiojebiyi@gmail.com, ORCID [0009-0009-7786-8549](https://orcid.org/0009-0009-7786-8549)

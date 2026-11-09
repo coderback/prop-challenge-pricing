@@ -6,7 +6,7 @@
     python reproduce.py --list          the stages, in order
     python reproduce.py --check         compare data/checks with results/reference (after a full run)
 
-A full run takes about two and a quarter hours on one core and needs about 4 GB of memory. Each stage writes its
+A full run takes about two and three quarter hours on one core and needs about 4 GB of memory. Each stage writes its
 log to data/logs. Stages marked "network" fetch public pages and are skipped unless asked for by name.
 """
 import argparse
@@ -41,6 +41,12 @@ STAGES = [  # name, command, log, note
     ("k8", [PY, "research/run_K8.py", "run"], "run_K8.log", "the plan menu (about 40 minutes)"),
     ("k8report", [PY, "research/run_K8.py", "report"], "run_K8_report.log", "H14-H18"),
     ("k9", [PY, "research/run_K9.py"], "run_K9.log", "real strategies through the contract, H19-H21"),
+    ("k9pos", [PY, "research/info_K9_position_cap.py"], "info_K9_position_cap.log",
+     "the same with the funded 1% cap read per position (exploratory)"),
+    ("k10step1", [PY, "research/run_K10.py", "step1"], "run_K10_step1.log",
+     "reconciliation with Lim (2026b): his conventions, H22 (about 5 minutes)"),
+    ("k10step2", [PY, "research/run_K10.py", "step2"], "run_K10_step2.log",
+     "the gap decomposed by factor, H23-H24 (about 25 minutes)"),
     ("lim", [PY, "research/validate_lim.py"], "validate_lim.log", "independent re-implementation of Lim (2026)"),
     ("export", [PY, "research/run_K.py", "export"], "run_K_export.log", "copy results into paper/prop_contract/results"),
     ("export2", [PY, "research/export_paper2.py"], "export_paper2.log", "the extension results and every hypothesis number"),
@@ -53,7 +59,8 @@ NETWORK = {"rules", "citations"}
 PAPER = {"export", "export2", "exhibits", "pdf"}
 REFERENCE = ["K1_map.csv", "K2_rules.csv", "K3_lim_replication.csv", "K3_real_through_lim.csv", "K3_normal_through_alpha.csv",
              "K_robustness.csv", "X1_claim_exclusion.csv", "K5_horizon.csv", "K5_D.csv", "K6_books.csv", "K7_classes.csv",
-             "K8_plans.csv", "K9_real_books.csv", "K_bonus.csv", "V1_lim_cells.csv"]
+             "K8_plans.csv", "K9_real_books.csv", "K_bonus.csv", "V1_lim_cells.csv", "K9_per_position/K9_real_books.csv",
+             "K10_step1.csv", "K10_cells.csv", "K10_shapley.csv"]
 
 
 def pdf(log: Path) -> int:

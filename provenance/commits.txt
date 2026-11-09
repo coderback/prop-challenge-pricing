@@ -21,3 +21,8 @@ c87a97f0213d701c6a1e61925f9746f41c97ae97  2026-10-13T22:12:04+01:00  docs(resear
 70f146d0e1cfeb20a22dec7d93aa349f830eab6c  2026-10-14T15:56:32+01:00  docs(paper): research repository available on request; provenance folder is the public record
 e355a0a1e3b5a60235f970999640158e0e1b0d04  2026-10-14T18:12:18+01:00  docs(paper): Zenodo DOI for the reproduction package
 8d6b6876e70c1ded1cd71e15394a9192000a0e3b  2026-10-14T18:22:50+01:00  docs(paper): author ORCID iD
+09d805e5d30bb9266b9f68c6de45df99d7270500  2026-11-08T22:27:41Z  docs(paper): pre-submission review of paper 2
+b398ab8801635d388f702a34fe86b150afb23cb5  2026-11-08T23:36:39Z  docs(paper): position paper 2 against lim (2026b) and add related literature
+a06e364a0b65d2f6e5175fba567992dffe131ad9  2026-11-09T00:14:46Z  docs(research): amendment 6 to the paper 2 plan, reconciliation with lim (2026b) (K10)
+c21d8c21efb912c292c551bae635eef7a9c469bd  2026-11-09T00:58:13Z  feat(research): run K10, reconciliation with lim (2026b) (H22 partly, H23 and H24 supported)
+0f933ba33f73c4ff7c5cd2ac550b902d292ef348  2026-11-09T12:05:02Z  docs(paper): report the K10 reconciliation with lim (2026b)

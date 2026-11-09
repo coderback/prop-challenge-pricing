@@ -329,5 +329,15 @@
     "verdict": "SUPPORTED"
    }
   }
+ },
+ "K10": {
+  "H22": "PARTLY",
+  "H23": "SUPPORTED",
+  "H24": {
+   "mean": 699.0,
+   "lo": 665.0,
+   "hi": 733.0,
+   "verdict": "SUPPORTED"
+  }
  }
 }

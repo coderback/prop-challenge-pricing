@@ -1,0 +1,77 @@
+spec research/PREREGISTRATION_paper2_contract_map.md@a06e364 (amendment 6)
+K10 step 1 (H22): his conventions, N1 = 100000 paths per grid point
+    Pro 8% lock=False batch 1/20
+    Pro 8% lock=False batch 2/20
+    Pro 8% lock=False batch 3/20
+    Pro 8% lock=False batch 4/20
+    Pro 8% lock=False batch 5/20
+    Pro 8% lock=False batch 6/20
+    Pro 8% lock=False batch 7/20
+    Pro 8% lock=False batch 8/20
+    Pro 8% lock=False batch 9/20
+    Pro 8% lock=False batch 10/20
+    Pro 8% lock=False batch 11/20
+    Pro 8% lock=False batch 12/20
+    Pro 8% lock=False batch 13/20
+    Pro 8% lock=False batch 14/20
+    Pro 8% lock=False batch 15/20
+    Pro 8% lock=False batch 16/20
+    Pro 8% lock=False batch 17/20
+    Pro 8% lock=False batch 18/20
+    Pro 8% lock=False batch 19/20
+    Pro 8% lock=False batch 20/20
+  Pro 8% lock=False done (158s)
+    One 6% lock=False batch 1/20
+    One 6% lock=False batch 2/20
+    One 6% lock=False batch 3/20
+    One 6% lock=False batch 4/20
+    One 6% lock=False batch 5/20
+    One 6% lock=False batch 6/20
+    One 6% lock=False batch 7/20
+    One 6% lock=False batch 8/20
+    One 6% lock=False batch 9/20
+    One 6% lock=False batch 10/20
+    One 6% lock=False batch 11/20
+    One 6% lock=False batch 12/20
+    One 6% lock=False batch 13/20
+    One 6% lock=False batch 14/20
+    One 6% lock=False batch 15/20
+    One 6% lock=False batch 16/20
+    One 6% lock=False batch 17/20
+    One 6% lock=False batch 18/20
+    One 6% lock=False batch 19/20
+    One 6% lock=False batch 20/20
+  One 6% lock=False done (224s)
+    One 6% lock=True batch 1/20
+    One 6% lock=True batch 2/20
+    One 6% lock=True batch 3/20
+    One 6% lock=True batch 4/20
+    One 6% lock=True batch 5/20
+    One 6% lock=True batch 6/20
+    One 6% lock=True batch 7/20
+    One 6% lock=True batch 8/20
+    One 6% lock=True batch 9/20
+    One 6% lock=True batch 10/20
+    One 6% lock=True batch 11/20
+    One 6% lock=True batch 12/20
+    One 6% lock=True batch 13/20
+    One 6% lock=True batch 14/20
+    One 6% lock=True batch 15/20
+    One 6% lock=True batch 16/20
+    One 6% lock=True batch 17/20
+    One 6% lock=True batch 18/20
+    One 6% lock=True batch 19/20
+    One 6% lock=True batch 20/20
+  One 6% lock=True done (294s)
+  plan  tau trail_lock  primary      V  V_se      EV  his_V  his_EV  tol  within  p_pass
+Pro 8%   20       None     True 210.52  2.24 -316.48  281.0  -246.0 28.1   False    0.09
+Pro 8%    5       None    False 340.23  3.71 -186.77  281.0  -246.0 28.1   False    0.09
+Pro 8%   10       None    False 276.37  3.10 -250.63  281.0  -246.0 28.1    True    0.09
+One 6%   20      False     True  86.42  1.93 -310.58  209.0  -188.0 20.9   False    0.22
+One 6%    5      False    False 341.47  3.27  -55.53  209.0  -188.0 20.9   False    0.22
+One 6%   10      False    False 211.89  3.21 -185.11  209.0  -188.0 20.9    True    0.22
+One 6%   20       True    False 146.67  2.60 -250.33  209.0  -188.0 20.9   False    0.22
+One 6%    5       True    False 356.26  3.25  -40.74  209.0  -188.0 20.9   False    0.22
+One 6%   10       True    False 252.43  3.27 -144.57  209.0  -188.0 20.9   False    0.22
+
+H22 (reproduction within max(10%, $20) of $281 and $209): PARTLY (within tolerance only under tau=10, trail_lock=False)

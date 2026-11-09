@@ -30,6 +30,7 @@ class Contract:
     static_dd: float = 0.10
     trail_dd: float | None = None         # trailing loss limit: floor = highest end-of-day balance − limit, capped
                                           # at the initial balance; replaces static_dd when set
+    trail_lock: bool = True               # False = the trailing floor keeps rising past the initial balance
     daily_dd: float | None = 0.05         # None = no daily rule
     daily_ref: str = "balance"            # 5% of the day's opening balance; "initial" = 5% of initial (Lim)
     intraday: bool = True                 # floors checked on the day's worst mark; False = at the close only
@@ -142,7 +143,9 @@ class MatrixDays:
 # ------------------------------------------------------------------------------------------------ stages
 def _floor(c: Contract, high):
     """The overall loss limit in dollars: static, or trailing the highest end-of-day balance ``high``."""
-    return (1 - c.static_dd) * IB if c.trail_dd is None else np.minimum(IB, high - c.trail_dd * IB)
+    if c.trail_dd is None:
+        return (1 - c.static_dd) * IB
+    return np.minimum(IB, high - c.trail_dd * IB) if c.trail_lock else high - c.trail_dd * IB
 
 
 def _breaches(c: Contract, b0, worst, floor):
