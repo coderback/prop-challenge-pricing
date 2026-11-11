@@ -5,208 +5,335 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fair on Paper</title>
 <meta name="description" content="A working paper that prices a retail prop-firm evaluation contract on twenty years of intraday index prices: what it is worth to a buyer with no skill, how the price list compares, and what skill adds. Explore the real result tables.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f1e8; --panel:#fffefa; --ink:#14213d; --muted:#586179; --line:#dcd7c7;
-  --gold:#9a6b00; --goldfill:#d9a21b; --teal:#0b6e75; --tealfill:#2a9aa3; --red:#b3321f; --redfill:#d9574a; --soft:#ebe7d9; --focus:#1b5fd6; --rule:rgba(20,33,61,.07);
+  --bg:#F4F0E6; --panel:#FBF9F3; --band:#E8E1CF; --ink:#1A1C17; --ink2:#3F4537; --muted:#545A4B; --line:#D8D0BD; --line2:#E6E0D0;
+  --accent:#1F3A2E; --accenthover:#0E2219; --onaccent:#F4F0E6;
+  --green:#1F3A2E; --sage:#B9C2A8; --gold:#B8862F; --goldtext:#7A5718; --rust:#9A3B26; --rusttext:#9A3B26; --track:#ECE6D6; --focus:#1F3A2E;
+  --display:"Libre Caslon Display",Georgia,serif; --serif:"Libre Caslon Text",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0b1020; --panel:#121a30; --ink:#e8ecf7; --muted:#9aa5c0; --line:#26304d;
-    --gold:#f0b83c; --goldfill:#f0b83c; --teal:#59cdd6; --tealfill:#59cdd6; --red:#ff8b7c; --redfill:#ff7565; --soft:#1a2440; --focus:#8fb6ff; --rule:rgba(232,236,247,.05);
+    --bg:#11140F; --panel:#181C15; --band:#20251C; --ink:#ECE8DC; --ink2:#D3CFC2; --muted:#B9B5A7; --line:#343A2E; --line2:#272C22;
+    --accent:#A9CDB4; --accenthover:#CFE5D6; --onaccent:#11140F;
+    --green:#7FAF8E; --sage:#4E5C47; --gold:#E0B45C; --goldtext:#E6C27A; --rust:#E07A5F; --rusttext:#F0957C; --track:#262B21; --focus:#A9CDB4;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0b1020; --panel:#121a30; --ink:#e8ecf7; --muted:#9aa5c0; --line:#26304d;
-  --gold:#f0b83c; --goldfill:#f0b83c; --teal:#59cdd6; --tealfill:#59cdd6; --red:#ff8b7c; --redfill:#ff7565; --soft:#1a2440; --focus:#8fb6ff; --rule:rgba(232,236,247,.05);
+  --bg:#11140F; --panel:#181C15; --band:#20251C; --ink:#ECE8DC; --ink2:#D3CFC2; --muted:#B9B5A7; --line:#343A2E; --line2:#272C22;
+  --accent:#A9CDB4; --accenthover:#CFE5D6; --onaccent:#11140F;
+  --green:#7FAF8E; --sage:#4E5C47; --gold:#E0B45C; --goldtext:#E6C27A; --rust:#E07A5F; --rusttext:#F0957C; --track:#262B21; --focus:#A9CDB4;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
-.serif{font-family:ui-serif,Georgia,"Iowan Old Style",Cambria,serif}
-a{color:var(--teal)}
-a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
-.mono,.num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;z-index:9}
-.hero{border-bottom:1px solid var(--line);background-image:repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px)}
-.topbar{display:flex;justify-content:space-between;gap:12px;padding:12px 0;font-size:13px;color:var(--muted)}
-.topbar a{font-weight:600;text-decoration:none}
-.hero .inner{padding:32px 0 28px}
-.tag{font:700 12px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-h1{font-family:ui-serif,Georgia,"Iowan Old Style",Cambria,serif;font-size:clamp(34px,7vw,64px);line-height:1.02;margin:12px 0 10px;letter-spacing:-.02em;font-weight:700}
-h1 span{display:block;font-size:.42em;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:10px;line-height:1.25}
-.lede{font-size:18px;color:var(--muted);max-width:68ch;margin:12px 0 0}
-.disc{margin:20px 0 0;padding:12px 14px;border:1px solid color-mix(in srgb,var(--goldfill) 55%,var(--line));border-left:5px solid var(--goldfill);background:color-mix(in srgb,var(--goldfill) 11%,var(--panel));border-radius:8px;font-size:14.5px}
-.note{margin:10px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:5px solid var(--teal);background:var(--panel);border-radius:8px;font-size:14.5px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
-.kpi b{display:block;font-size:26px;letter-spacing:-.02em}
-.kpi span{font-size:13px;color:var(--muted)}
-.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.btn{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none;font-size:15px}
-.btn.o{background:transparent;color:var(--ink)}
-nav.jump{display:flex;gap:6px;flex-wrap:wrap;padding:14px 0 0;font-size:14px}
-nav.jump a{padding:4px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--panel)}
-section{padding:36px 0;border-top:1px solid var(--line)}
-h2{font-family:ui-serif,Georgia,"Iowan Old Style",Cambria,serif;font-size:clamp(23px,4vw,32px);margin:0 0 6px;letter-spacing:-.01em}
-h3{font-size:17px;margin:20px 0 6px}
-.sub{color:var(--muted);margin:0 0 14px;max-width:74ch}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
-.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;margin:0 0 14px}
-.cl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
-select{font:inherit;font-size:15px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-height:38px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%;overflow-wrap:break-word}
+a{color:var(--accent)}a:hover{color:var(--accenthover)}
+a:focus-visible,button:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--panel);padding:10px 14px;z-index:9}
+
+/* top bar */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{padding-top:10px;padding-bottom:10px;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:center}
+.brand{margin:0;font-family:var(--display);font-size:24px;line-height:1.2}
+.links{display:flex;flex-wrap:wrap;gap:0 22px;flex:1 1 auto;font-size:14px}
+.links a{color:var(--ink2);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.links a:hover{color:var(--ink);text-decoration:underline}
+.gh{min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border:1px solid var(--accent);border-radius:2px;font-size:14px;font-weight:600;text-decoration:none}
+.gh:hover{background:var(--accent);color:var(--onaccent)}
+.notice{margin:0;background:var(--band);border-bottom:1px solid var(--line);padding:10px 24px;text-align:center;font-size:14px;color:var(--ink2)}
+
+/* hero */
+.hero{padding-top:64px;padding-bottom:48px;display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.hero-text{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.16em;color:var(--accent);font-weight:600}
+h1,h2{font-family:var(--display);font-weight:400}
+.hero h1{margin:0;font-size:clamp(42px,6.2vw,76px);line-height:.98;letter-spacing:-.005em}
+.lede{margin:0;font-family:var(--serif);font-size:19px;line-height:1.65;color:var(--ink2)}
+.btnrow{display:flex;flex-wrap:wrap;gap:12px}
+.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 22px;border:1px solid var(--accent);background:var(--accent);color:var(--onaccent);border-radius:2px;font-weight:600;text-decoration:none}
+.btn:hover{background:var(--accenthover);border-color:var(--accenthover);color:var(--onaccent)}
+.btn.o{background:transparent;color:var(--accent)}
+.btn.o:hover{background:var(--accent);color:var(--onaccent)}
+.prov{margin:0;font-size:14px;line-height:1.9;color:var(--muted)}
+.prov .chip{display:inline-block;margin-right:8px;line-height:1.4}
+.chip{font-size:12px;letter-spacing:.06em;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;color:var(--ink);font-weight:600}
+.f1{flex:1 1 460px;min-width:0;margin:0;background:var(--panel);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:20px}
+.f1 figcaption{font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink)}
+.f1 figcaption small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--muted);margin-top:6px}
+.f1plot{position:relative;height:300px;border-left:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;align-items:flex-end;justify-content:space-around;padding:0 150px 0 16px}
+.f1line{position:absolute;left:0;right:0;border-top:1.5px dashed}
+.f1lab{position:absolute;right:0;font-size:14px;font-weight:600;padding:0 2px;z-index:1}
+.f1bar{width:92px;position:relative;display:flex;justify-content:center}
+.f1bar span{position:absolute;top:-32px;font-family:var(--serif);font-weight:700;font-size:20px;white-space:nowrap}
+.f1x{display:flex;justify-content:space-around;font-size:14px;color:var(--ink2);padding:0 150px 0 16px}
+.f1x span{width:92px;text-align:center}
+
+/* stats */
+.band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.stats{padding-top:48px;padding-bottom:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:52px;line-height:1.1}
+.stat span{display:block;font-size:16px;line-height:1.55;color:var(--ink2);margin-top:8px}
+
+/* sections */
+section{padding:56px 0;border-top:1px solid var(--line)}
+section.first{border-top:0}
+.sec-h{margin:0 0 8px;font-size:clamp(32px,4vw,44px);line-height:1.1}
+.sub{margin:0 0 20px;font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--ink2);max-width:74ch}
+.after{margin-top:16px}
+h3{font-family:var(--serif);font-weight:700;font-size:17px;margin:0 0 10px}
+.panel{background:var(--panel);border:1px solid var(--line);padding:20px}
+.controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;margin:0 0 18px}
+.cl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:6px}
+select{font:inherit;font-size:15px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:0 12px;min-height:44px}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
-.seg button{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px 12px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;min-height:36px}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg button{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:0 14px;border-radius:2px;font:500 14px var(--sans);cursor:pointer;min-height:44px}
+.seg button:hover{border-color:var(--accent)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--onaccent);border-color:var(--accent)}
 .tablewrap{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:14px}
-th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th,td{padding:10px 10px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
 th:first-child,td:first-child,td.l,th.l{text-align:left}
-th{color:var(--muted);font-weight:600;font-size:12px}
-.good{color:var(--teal)}.bad{color:var(--red)}
-.pill{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
-.pill.s{border-color:var(--teal);color:var(--teal)}.pill.r{border-color:var(--red);color:var(--red)}.pill.i{border-color:var(--gold);color:var(--gold)}
+th{color:var(--muted);font-weight:600;font-size:13px;border-bottom-color:var(--line)}
+caption{caption-side:bottom;text-align:left;padding-top:10px;font-size:14px;color:var(--muted)}
+.good{color:var(--accent)}.bad{color:var(--rusttext)}
+.pill{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.pill.s{border-color:var(--accent);color:var(--accent)}.pill.r{border-color:var(--rusttext);color:var(--rusttext)}.pill.i{border-color:var(--goldtext);color:var(--goldtext)}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
-.cmp .c{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.cmp b{font-size:24px;display:block}
-.cmp small{color:var(--muted)}
-.legend{font-size:13px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
-svg text{fill:var(--muted);font-size:11px}
+.legend{font-size:14px;color:var(--muted);display:flex;gap:6px 18px;flex-wrap:wrap;margin:12px 0 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.tip{font-size:14px;color:var(--ink2);margin:10px 0 0;min-height:1.6em}
+svg{display:block;width:100%;height:auto}
+svg text{fill:var(--muted);font:13px var(--sans)}
 svg .g{stroke:var(--line)}svg .lbl{fill:var(--ink)}
 svg .pt{cursor:pointer}svg .pt:focus{outline:none;stroke:var(--focus);stroke-width:3}
-.mv .row{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr) 150px;gap:8px;align-items:center;margin:5px 0;font-size:14px}
-.mv .tr{height:16px;background:var(--soft);border-radius:3px;position:relative}
-.mv .f{position:absolute;top:0;bottom:0;border-radius:3px;left:0}
-.mv .fee{position:absolute;top:-3px;bottom:-3px;width:3px;background:var(--ink)}
-.mv .mid{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mv .row{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr) 160px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.mv .row.book{grid-template-columns:minmax(120px,220px) minmax(0,1fr) 170px}
+.mv .tr{height:16px;background:var(--track);position:relative}
+.mv .f{position:absolute;top:0;bottom:0;left:0}
+.mv .fee{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--rust)}
+.mv .mid{position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted)}
 .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
-figure img{width:100%;height:auto;border-radius:4px;background:#fff}
-figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+.gallery figure{margin:0;background:var(--panel);border:1px solid var(--line);padding:14px}
+.gallery img{width:100%;height:auto;background:#fff}
+.gallery figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+
+/* hypotheses */
+.hyp-top{display:flex;flex-wrap:wrap;gap:40px;align-items:center;margin-bottom:28px}
+.hyp-top>div{flex:1 1 380px;min-width:0}
+.hyp-top>.hbar-wrap{flex:1 1 520px;display:flex;flex-direction:column;gap:14px}
+.hbar{display:flex;height:56px;border:1px solid var(--ink)}
+.hbar span{display:flex;align-items:center;justify-content:center;font-weight:600;white-space:nowrap;overflow:hidden}
+.hbar .s{background:#1F3A2E;color:#F4F0E6;justify-content:flex-start;padding-left:14px}
+.hbar .r{background:#9A3B26;color:#FFFFFF;border-left:1px solid var(--ink)}
+.hbar .i{background:#E8E1CF;color:#1A1C17;border-left:1px solid var(--ink)}
+.hyp-top p.cap{margin:0;font-size:14px;color:var(--ink2)}
 .vlist{display:grid;gap:8px}
-.vrow{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:start;font-size:14.5px}
-.vrow .id{font-weight:700}
-.vrow .f{color:var(--muted);font-size:13.5px}
-.caveat{background:color-mix(in srgb,var(--goldfill) 11%,var(--panel));border:1px solid color-mix(in srgb,var(--goldfill) 50%,var(--line));border-radius:12px;padding:14px 16px}
-.caveat li{margin:7px 0}
-footer{border-top:1px solid var(--line);padding:26px 0 48px;color:var(--muted);font-size:14px}
-#err{display:none;padding:12px;border:1px solid var(--red);border-radius:8px;margin:16px 0}
-@media (max-width:860px){.kpis{grid-template-columns:1fr 1fr}.two,.cmp,.gallery{grid-template-columns:minmax(0,1fr)}.vrow{grid-template-columns:36px minmax(0,1fr)}.vrow .pill{grid-column:2}}
-@media (max-width:440px){.kpis{grid-template-columns:1fr}.mv .row{grid-template-columns:minmax(0,1fr) 110px}.mv .row .tr{grid-column:1/-1;order:3}}
+.vrow{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:start;font-size:15px}
+.vrow .id{font-family:var(--serif);font-weight:700}
+.vrow .f{color:var(--muted);font-size:14px;margin-top:2px}
+
+/* limits */
+.caveat{border-left:3px solid var(--gold);padding:4px 0 4px 20px;max-width:84ch}
+.caveat ul{margin:0;padding-left:18px}
+.caveat li{margin:10px 0;color:var(--ink2)}
+.caveat b{color:var(--ink)}
+.cite{font-size:14px;color:var(--muted);max-width:90ch;margin:24px 0 0}
+#err{display:none;padding:12px 14px;border:1px solid var(--rusttext);color:var(--rusttext);margin:0 0 16px}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;gap:4px 28px;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink2)}
+footer p{margin:0}
+footer .fl{display:flex;flex-wrap:wrap;gap:0 20px}
+footer .fl a{min-height:44px;display:inline-flex;align-items:center}
+
+@media (max-width:860px){.two,.gallery{grid-template-columns:minmax(0,1fr)}.vrow{grid-template-columns:40px minmax(0,1fr)}.vrow .pill{grid-column:2;justify-self:start}}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .notice{padding:10px 16px;text-align:left}
+  .top .wrap{justify-content:space-between;padding-top:6px;padding-bottom:0;gap:0 12px}
+  .brand{font-size:21px}
+  .gh{padding:0 12px}.gh .long{display:none}
+  .links{order:3;flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;gap:0 18px;margin:0 -16px;padding:0 16px;scrollbar-width:none}
+  .links a{white-space:nowrap}
+  .hero{padding-top:36px;padding-bottom:36px;gap:32px}
+  .lede{font-size:17.5px}
+  .f1{padding:18px}
+  .f1plot{height:240px;padding:0 112px 0 8px}
+  .f1x{padding:0 112px 0 8px;font-size:13px}
+  .f1lab{font-size:13px}
+  .f1bar,.f1x span{width:64px}
+  .f1bar span{font-size:18px;top:-28px}
+  section{padding:40px 0}
+  .panel{padding:14px}
+  .stat b{font-size:44px}
+  .mv .row,.mv .row.book{grid-template-columns:minmax(0,1fr) auto}.mv .row .tr{grid-column:1/-1;order:3}
+}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="hero"><div class="wrap">
-  <div class="topbar"><span class="mono">fair-on-paper / working paper</span><a href="https://github.com/coderback/prop-challenge-pricing">View the repo on GitHub</a></div>
-  <div class="inner">
-    <div class="tag">Working paper, October 2026</div>
-    <h1>Fair on Paper<span>What a prop-firm challenge is worth, and who pays for it</span></h1>
-    <p class="lede">Retail prop firms sell evaluation contracts: a fee buys a simulated account, and a buyer who reaches a profit target without breaching loss limits is paid a share of later simulated profits. This paper prices one UK firm's published contract on twenty years of intraday index prices at measured broker costs, with every hypothesis fixed and time-stamped before its run.</p>
-    <p class="disc"><strong>Not investment advice, and not a recommendation to buy any product.</strong> All values assume the firm pays every valid request. Results are simulations on historical prices for one broker's costs, from a draft working paper that has not been peer reviewed.</p>
-    <p class="note"><strong>Saved results, read-only.</strong> Tables are the repo's reference results (<span class="num">results/reference/</span>) and the paper's own tables; figures are the paper's. Nothing is simulated in your browser. The firm is not named on this page.</p>
-    <div class="kpis">
-      <div class="kpi"><b class="num">1.03%</b><span>of the account: expected payouts for a no-skill buyer on the base contract, restricted regime (1.48% in the standard regime)</span></div>
-      <div class="kpi"><b class="num">$0.49 to $1.60</b><span>expected payout per dollar of list fee across the nine plans, same no-skill buyer, $10k account</span></div>
-      <div class="kpi"><b class="num">$285</b><span>value at a Sharpe ratio of 0.3, against $103 with no skill, per $10,000 account on the base contract</span></div>
-      <div class="kpi"><b class="num">13 / 5 / 3</b><span>of 21 pre-registered hypotheses supported, refuted, inconclusive</span></div>
+
+<nav class="top" aria-label="Page">
+  <div class="wrap">
+    <p class="brand">Fair on Paper</p>
+    <div class="links">
+      <a href="#map">Contract map</a>
+      <a href="#menu">Price list</a>
+      <a href="#skill">Skill and horizon</a>
+      <a href="#real">Real strategies</a>
+      <a href="#hyp">Hypotheses</a>
+      <a href="#limits">Limits</a>
     </div>
+    <a class="gh" href="https://github.com/coderback/prop-challenge-pricing"><span class="long">Source on&nbsp;</span>GitHub</a>
+  </div>
+</nav>
+
+<p class="notice"><strong>Not investment advice</strong>, and not a recommendation to buy any product. Simulations on historical prices for one broker's costs, from a draft working paper that has not been peer reviewed. Values assume the firm pays every valid request. The firm is not named.</p>
+
+<main id="main">
+<header class="wrap hero">
+  <div class="hero-text">
+    <p class="eyebrow">WORKING PAPER · OCTOBER 2026</p>
+    <h1>What a prop-firm challenge is worth, and who pays for it</h1>
+    <p class="lede">A fee buys a simulated account. Hit the target without breaching the loss limits and you are paid a share of later simulated profits. This paper prices one UK firm's published contract on twenty years of intraday index prices at measured broker costs, with every hypothesis fixed and time-stamped before its run.</p>
     <div class="btnrow"><a class="btn" href="paper/fair-on-paper.pdf">Read the working paper (PDF)</a><a class="btn o" href="https://doi.org/10.5281/zenodo.23374897">Reproduction package (Zenodo)</a></div>
-    <nav class="jump" aria-label="Sections"><a href="#map">Contract map</a><a href="#menu">Price list</a><a href="#skill">Skill and horizon</a><a href="#real">Real strategies</a><a href="#hyp">Hypotheses</a><a href="#figs">Paper figures</a><a href="#limits">Limits</a></nav>
+    <p class="prov"><span class="chip">SAVED RESULTS</span> <span>Tables are the repo's reference results (<span class="mono">results/reference/</span>) and the paper's own tables; nothing is simulated in your browser. <a href="#limits">Limits and sources</a></span></p>
   </div>
-</div></div>
+  <figure class="f1" id="fig1">
+    <figcaption><strong>Figure 1.</strong> <em>Expected payouts per $10,000 account on the base contract, against what it costs to enter.</em><small id="f1note">Restricted regime, best fixed sizing, payouts within 36 months.</small></figcaption>
+    <div class="f1plot" id="f1plot" role="img" aria-label="Expected payouts against fees"></div>
+    <div class="f1x" aria-hidden="true"><span>No skill</span><span>Sharpe ratio 0.3</span></div>
+  </figure>
+</header>
 
-<main id="main"><div class="wrap">
-<div id="err" role="alert">The saved data failed to load. Please reload the page.</div>
-
-<section id="map" style="border-top:0">
-  <h2>The contract map</h2>
-  <p class="sub">Expected payouts per purchase within 36 months, in dollars per $10,000 account (V), for a simulated buyer who takes one index trade a day. The buyer chooses a risk per trade in the evaluation (horizontal) and an intended risk once funded. Skill is the buyer's net Sharpe ratio: the coin flip has no skill and loses costs. Choose the skill levels, regime and funded risk. Dashed lines are the $40 promotional and $147 list fee of the base contract.</p>
-  <div class="controls">
-    <div><span class="cl" id="m1">Skill (net Sharpe ratio)</span><div class="seg" id="skSeg" role="group" aria-labelledby="m1"></div></div>
-    <div><span class="cl" id="m2">Regime</span><div class="seg" id="rgSeg" role="group" aria-labelledby="m2"></div></div>
-    <div><span class="cl" id="m3">Funded risk per trade</span><div class="seg" id="rfSeg" role="group" aria-labelledby="m3"></div></div>
+<div class="band">
+  <div class="wrap stats">
+    <div class="stat"><b class="num">1.03%</b><span>of the account in expected payouts to a buyer with no skill on the base contract (restricted regime; 1.48% in the standard regime).</span></div>
+    <div class="stat"><b class="num">$0.49–$1.60</b><span>expected back per dollar of list fee across the firm's nine plans, for the same no-skill buyer on a $10k account.</span></div>
+    <div class="stat"><b class="num">5%</b><span>risk per trade is where value collapses: one stop-out breaches the 5% daily limit.</span></div>
   </div>
-  <div class="panel"><svg id="mapSvg" viewBox="0 0 720 340" role="img" aria-label="Expected payouts against evaluation risk per trade for the selected skill levels"></svg>
-    <div class="legend" id="mapLeg"></div><p class="legend" id="mapTip" aria-live="polite">Select a point for detail. Rings mark the best fixed sizing the paper selected.</p></div>
-  <p class="sub" style="margin-top:12px">Two things to notice. Value is flat from about 3% to 4.5% risk per trade for the coin flip, then collapses at 5%, where one stop-out breaches the 5% daily limit. And small sizes are costly: conventional 1% risk leaves the no-skill buyer with $33 of value because the evaluation takes so long.</p>
+</div>
+
+<div class="wrap"><div id="err" role="alert" style="margin-top:24px">The saved data failed to load. Please reload the page.</div></div>
+
+<section id="map" class="first">
+  <div class="wrap">
+    <h2 class="sec-h">The contract map</h2>
+    <p class="sub">Expected payouts per purchase within 36 months, in dollars per $10,000 account (V), for a simulated buyer who takes one index trade a day. The buyer chooses a risk per trade in the evaluation (horizontal) and an intended risk once funded. Skill is the buyer's net Sharpe ratio: the coin flip has no skill and loses costs. Dashed lines are the $40 promotional and $147 list fee of the base contract.</p>
+    <div class="controls">
+      <div><span class="cl" id="m1">Skill (net Sharpe ratio)</span><div class="seg" id="skSeg" role="group" aria-labelledby="m1"></div></div>
+      <div><span class="cl" id="m2">Regime</span><div class="seg" id="rgSeg" role="group" aria-labelledby="m2"></div></div>
+      <div><span class="cl" id="m3">Funded risk per trade</span><div class="seg" id="rfSeg" role="group" aria-labelledby="m3"></div></div>
+    </div>
+    <div class="panel"><svg id="mapSvg" viewBox="0 0 720 340" role="img" aria-label="Expected payouts against evaluation risk per trade for the selected skill levels"></svg>
+      <div class="legend" id="mapLeg"></div><p class="tip" id="mapTip" aria-live="polite">Select a point for detail. Rings mark the best fixed sizing the paper selected.</p></div>
+    <p class="sub after">Two things to notice. Value is flat from about 3% to 4.5% risk per trade for the coin flip, then collapses at 5%, where one stop-out breaches the 5% daily limit. And small sizes are costly: conventional 1% risk leaves the no-skill buyer with $33 of value because the evaluation takes so long.</p>
+  </div>
 </section>
 
 <section id="menu">
-  <h2>The price list</h2>
-  <p class="sub">The firm sells nine plans. Priced the same way, for the same buyer, the value per dollar of fee varies by more than three times, and the plan with the highest list fee returns less per dollar than two-step plans with identical targets. Pick a buyer and a regime, or an account size.</p>
-  <div class="controls">
-    <div><span class="cl" id="p1">Buyer</span><div class="seg" id="bySeg" role="group" aria-labelledby="p1"></div></div>
-    <div><span class="cl" id="p2">Regime</span><div class="seg" id="prgSeg" role="group" aria-labelledby="p2"></div></div>
+  <div class="wrap">
+    <h2 class="sec-h">The price list</h2>
+    <p class="sub">The firm sells nine plans. Priced the same way, for the same buyer, the value per dollar of fee varies by more than three times, and the plan with the highest list fee returns less per dollar than two-step plans with identical targets. Pick a buyer and a regime, or an account size.</p>
+    <div class="controls">
+      <div><span class="cl" id="p1">Buyer</span><div class="seg" id="bySeg" role="group" aria-labelledby="p1"></div></div>
+      <div><span class="cl" id="p2">Regime</span><div class="seg" id="prgSeg" role="group" aria-labelledby="p2"></div></div>
+    </div>
+    <div class="two">
+      <div class="panel mv"><h3>Expected payout against list fee, $10k account</h3><div id="planBars"></div>
+        <p class="legend"><span><i style="background:var(--green);border-radius:0"></i>Expected payouts V</span><span><i style="background:var(--rust);border-radius:0;width:3px"></i>List fee</span></p></div>
+      <div class="panel"><div class="controls" style="margin-bottom:8px"><div><label class="cl" for="szSel">Account size (no-skill buyer)</label><select id="szSel"></select></div></div>
+        <div class="mv" id="evBars"></div><p class="legend">Expected value after the list fee (V minus fee), dollars per purchase, restricted regime. The rules scale with the account, so V is a constant share of it; the fee is not.</p></div>
+    </div>
+    <div class="panel tablewrap" style="margin-top:16px"><table id="menuTbl"></table></div>
   </div>
-  <div class="two">
-    <div class="panel mv"><h3 style="margin-top:0">Expected payout vs list fee, $10k account</h3><div id="planBars"></div>
-      <p class="legend"><span><i style="background:var(--tealfill)"></i>Expected payouts V</span><span><i style="background:var(--ink);border-radius:0;width:3px"></i>List fee</span></p></div>
-    <div class="panel"><div class="controls" style="margin-bottom:8px"><div><label class="cl" for="szSel">Account size (no-skill buyer)</label><select id="szSel"></select></div></div>
-      <div class="mv" id="evBars"></div><p class="legend">Expected value after the list fee (V minus fee), dollars per purchase, restricted regime. The rules scale with the account, so V is a constant share of it; the fee is not.</p></div>
-  </div>
-  <div class="panel tablewrap" style="margin-top:14px"><table id="menuTbl"></table></div>
 </section>
 
 <section id="skill">
-  <h2>Sizing, skill and how long the buyer stays</h2>
-  <p class="sub">An earlier paper argued that risk sizing matters at least as much as skill. The registered hypothesis here was that sizing is worth more than a Sharpe ratio of 0.3. It was refuted, and a second registered run shows why: over a 12-month window the two are level, and from two years on skill leads, with or without the classic 30 and 60-day limits.</p>
-  <div class="controls"><div><span class="cl" id="s1">Evaluation time limit</span><div class="seg" id="clSeg" role="group" aria-labelledby="s1"></div></div></div>
-  <div class="two">
-    <div class="panel"><svg id="hzSvg" viewBox="0 0 520 300" role="img" aria-label="Gain from sizing and gain from skill by value window"></svg>
-      <div class="legend"><span><i style="background:var(--tealfill)"></i>Gain from best sizing</span><span><i style="background:var(--goldfill)"></i>Gain from a Sharpe ratio of 0.3</span></div></div>
-    <div class="panel tablewrap"><table id="hzTbl"></table><p class="legend">Dollars per $10,000 purchase, restricted regime. D is the sizing gain minus the skill gain; negative means skill is worth more. 95% intervals.</p></div>
+  <div class="wrap">
+    <h2 class="sec-h">Sizing, skill and how long the buyer stays</h2>
+    <p class="sub">An earlier paper argued that risk sizing matters at least as much as skill. The registered hypothesis here was that sizing is worth more than a Sharpe ratio of 0.3. It was refuted, and a second registered run shows why: over a 12-month window the two are level, and from two years on skill leads, with or without the classic 30 and 60-day limits.</p>
+    <div class="controls"><div><span class="cl" id="s1">Evaluation time limit</span><div class="seg" id="clSeg" role="group" aria-labelledby="s1"></div></div></div>
+    <div class="two">
+      <div class="panel"><svg id="hzSvg" viewBox="0 0 520 300" role="img" aria-label="Gain from sizing and gain from skill by value window"></svg>
+        <div class="legend"><span><i style="background:var(--green)"></i>Gain from best sizing</span><span><i style="background:var(--gold)"></i>Gain from a Sharpe ratio of 0.3</span></div></div>
+      <div class="panel tablewrap"><table id="hzTbl"></table><p class="legend">Dollars per $10,000 purchase, restricted regime. D is the sizing gain minus the skill gain; negative means skill is worth more. 95% intervals.</p></div>
+    </div>
   </div>
 </section>
 
 <section id="real">
-  <h2>Real strategies through the contract</h2>
-  <p class="sub">The skilled buyer above is idealised. The paper also runs the strategies that survived the author's earlier programme of 24 pre-registered tests (none a confirmed edge; two chosen after their parent tests were seen) through the contract as they actually trade. Every real book is worth less than an idealised buyer with the same Sharpe ratio. Early purchases are 2005 to 2014, late purchases 2017 to 2021.</p>
-  <div class="controls"><div><span class="cl" id="r1">Purchase period</span><div class="seg" id="peSeg" role="group" aria-labelledby="r1"></div></div></div>
-  <div class="panel mv" id="bookBars"></div>
-  <div class="panel tablewrap" style="margin-top:12px"><table id="bookTbl"></table></div>
+  <div class="wrap">
+    <h2 class="sec-h">Real strategies through the contract</h2>
+    <p class="sub">The skilled buyer above is idealised. The paper also runs the strategies that survived the author's earlier programme of 24 pre-registered tests (none a confirmed edge; two chosen after their parent tests were seen) through the contract as they actually trade. Every real book is worth less than an idealised buyer with the same Sharpe ratio. Early purchases are 2005 to 2014, late purchases 2017 to 2021.</p>
+    <div class="controls"><div><span class="cl" id="r1">Purchase period</span><div class="seg" id="peSeg" role="group" aria-labelledby="r1"></div></div></div>
+    <div class="panel mv" id="bookBars"></div>
+    <div class="panel tablewrap" style="margin-top:16px"><table id="bookTbl"></table></div>
+  </div>
 </section>
 
 <section id="hyp">
-  <h2>The 21 pre-registered hypotheses</h2>
-  <p class="sub">Each hypothesis was fixed in a dated plan before its run, and is reported as found, including the ones the author expected to be true and were not.</p>
-  <div class="controls"><div><span class="cl" id="h1">Verdict</span><div class="seg" id="hvSeg" role="group" aria-labelledby="h1"></div></div></div>
-  <div class="vlist" id="vlist"></div>
+  <div class="wrap">
+    <div class="hyp-top">
+      <div>
+        <h2 class="sec-h">21 hypotheses, registered first</h2>
+        <p class="sub" style="margin:0">Each was fixed in a dated plan and time-stamped before its simulation ran, then reported as found, including the ones the author expected to be true and were not.</p>
+      </div>
+      <div class="hbar-wrap">
+        <div class="hbar" id="hbar" role="img" aria-label="Hypothesis verdicts"></div>
+        <p class="cap" id="hcap"></p>
+      </div>
+    </div>
+    <div class="controls"><div><span class="cl" id="h1">Verdict</span><div class="seg" id="hvSeg" role="group" aria-labelledby="h1"></div></div></div>
+    <div class="vlist" id="vlist"></div>
+  </div>
 </section>
 
 <section id="figs">
-  <h2>Figures from the paper</h2>
-  <p class="sub">The paper's own exhibits, unedited. The full text, with every table and the source list for the contract's rules, is in the <a href="paper/fair-on-paper.pdf">working paper PDF</a>.</p>
-  <div class="gallery">
-    <figure><img src="img/fig_map.png" width="1100" height="500" loading="lazy" alt="Two panels: probability of passing both steps, and expected payouts on a log scale, against evaluation risk per trade for coin-flip and skilled buyers, with a cliff at 5% risk per trade."><figcaption>Probability of passing and expected payouts by evaluation risk and skill (paper Figure 1).</figcaption></figure>
-    <figure><img src="img/fig_skill.png" width="1100" height="470" loading="lazy" alt="Left: expected payouts rise steeply with the buyer's Sharpe ratio, with the restricted regime below the standard regime. Right: gain from sizing versus gain from a Sharpe ratio of 0.3 by value window, with skill gaining more at longer windows."><figcaption>Value by skill, and sizing against skill by window (paper Figure 2).</figcaption></figure>
-    <figure><img src="img/fig_policy.png" width="1100" height="500" loading="lazy" alt="The buyer's best policy: risk on the next trade against account balance, for a coin flip and two skill levels."><figcaption>The best state-dependent sizing policy (paper Figure 3).</figcaption></figure>
-    <figure><img src="img/fig_menu.png" width="1100" height="520" loading="lazy" alt="Expected payouts per dollar of list fee for nine plans in two regimes, from 0.49 to 1.60 dollars."><figcaption>Expected payouts per dollar of list fee, by plan (paper Figure 4).</figcaption></figure>
-    <figure><img src="img/fig_fee.png" width="1100" height="520" loading="lazy" alt="The base contract's list fee as a share of the account falls with account size, against the no-skill value of about 1.03 to 1.48 percent."><figcaption>List fee against no-skill value by account size (paper Figure 5).</figcaption></figure>
-    <figure><img src="img/fig_tests.png" width="1100" height="780" loading="lazy" alt="Net Sharpe ratio estimates with 90 percent intervals for 24 pre-registered tests of published trading effects, with reference lines at the break-even of minus 0.05, and at 0.3 and 0.5. None is confirmed."><figcaption>The 24 pre-registered tests that bear on whether the skill exists (paper Figure 6).</figcaption></figure>
+  <div class="wrap">
+    <h2 class="sec-h">Figures from the paper</h2>
+    <p class="sub">The paper's own exhibits, unedited. The full text, with every table and the source list for the contract's rules, is in the <a href="paper/fair-on-paper.pdf">working paper PDF</a>.</p>
+    <div class="gallery">
+      <figure><img src="img/fig_map.png" width="1100" height="500" loading="lazy" alt="Two panels: probability of passing both steps, and expected payouts on a log scale, against evaluation risk per trade for coin-flip and skilled buyers, with a cliff at 5% risk per trade."><figcaption>Probability of passing and expected payouts by evaluation risk and skill (paper Figure 1).</figcaption></figure>
+      <figure><img src="img/fig_skill.png" width="1100" height="470" loading="lazy" alt="Left: expected payouts rise steeply with the buyer's Sharpe ratio, with the restricted regime below the standard regime. Right: gain from sizing versus gain from a Sharpe ratio of 0.3 by value window, with skill gaining more at longer windows."><figcaption>Value by skill, and sizing against skill by window (paper Figure 2).</figcaption></figure>
+      <figure><img src="img/fig_policy.png" width="1100" height="500" loading="lazy" alt="The buyer's best policy: risk on the next trade against account balance, for a coin flip and two skill levels."><figcaption>The best state-dependent sizing policy (paper Figure 3).</figcaption></figure>
+      <figure><img src="img/fig_menu.png" width="1100" height="520" loading="lazy" alt="Expected payouts per dollar of list fee for nine plans in two regimes, from 0.49 to 1.60 dollars."><figcaption>Expected payouts per dollar of list fee, by plan (paper Figure 4).</figcaption></figure>
+      <figure><img src="img/fig_fee.png" width="1100" height="520" loading="lazy" alt="The base contract's list fee as a share of the account falls with account size, against the no-skill value of about 1.03 to 1.48 percent."><figcaption>List fee against no-skill value by account size (paper Figure 5).</figcaption></figure>
+      <figure><img src="img/fig_tests.png" width="1100" height="780" loading="lazy" alt="Net Sharpe ratio estimates with 90 percent intervals for 24 pre-registered tests of published trading effects, with reference lines at the break-even of minus 0.05, and at 0.3 and 0.5. None is confirmed."><figcaption>The 24 pre-registered tests that bear on whether the skill exists (paper Figure 6).</figcaption></figure>
+    </div>
   </div>
 </section>
 
 <section id="limits">
-  <h2>What this does and does not show</h2>
-  <div class="caveat"><ul style="margin:0;padding-left:18px">
-    <li><b>Assumes the firm pays every valid request.</b> Three published clauses are discretionary (a gambling policy, a requirement to maintain the same level of risk, and a review of each passed evaluation). They are not modelled, and the paper argues they are where much of the seller's margin sits.</li>
-    <li><b>One firm, one index book, one broker's costs.</b> The base case is a one-trade-a-day US500 book with costs measured on the broker's server. Other instruments give different values: $131 on NAS100, $95 on EUR/USD, $58 on USD/JPY for the no-skill buyer.</li>
-    <li><b>Stops never slip in the simulation.</b> An exploratory stress, not pre-registered, lowers the no-skill value to $88, $75 and $49 at 5%, 10% and 25% slippage.</li>
-    <li><b>The skill is idealised, and the evidence that it exists is thin.</b> "No edge found" is supported by the author's tests; "no edge exists" is not. Telling a Sharpe ratio of 0.3 from zero takes about 69 years of daily data.</li>
-    <li><b>The rules were read on 13 October 2026</b> and may have changed. A draft working paper, not peer reviewed. Not investment advice.</li>
-    <li><b>Not on this page:</b> the raw price bars (not redistributed), the firm's web pages, and the private builders of the real strategies. Their daily series are in the reproduction package.</li>
-  </ul></div>
+  <div class="wrap">
+    <h2 class="sec-h">What this does and does not show</h2>
+    <div class="caveat"><ul>
+      <li><b>Assumes the firm pays every valid request.</b> Three published clauses are discretionary (a gambling policy, a requirement to maintain the same level of risk, and a review of each passed evaluation). They are not modelled, and the paper argues they are where much of the seller's margin sits.</li>
+      <li><b>One firm, one index book, one broker's costs.</b> The base case is a one-trade-a-day US500 book with costs measured on the broker's server. Other instruments give different values: $131 on NAS100, $95 on EUR/USD, $58 on USD/JPY for the no-skill buyer.</li>
+      <li><b>Stops never slip in the simulation.</b> An exploratory stress, not pre-registered, lowers the no-skill value to $88, $75 and $49 at 5%, 10% and 25% slippage.</li>
+      <li><b>The skill is idealised, and the evidence that it exists is thin.</b> "No edge found" is supported by the author's tests; "no edge exists" is not. Telling a Sharpe ratio of 0.3 from zero takes about 69 years of daily data.</li>
+      <li><b>The rules were read on 13 October 2026</b> and may have changed. A draft working paper, not peer reviewed. Not investment advice.</li>
+      <li><b>Not on this page:</b> the raw price bars (not redistributed), the firm's web pages, and the private builders of the real strategies. Their daily series are in the reproduction package.</li>
+    </ul></div>
+    <p class="cite">Saved results, read-only: tables are the repo's reference results (<span class="mono">results/reference/</span>) and the paper's own tables; figures are the paper's. Nothing is simulated in your browser. The firm is not named on this page. Ojebiyi, T. O. (2026), <i>Fair on Paper: What a Prop-Firm Challenge Is Worth, and Who Pays for It</i>. Code (MIT), data and tables: <a href="https://github.com/coderback/prop-challenge-pricing">github.com/coderback/prop-challenge-pricing</a>, archived at <a href="https://doi.org/10.5281/zenodo.23374897">doi:10.5281/zenodo.23374897</a>. Text, tables and figures: CC BY 4.0.</p>
+  </div>
 </section>
-</div></main>
+</main>
 
-<footer><div class="wrap">
-  Ojebiyi, T. O. (2026), <i>Fair on Paper: What a Prop-Firm Challenge Is Worth, and Who Pays for It</i>. Code (MIT), data and tables: <a href="https://github.com/coderback/prop-challenge-pricing">github.com/coderback/prop-challenge-pricing</a>, archived at <a href="https://doi.org/10.5281/zenodo.23374897">doi:10.5281/zenodo.23374897</a>. Text, tables and figures: CC BY 4.0.
-</div></footer>
+<footer>
+  <div class="wrap">
+    <p>Built by Timothy Ojebiyi as a portfolio demo. Values assume the firm pays every valid request.</p>
+    <p class="fl"><a href="https://timothyojebiyi.com">Portfolio</a><a href="https://github.com/coderback/prop-challenge-pricing">Source on GitHub</a><a href="#limits">How this page was built</a></p>
+  </div>
+</footer>
 
 <script>
 const $=s=>document.querySelector(s);
@@ -216,9 +343,23 @@ const SK={"coin":"Coin flip (−0.21)","0.0":"0","0.15":"0.15","0.3":"0.3","0.5"
 const SKCOL={"coin":"#8a8f9c","0.0":"#b07c1f","0.15":"#c98a14","0.3":"#d9a21b","0.5":"#7fb04a","0.75":"#3fae7a","1.0":"#2a9aa3","1.5":"#2d78b5","2.0":"#5b4fb5"};
 let D=null,sk=new Set(["coin","0.3","1.0"]),rg="FTG",rf=1.0,by="coin",prg="FTG",sz=1,clk="none",pe="late",hv="All";
 fetch("data/site-data.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{D=d;init()}).catch(()=>{$("#err").style.display="block"});
-function seg(id,items,get,set,cb){const b=$(id);b.innerHTML="";items.forEach(([k,l])=>{const x=document.createElement("button");x.type="button";x.textContent=l;x.setAttribute("aria-pressed",get(k));x.onclick=()=>{set(k);seg(id,items,get,set,cb);cb()};b.appendChild(x)})}
+const cw=el=>Math.max(300,Math.round(el.getBoundingClientRect().width||700));
+function seg(id,items,get,set,cb){const b=$(id);b.innerHTML="";items.forEach(([k,l],idx)=>{const x=document.createElement("button");x.type="button";x.textContent=l;x.setAttribute("aria-pressed",get(k));x.onclick=()=>{set(k);seg(id,items,get,set,cb);b.children[idx].focus();cb()};b.appendChild(x)})}
 function init(){
-  buildMap();buildMenu();buildSkill();buildReal();buildHyp();
+  buildFig1();buildMap();buildMenu();buildSkill();buildReal();buildHyp();
+  let rt=0,lastW=innerWidth;addEventListener("resize",()=>{if(innerWidth===lastW)return;lastW=innerWidth;clearTimeout(rt);rt=setTimeout(()=>{renderMap();renderSkill()},120)});
+}
+/* ---- hero figure: best fixed sizing on the base contract, restricted regime, funded risk 1% */
+function buildFig1(){
+  const best=k=>D.map.find(r=>r[0]===k&&r[1]==="FTG"&&r[3]===1&&r[9]);
+  const a=best("coin"),b=best("0.3"),top=300,pc=v=>(v/top*100).toFixed(1)+"%";
+  $("#f1plot").innerHTML=
+   `<span class="f1line" style="bottom:${pc(147)};border-color:var(--rust)"></span><span class="f1lab" style="bottom:calc(${pc(147)} + 6px);color:var(--rusttext)">$147 list fee</span>`+
+   `<span class="f1line" style="bottom:${pc(40)};border-color:var(--gold)"></span><span class="f1lab" style="bottom:calc(${pc(40)} + 6px);color:var(--goldtext)">$40 promotional fee</span>`+
+   `<div class="f1bar" style="height:${pc(a[4])};background:var(--sage)"><span>${usd(a[4])}</span></div>`+
+   `<div class="f1bar" style="height:${pc(b[4])};background:var(--green)"><span>${usd(b[4])}</span></div>`;
+  $("#f1plot").setAttribute("aria-label",`Expected payouts per $10,000 account: ${usd(a[4])} with no skill (95% ${usd(a[5])} to ${usd(a[6])}), ${usd(b[4])} at a Sharpe ratio of 0.3 (95% ${usd(b[5])} to ${usd(b[6])}), against a $147 list fee and a $40 promotional fee.`);
+  $("#f1note").textContent=`Restricted regime, best fixed sizing (evaluation risk ${a[2]}% and ${b[2]}%, funded risk 1%), payouts within 36 months. 95% intervals: ${usd(a[5])} to ${usd(a[6])}, and ${usd(b[5])} to ${usd(b[6])}.`;
 }
 /* ---- contract map */
 function buildMap(){
@@ -229,21 +370,22 @@ function buildMap(){
 function buildRf(){const opts=rg==="FTG"?[0.5,1.0]:[0.5,1.0,1.5,2.0,2.5];if(!opts.includes(rf))rf=opts[opts.length-1]>=1?1.0:opts[0];seg("#rfSeg",opts.map(v=>[v,v+"%"]),k=>k===rf,k=>{rf=k},renderMap)}
 function renderMap(){
   const rows=D.map.filter(r=>sk.has(r[0])&&r[1]===rg&&r[3]===rf);
-  const W=720,H=340,L=60,B=40,T=12,Rm=14,xs=[.5,1,2,3,4,5,6,8],lo=1,hi=6000;
+  const sv=$("#mapSvg"),W=cw(sv),narrow=W<560,H=narrow?320:360,L=narrow?50:64,B=44,T=12,Rm=14,xs=narrow?[.5,1,2,3,4,5,8]:[.5,1,2,3,4,5,6,8],lo=1,hi=6000;
   const x=v=>L+(Math.log(v)-Math.log(.4))/(Math.log(9)-Math.log(.4))*(W-L-Rm), y=v=>H-B-(Math.log(Math.max(v,lo))-Math.log(lo))/(Math.log(hi)-Math.log(lo))*(H-B-T);
+  sv.setAttribute("viewBox",`0 0 ${W} ${H}`);
   let s="";[1,10,100,1000].forEach(v=>{s+=`<line class="g" x1="${L}" x2="${W-Rm}" y1="${y(v)}" y2="${y(v)}"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">$${v.toLocaleString()}</text>`});
-  xs.forEach(v=>{s+=`<line class="g" x1="${x(v)}" x2="${x(v)}" y1="${T}" y2="${H-B}"/><text x="${x(v)}" y="${H-B+15}" text-anchor="middle">${v}%</text>`});
-  s+=`<text x="${(L+W)/2}" y="${H-4}" text-anchor="middle">Evaluation risk per trade (% of the account)</text>`;
-  [[40,"$40 promotional fee"],[147,"$147 list fee"]].forEach(([v,l])=>{s+=`<line x1="${L}" x2="${W-Rm}" y1="${y(v)}" y2="${y(v)}" stroke="var(--ink)" stroke-dasharray="5 4" opacity=".55"/><text x="${W-Rm-4}" y="${y(v)-4}" text-anchor="end">${l}</text>`});
+  xs.forEach(v=>{s+=`<line class="g" x1="${x(v)}" x2="${x(v)}" y1="${T}" y2="${H-B}"/><text x="${x(v)}" y="${H-B+17}" text-anchor="middle">${v}%</text>`});
+  s+=`<text x="${(L+W-Rm)/2}" y="${H-4}" text-anchor="middle">${narrow?"Evaluation risk per trade":"Evaluation risk per trade (% of the account)"}</text>`;
+  [[40,"$40 promotional fee","var(--gold)"],[147,"$147 list fee","var(--rust)"]].forEach(([v,l,c])=>{s+=`<line x1="${L}" x2="${W-Rm}" y1="${y(v)}" y2="${y(v)}" stroke="${c}" stroke-width="1.5" stroke-dasharray="5 4"/>`});
   const keys=[...sk].sort((a,b)=>Object.keys(SK).indexOf(a)-Object.keys(SK).indexOf(b));
   keys.forEach(k=>{const rr=rows.filter(r=>r[0]===k).sort((a,b)=>a[2]-b[2]);if(!rr.length)return;
     s+=`<path d="${rr.map((r,i)=>(i?"L":"M")+x(r[2]).toFixed(1)+" "+y(r[4]).toFixed(1)).join("")}" fill="none" stroke="${SKCOL[k]}" stroke-width="2"/>`;
-    rr.forEach((r,i)=>{s+=`<circle class="pt" tabindex="0" role="button" data-k="${k}" data-i="${i}" aria-label="Skill ${SK[k]}, risk ${r[2]}%: value ${usd(r[4])}" cx="${x(r[2])}" cy="${y(r[4])}" r="${r[9]?6:3.5}" fill="${SKCOL[k]}" ${r[9]?`stroke="var(--ink)" stroke-width="2"`:""}/>`})});
-  $("#mapSvg").innerHTML=s;
-  $("#mapLeg").innerHTML=keys.map(k=>`<span><i style="background:${SKCOL[k]}"></i>${SK[k]}</span>`).join("")||"Pick at least one skill level.";
-  document.querySelectorAll("#mapSvg .pt").forEach(c=>{const rr=rows.filter(r=>r[0]===c.dataset.k).sort((a,b)=>a[2]-b[2]),r=rr[+c.dataset.i];
+    rr.forEach((r,i)=>{s+=`<circle class="pt" tabindex="0" role="button" data-k="${k}" data-i="${i}" aria-label="Skill ${SK[k]}, risk ${r[2]}%: value ${usd(r[4])}" cx="${x(r[2])}" cy="${y(r[4])}" r="${r[9]?6.5:4}" fill="${SKCOL[k]}" ${r[9]?`stroke="var(--ink)" stroke-width="2"`:`stroke="transparent" stroke-width="12"`}/>`})});
+  sv.innerHTML=s;
+  $("#mapLeg").innerHTML=(keys.map(k=>`<span><i style="background:${SKCOL[k]}"></i>${SK[k]}</span>`).join("")||"<span>Pick at least one skill level.</span>")+`<span><i style="border-radius:0;height:0;border-top:2px dashed var(--gold);background:none;width:16px"></i>$40 promotional fee</span><span><i style="border-radius:0;height:0;border-top:2px dashed var(--rust);background:none;width:16px"></i>$147 list fee</span>`;
+  sv.querySelectorAll(".pt").forEach(c=>{const rr=rows.filter(r=>r[0]===c.dataset.k).sort((a,b)=>a[2]-b[2]),r=rr[+c.dataset.i];
    const f=()=>{$("#mapTip").innerHTML=`<b>Skill ${SK[r[0]]}, evaluation risk ${r[2]}%, funded risk ${r[3]}%</b>: expected payouts ${usd(r[4])} (95% ${usd(r[5])} to ${usd(r[6])}); ${(r[7]*100).toFixed(1)}% pass both steps; ${(r[8]*100).toFixed(1)}% are ever paid.`};
-   c.addEventListener("mouseenter",f);c.addEventListener("focus",f);c.addEventListener("click",f)});
+   c.addEventListener("mouseenter",f);c.addEventListener("focus",f);c.addEventListener("click",f);c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();f()}})});
 }
 /* ---- price list */
 function buildMenu(){
@@ -251,40 +393,48 @@ function buildMenu(){
   seg("#prgSeg",[["FTG","Restricted"],["STD","Standard"]],k=>k===prg,k=>{prg=k},renderMenu);
   const sel=$("#szSel");["$5k","$10k","$25k","$50k","$100k","$200k"].forEach((l,i)=>{const o=document.createElement("option");o.value=i;o.textContent=l;if(i===1)o.selected=true;sel.appendChild(o)});sel.addEventListener("input",()=>{sz=+sel.value;renderEv()});
   renderMenu();renderEv();
-  $("#menuTbl").innerHTML=`<thead><tr><th class="l">Plan</th><th class="l">Targets; loss limit</th><th>List fee</th><th>P(pass)</th><th>P(paid)</th><th>V, no skill</th><th>V, standard</th><th>V minus fee</th><th>V per fee $</th><th>V at Sharpe 0.3</th></tr></thead><tbody>`+
-   D.menu.map(m=>`<tr><td class="l"><b>${esc(m.plan)}</b></td><td class="l">${esc(m.terms)}</td><td class="num">$${m.fee}</td><td class="num">${m.p_pass==null?"—":m.p_pass.toFixed(3)}</td><td class="num">${m.p_paid.toFixed(3)}</td><td class="num">$${m.V}</td><td class="num">${m.V_std==null?"—":"$"+m.V_std}</td><td class="num ${m.EV<0?"bad":"good"}">${usd(m.EV)}</td><td class="num">$${m.per_fee.toFixed(2)}</td><td class="num">$${m.V_s03}</td></tr>`).join("")+`</tbody><caption class="legend" style="caption-side:bottom;text-align:left;padding-top:8px">Paper Table 5. Dollars per $10,000 purchase, 36 months, restricted regime unless marked standard. List fees as read on 13 October 2026.</caption>`;
+  $("#menuTbl").innerHTML=`<thead><tr><th class="l" scope="col">Plan</th><th class="l" scope="col">Targets; loss limit</th><th scope="col">List fee</th><th scope="col">P(pass)</th><th scope="col">P(paid)</th><th scope="col">V, no skill</th><th scope="col">V, standard</th><th scope="col">V minus fee</th><th scope="col">V per fee $</th><th scope="col">V at Sharpe 0.3</th></tr></thead><tbody>`+
+   D.menu.map(m=>`<tr><td class="l"><b>${esc(m.plan)}</b></td><td class="l">${esc(m.terms)}</td><td class="num">$${m.fee}</td><td class="num">${m.p_pass==null?"—":m.p_pass.toFixed(3)}</td><td class="num">${m.p_paid.toFixed(3)}</td><td class="num">$${m.V}</td><td class="num">${m.V_std==null?"—":"$"+m.V_std}</td><td class="num ${m.EV<0?"bad":"good"}">${usd(m.EV)}</td><td class="num">$${m.per_fee.toFixed(2)}</td><td class="num">$${m.V_s03}</td></tr>`).join("")+`</tbody><caption>Paper Table 5. Dollars per $10,000 purchase, 36 months, restricted regime unless marked standard. List fees as read on 13 October 2026.</caption>`;
 }
 function renderMenu(){
   const fee=Object.fromEntries(D.menu.map(m=>[m.plan,m.fee]));
   const rows=D.plans.filter(p=>p.skill===by&&p.regime===prg).map(p=>({...p,fee:fee[p.plan]})).sort((a,b)=>b.V/b.fee-a.V/a.fee);
   const max=Math.max(...rows.map(r=>Math.max(r.V,r.fee)))*1.05;
-  $("#planBars").innerHTML=rows.map(r=>`<div class="row"><span>${esc(r.plan)}</span><div class="tr" role="img" aria-label="${esc(r.plan)}: value ${usd(r.V)}, fee ${usd(r.fee)}"><div class="f" style="width:${r.V/max*100}%;background:var(--tealfill)"></div><div class="fee" style="left:${r.fee/max*100}%"></div></div><span class="num">${usd(r.V)} vs ${usd(r.fee)} fee <b class="${r.V>=r.fee?"good":"bad"}">${(r.V/r.fee).toFixed(2)}x</b></span></div>`).join("");
+  $("#planBars").innerHTML=rows.map(r=>`<div class="row"><span>${esc(r.plan)}</span><div class="tr" role="img" aria-label="${esc(r.plan)}: value ${usd(r.V)}, fee ${usd(r.fee)}"><div class="f" style="width:${r.V/max*100}%;background:var(--green)"></div><div class="fee" style="left:${r.fee/max*100}%"></div></div><span class="num">${usd(r.V)} vs ${usd(r.fee)} fee <b class="${r.V>=r.fee?"good":"bad"}">${(r.V/r.fee).toFixed(2)}x</b></span></div>`).join("");
 }
 function renderEv(){
   const rows=Object.entries(D.sizes).map(([p,o])=>({p,ev:o.ev[sz]})).filter(r=>r.ev!=null).sort((a,b)=>b.ev-a.ev);
   const max=Math.max(...rows.map(r=>Math.abs(r.ev)),1);
-  $("#evBars").innerHTML=rows.map(r=>`<div class="row"><span>${esc(r.p)}</span><div class="tr" role="img" aria-label="${esc(r.p)} ${usd(r.ev)}"><div class="mid"></div><div class="f" style="left:${r.ev>=0?50:50-Math.abs(r.ev)/max*50}%;width:${Math.abs(r.ev)/max*50}%;background:${r.ev>=0?"var(--tealfill)":"var(--redfill)"}"></div></div><span class="num ${r.ev<0?"bad":"good"}">${usd(r.ev)}</span></div>`).join("");
+  $("#evBars").innerHTML=rows.map(r=>`<div class="row"><span>${esc(r.p)}</span><div class="tr" role="img" aria-label="${esc(r.p)} ${usd(r.ev)}"><div class="mid"></div><div class="f" style="left:${r.ev>=0?50:50-Math.abs(r.ev)/max*50}%;width:${Math.abs(r.ev)/max*50}%;background:${r.ev>=0?"var(--green)":"var(--rust)"}"></div></div><span class="num ${r.ev<0?"bad":"good"}">${usd(r.ev)}</span></div>`).join("");
 }
 /* ---- skill / horizon */
 function buildSkill(){seg("#clSeg",[["none","No time limit"],["classic 30/60","Classic 30 and 60-day limits"]],k=>k===clk,k=>{clk=k},renderSkill);renderSkill()}
 function renderSkill(){
-  const R=D.horizon.filter(h=>h.clock===clk),W=520,H=300,L=46,B=36,T=14,Rm=14,mx=320,x=m=>L+(Math.log(m)-Math.log(10))/(Math.log(70)-Math.log(10))*(W-L-Rm),y=v=>H-B-v/mx*(H-B-T);let s="";
+  const sv=$("#hzSvg"),R=D.horizon.filter(h=>h.clock===clk),W=cw(sv),H=300,L=50,B=40,T=14,Rm=16,mx=320,x=m=>L+(Math.log(m)-Math.log(10))/(Math.log(70)-Math.log(10))*(W-L-Rm),y=v=>H-B-v/mx*(H-B-T);let s="";
+  sv.setAttribute("viewBox",`0 0 ${W} ${H}`);
   [0,100,200,300].forEach(v=>{s+=`<line class="g" x1="${L}" x2="${W-Rm}" y1="${y(v)}" y2="${y(v)}"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">$${v}</text>`});
-  [12,24,36,60].forEach(m=>{s+=`<text x="${x(m)}" y="${H-B+15}" text-anchor="middle">${m}</text>`});
-  s+=`<text x="${(L+W)/2}" y="${H-3}" text-anchor="middle">Value window (months from purchase)</text>`;
-  [["sizing","var(--tealfill)"],["skill","var(--goldfill)"]].forEach(([k,c])=>{s+=`<path d="${R.map((h,i)=>(i?"L":"M")+x(h.months)+" "+y(h[k])).join("")}" fill="none" stroke="${c}" stroke-width="2.5"/>`+R.map(h=>`<circle cx="${x(h.months)}" cy="${y(h[k])}" r="5" fill="${c}"><title>${k} gain at ${h.months} months: ${usd(h[k])}</title></circle>`).join("")});
-  $("#hzSvg").innerHTML=s;
-  $("#hzTbl").innerHTML=`<thead><tr><th>Months</th><th>Sizing gain</th><th>Skill gain (S=0.3)</th><th>D</th></tr></thead><tbody>`+R.map(h=>`<tr><td class="num">${h.months}</td><td class="num">${usd(h.sizing)}</td><td class="num">${usd(h.skill)}</td><td class="num ${h.D<0?"bad":"good"}">${usd(h.D)} (${usd(h.D_lo)} to ${usd(h.D_hi)})</td></tr>`).join("")+`</tbody>`;
+  [12,24,36,60].forEach(m=>{s+=`<text x="${x(m)}" y="${H-B+17}" text-anchor="middle">${m}</text>`});
+  s+=`<text x="${(L+W-Rm)/2}" y="${H-3}" text-anchor="middle">Value window (months from purchase)</text>`;
+  [["sizing","var(--green)"],["skill","var(--gold)"]].forEach(([k,c])=>{s+=`<path d="${R.map((h,i)=>(i?"L":"M")+x(h.months)+" "+y(h[k])).join("")}" fill="none" stroke="${c}" stroke-width="2.5"/>`+R.map(h=>`<circle cx="${x(h.months)}" cy="${y(h[k])}" r="5" fill="${c}"><title>${k} gain at ${h.months} months: ${usd(h[k])}</title></circle>`).join("")});
+  sv.innerHTML=s;
+  $("#hzTbl").innerHTML=`<thead><tr><th scope="col">Months</th><th scope="col">Sizing gain</th><th scope="col">Skill gain (S=0.3)</th><th scope="col">D</th></tr></thead><tbody>`+R.map(h=>`<tr><td class="num">${h.months}</td><td class="num">${usd(h.sizing)}</td><td class="num">${usd(h.skill)}</td><td class="num ${h.D<0?"bad":"good"}">${usd(h.D)} (${usd(h.D_lo)} to ${usd(h.D_hi)})</td></tr>`).join("")+`</tbody>`;
 }
 /* ---- real strategies */
 function buildReal(){seg("#peSeg",[["early","Early purchases, 2005 to 2014"],["late","Late purchases, 2017 to 2021"]],k=>k===pe,k=>{pe=k},renderReal);renderReal()}
 function renderReal(){
   const R=D.books.filter(b=>b.period===pe),max=Math.max(...R.map(b=>Math.max(b.ideal,b.V_hi)))*1.05;
-  $("#bookBars").innerHTML=`<p class="legend" style="margin:0 0 8px"><span><i style="background:var(--goldfill)"></i>Idealised buyer, same Sharpe ratio</span><span><i style="background:var(--tealfill)"></i>The real book (line: 95% interval)</span></p>`+R.map(b=>`<div class="row" style="grid-template-columns:minmax(120px,200px) minmax(0,1fr) 170px"><span>${esc(b.label)} <span class="num" style="color:var(--muted)">(${b.sharpe.toFixed(2)})</span></span><div class="tr" style="height:22px" role="img" aria-label="${esc(b.label)}: real ${usd(b.V)}, idealised ${usd(b.ideal)}"><div class="f" style="height:9px;top:0;width:${b.ideal/max*100}%;background:var(--goldfill)"></div><div class="f" style="height:9px;top:11px;width:${b.V/max*100}%;background:var(--tealfill)"></div><div style="position:absolute;top:13px;height:2px;left:${b.V_lo/max*100}%;width:${(b.V_hi-b.V_lo)/max*100}%;background:var(--ink)"></div></div><span class="num">${usd(b.V)} vs ${usd(b.ideal)}</span></div>`).join("");
-  $("#bookTbl").innerHTML=`<thead><tr><th class="l">Book</th><th>Net Sharpe</th><th>Trades a year</th><th>P(pass)</th><th>P(paid)</th><th>V (95% interval)</th><th>Idealised V</th></tr></thead><tbody>`+R.map(b=>`<tr><td class="l">${esc(b.label)}</td><td class="num">${b.sharpe.toFixed(2)}</td><td class="num">${b.tpy.toFixed(0)}</td><td class="num">${b.p_pass.toFixed(3)}</td><td class="num">${b.p_payout.toFixed(3)}</td><td class="num">${usd(b.V)} (${usd(b.V_lo)} to ${usd(b.V_hi)})</td><td class="num">${usd(b.ideal)}</td></tr>`).join("")+`</tbody>`;
+  $("#bookBars").innerHTML=`<p class="legend" style="margin:0 0 8px"><span><i style="background:var(--gold);border-radius:0"></i>Idealised buyer, same Sharpe ratio</span><span><i style="background:var(--green);border-radius:0"></i>The real book (line: 95% interval)</span></p>`+R.map(b=>`<div class="row book"><span>${esc(b.label)} <span class="num" style="color:var(--muted)">(${b.sharpe.toFixed(2)})</span></span><div class="tr" style="height:30px;background:transparent" role="img" aria-label="${esc(b.label)}: real ${usd(b.V)}, idealised ${usd(b.ideal)}"><div class="f" style="height:10px;top:0;width:${b.ideal/max*100}%;background:var(--gold)"></div><div class="f" style="height:10px;top:12px;width:${b.V/max*100}%;background:var(--green)"></div><div style="position:absolute;top:24px;height:3px;left:${b.V_lo/max*100}%;width:${Math.max((b.V_hi-b.V_lo)/max*100,0.4)}%;background:var(--ink)"></div></div><span class="num">${usd(b.V)} vs ${usd(b.ideal)}</span></div>`).join("");
+  $("#bookTbl").innerHTML=`<thead><tr><th class="l" scope="col">Book</th><th scope="col">Net Sharpe</th><th scope="col">Trades a year</th><th scope="col">P(pass)</th><th scope="col">P(paid)</th><th scope="col">V (95% interval)</th><th scope="col">Idealised V</th></tr></thead><tbody>`+R.map(b=>`<tr><td class="l">${esc(b.label)}</td><td class="num">${b.sharpe.toFixed(2)}</td><td class="num">${b.tpy.toFixed(0)}</td><td class="num">${b.p_pass.toFixed(3)}</td><td class="num">${b.p_payout.toFixed(3)}</td><td class="num">${usd(b.V)} (${usd(b.V_lo)} to ${usd(b.V_hi)})</td><td class="num">${usd(b.ideal)}</td></tr>`).join("")+`</tbody>`;
 }
 /* ---- hypotheses */
-function buildHyp(){seg("#hvSeg",["All","Supported","Refuted","Inconclusive"].map(k=>[k,k]),k=>k===hv,k=>{hv=k},renderHyp);renderHyp()}
+function buildHyp(){
+  const n=k=>D.verdicts.filter(v=>v.verdict.startsWith(k)).length,s=n("Supported"),r=n("Refuted"),i=n("Inconclusive");
+  $("#hbar").innerHTML=`<span class="s" style="flex:${s} 1 0">${s} supported</span><span class="r" style="flex:${r} 1 0">${r} refuted</span><span class="i" style="flex:${i} 1 0">${i}</span>`;
+  $("#hbar").setAttribute("aria-label",`${s} supported, ${r} refuted, ${i} inconclusive, of ${D.verdicts.length} hypotheses`);
+  const nr=D.verdicts.filter(v=>v.verdict.startsWith("Supported")&&v.verdict!=="Supported").length;
+  $("#hcap").textContent=`The last ${i} are inconclusive.`+(nr?` ${nr} of the ${s} supported ${nr===1?"is":"are"} marked not robust.`:"");
+  seg("#hvSeg",["All","Supported","Refuted","Inconclusive"].map(k=>[k,k]),k=>k===hv,k=>{hv=k},renderHyp);renderHyp();
+}
 function renderHyp(){
   const cls=v=>v.startsWith("Supported")?"s":v==="Refuted"?"r":"i";
   $("#vlist").innerHTML=D.verdicts.filter(v=>hv==="All"||v.verdict.startsWith(hv)).map(v=>`<div class="vrow"><span class="id num">${v.id}</span><div>${esc(v.claim)}<div class="f">Found: ${esc(v.found)}</div></div><span class="pill ${cls(v.verdict)}">${esc(v.verdict)}</span></div>`).join("");
